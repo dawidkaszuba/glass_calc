@@ -26,11 +26,11 @@
             <label>group</label>
             <form:select path="group" items="${tileGroups}" itemValue="id" itemLabel="name" class="form-control"/>
             <label>Is it tempered?</label>
-                <form:radiobutton  path="isTempered" value="true"/> YES
-                <form:radiobutton  path="isTempered" value="false"/> NO<br/>
+                <div><form:radiobutton  path="isTempered" value="true"/> YES
+                <form:radiobutton  path="isTempered" value="false"/> NO</div>
             <label>coating</label>
             <form:select path="coating" items="${coatings}" itemValue="id" itemLabel="name" class="form-control"/>
-            <label>lowEmislyCoatingValue</label>
+            <label>low emisly coating value</label>
             <form:input path="lowEmislyCoatingValue" type="number" min="0" step="0.1" value="0.0"
                         class="form-control"/>
             <label>price</label>
