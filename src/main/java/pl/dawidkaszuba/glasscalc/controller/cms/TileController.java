@@ -6,9 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.dawidkaszuba.glasscalc.entity.Coating;
+import pl.dawidkaszuba.glasscalc.entity.Foil;
 import pl.dawidkaszuba.glasscalc.entity.TileGroup;
 import pl.dawidkaszuba.glasscalc.entity.Tile;
 import pl.dawidkaszuba.glasscalc.repository.CoatingRepository;
+import pl.dawidkaszuba.glasscalc.repository.FoilRepository;
 import pl.dawidkaszuba.glasscalc.repository.TileGroupRepository;
 import pl.dawidkaszuba.glasscalc.repository.TileRepository;
 
@@ -27,6 +29,9 @@ public class TileController {
 
     @Autowired
     private CoatingRepository coatingRepository;
+
+    @Autowired
+    private FoilRepository foilRepository;
 
     @GetMapping("/add")
     public String addTailForm(Model model){
@@ -81,5 +86,10 @@ public class TileController {
     @ModelAttribute("coatings")
     public List<Coating> findAllCoatings(){
         return this.coatingRepository.findAll();
+    }
+
+    @ModelAttribute("foils")
+    public List<Foil> findAllFoils(){
+        return this.foilRepository.findAll();
     }
 }

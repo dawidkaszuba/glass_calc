@@ -1,9 +1,7 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Coating {
@@ -12,6 +10,8 @@ public class Coating {
     private Long id;
     private String name;
     private double value;
+    @OneToMany
+    private List<Tile> tiles;
 
     public Long getId() {
         return id;
@@ -35,5 +35,13 @@ public class Coating {
 
     public void setValue(double value) {
         this.value = value;
+    }
+
+    public List<Tile> getTiles() {
+        return tiles;
+    }
+
+    public void setTiles(List<Tile> tiles) {
+        this.tiles = tiles;
     }
 }

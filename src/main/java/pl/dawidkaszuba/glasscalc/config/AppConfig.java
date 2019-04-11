@@ -17,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import pl.dawidkaszuba.glasscalc.converter.StringCoatingConverter;
+import pl.dawidkaszuba.glasscalc.converter.StringFoilConverter;
 import pl.dawidkaszuba.glasscalc.converter.StringTileGroupConverter;
 
 import javax.persistence.EntityManagerFactory;
@@ -68,6 +69,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(stringCoatingConverter());
         registry.addConverter(stringTileGroupConverter());
+        registry.addConverter(stringFoilConverter());
 
     }
 
@@ -79,5 +81,10 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     StringCoatingConverter stringCoatingConverter(){
         return  new StringCoatingConverter();
+    }
+
+    @Bean
+    StringFoilConverter stringFoilConverter(){
+        return new StringFoilConverter();
     }
 }

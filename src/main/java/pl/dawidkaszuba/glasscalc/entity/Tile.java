@@ -3,6 +3,7 @@ package pl.dawidkaszuba.glasscalc.entity;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Tile {
@@ -19,6 +20,9 @@ public class Tile {
     @ManyToOne
     private TileGroup group;
     private double price;
+    private int quantityOfFoils;
+    @ManyToOne
+    private Foil foil;
 
     public Long getId() {
         return id;
@@ -76,4 +80,19 @@ public class Tile {
         this.coating = coating;
     }
 
+    public int getQuantityOfFoils() {
+        return quantityOfFoils;
+    }
+
+    public void setQuantityOfFoils(int quantityOfFoils) {
+        this.quantityOfFoils = quantityOfFoils;
+    }
+
+    public Foil getFoil() {
+        return foil;
+    }
+
+    public void setFoil(Foil foil) {
+        this.foil = foil;
+    }
 }

@@ -26,6 +26,10 @@
             <form:input path="thickness" type="number" min="1" step="0.01" class="form-control"/>
             <label>group</label>
             <form:select path="group" items="${tileGroups}" itemValue="id" itemLabel="name" class="form-control"/>
+            <label>foil</label>
+            <form:select path="foil" items="${foils}" itemValue="id" itemLabel="name" class="form-control"/>
+            <label>quantity of foils</label>
+            <form:input path="quantityOfFoils" type="number" min="0" class="form-control"/>
             <label>Is it tempered?</label>
             <div><form:radiobutton  path="isTempered" value="true"/> YES
                 <form:radiobutton  path="isTempered" value="false"/> NO</div>

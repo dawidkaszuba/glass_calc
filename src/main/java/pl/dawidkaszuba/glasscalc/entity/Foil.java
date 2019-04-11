@@ -1,9 +1,7 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Foil {
@@ -15,7 +13,8 @@ public class Foil {
     private boolean isMat;
     private boolean isAcustic;
     private double price;
-
+//    @OneToMany
+//    private List<Tile> tiles;
     public Long getId() {
         return id;
     }
@@ -63,4 +62,6 @@ public class Foil {
     public void setIsAcustic(boolean acustic) {
         isAcustic = acustic;
     }
+
+
 }
