@@ -58,7 +58,7 @@ public class TileGroupController {
 
     @GetMapping("/list")
     public String findAllTileGroup(Model model){
-        model.addAttribute("tiles",this.tileGroupRepository.findAll());
+        model.addAttribute("tileGroups",this.tileGroupRepository.findAll());
         return "cms/tileGroup/list";
     }
 

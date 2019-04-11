@@ -6,6 +6,7 @@ INSERT INTO TileGroup(name) VALUES("sunscreen");
 INSERT INTO TileGroup(name) VALUES("selective");
 INSERT INTO TileGroup(name) VALUES("glued");
 
+INSERT INTO Coating(name,value) VALUES("float", 0);
 INSERT INTO Coating(name,value) VALUES("Thermofloat 1.1", 1.1);
 INSERT INTO Coating(name,value) VALUES("Thermofloat 1.0", 1.1);
 INSERT INTO Coating(name,value) VALUES("CombiNeutral 70/40", 1.1);
