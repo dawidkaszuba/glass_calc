@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import pl.dawidkaszuba.glasscalc.converter.StringCoatingConverter;
+import pl.dawidkaszuba.glasscalc.converter.StringTileGroupConverter;
 
 import javax.persistence.EntityManagerFactory;
 import java.util.Locale;
@@ -59,5 +62,22 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public Validator validator() {
         return new LocalValidatorFactoryBean();
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(stringCoatingConverter());
+        registry.addConverter(stringTileGroupConverter());
+
+    }
+
+    @Bean
+    public StringTileGroupConverter stringTileGroupConverter(){
+        return new StringTileGroupConverter();
+    }
+
+    @Bean
+    StringCoatingConverter stringCoatingConverter(){
+        return  new StringCoatingConverter();
     }
 }

@@ -30,9 +30,6 @@
                 <form:radiobutton  path="isTempered" value="false"/> NO</div>
             <label>coating</label>
             <form:select path="coating" items="${coatings}" itemValue="id" itemLabel="name" class="form-control"/>
-            <label>low emisly coating value</label>
-            <form:input path="lowEmislyCoatingValue" type="number" min="0" step="0.1" value="0.0"
-                        class="form-control"/>
             <label>price</label>
             <form:input path="price" type="number" min="0" step="0.01" class="form-control"/>
             <input type="submit" value="Save">

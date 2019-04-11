@@ -18,7 +18,6 @@ public class Tile {
     private Coating coating;
     @ManyToOne
     private TileGroup group;
-    private double lowEmislyCoatingValue;
     private double price;
 
     public Long getId() {
@@ -77,11 +76,4 @@ public class Tile {
         this.coating = coating;
     }
 
-    public double getLowEmislyCoatingValue() {
-        return lowEmislyCoatingValue;
-    }
-
-    public void setLowEmislyCoatingValue(double lowEmislyCoatingValue) {
-        this.lowEmislyCoatingValue = lowEmislyCoatingValue;
-    }
 }
