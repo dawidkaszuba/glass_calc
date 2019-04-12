@@ -70,10 +70,8 @@
                 <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">base prices</a>
 
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/basePrice2Tile/add">add base price fo 2-teil</a>
-                    <a class="dropdown-item" href="/basePrice3Tile/add">add base price fo 2-teil</a>
-                    <a class="dropdown-item" href="/basePrice3Tile/edit">edit base price fo 2-teil</a>
-                    <a class="dropdown-item" href="/basePrice3Tile/edit">edit base price fo 2-teil</a>
+                    <a class="dropdown-item" href="/basePrice2Tile/show">base price for 2-tile</a>
+                    <a class="dropdown-item" href="/basePrice3Tile/show">base price for 3-tile</a>
                 </div>
             </li>
         </ul>
