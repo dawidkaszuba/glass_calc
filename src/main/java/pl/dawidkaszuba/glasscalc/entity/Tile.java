@@ -3,7 +3,6 @@ package pl.dawidkaszuba.glasscalc.entity;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Tile {
