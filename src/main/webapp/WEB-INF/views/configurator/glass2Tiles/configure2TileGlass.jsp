@@ -31,11 +31,11 @@
 
             <input type="submit" value="Next">
 
-            <div><form:errors path="*"/></div>
+            <div><form:errors path="*""/></div>
         </form:form>
         </div>
 
-        <div>tu ma byc grafika szyby</div>
+
     </div>
 
 

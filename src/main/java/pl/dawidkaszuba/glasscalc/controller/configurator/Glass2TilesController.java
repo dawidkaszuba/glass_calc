@@ -105,7 +105,7 @@ public class Glass2TilesController {
     }
 
     private boolean checkIfhasOneLowEmislyCoating(Glass2Tiles glass2Tiles){
-        if(glass2Tiles.getInternalTile().getCoating().equals("true") || glass2Tiles.getExternalTile().getCoating().equals("true")){
+        if(glass2Tiles.getInternalTile().getCoating().getLowEmisly() || glass2Tiles.getExternalTile().getCoating().getLowEmisly()){
             return true;
         }else{
             return false;

@@ -37,11 +37,14 @@
                 <form:select path="gas" items="${gasses}" itemValue="id" itemLabel="name" class="form-control"/>
 
                 <input type="submit" value="Next">
+                    <c:forEach var="error" items="${errors}">
+                        <div>${error.message}</div>
+                    </c:forEach>
+
                 <div><form:errors path="*"/></div>
 
             </form:form>
         </div>
-    <div>tu ma byc grafika szyby</div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
