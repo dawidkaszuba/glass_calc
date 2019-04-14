@@ -6,10 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.dawidkaszuba.glasscalc.entity.*;
-import pl.dawidkaszuba.glasscalc.repository.BasePrice3TileRepository;
-import pl.dawidkaszuba.glasscalc.repository.FrameRepository;
-import pl.dawidkaszuba.glasscalc.repository.Glass3TilesRepository;
-import pl.dawidkaszuba.glasscalc.repository.TileRepository;
+import pl.dawidkaszuba.glasscalc.repository.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -30,6 +27,9 @@ public class Glass3TilesController {
     @Autowired
     private BasePrice3TileRepository basePrice3TileRepository;
 
+    @Autowired
+    private GasRepository gasRepository;
+
     @GetMapping("/add")
     public String addGlass3TilesForm(Model model){
         model.addAttribute("glass3", new Glass3Tiles());
@@ -43,7 +43,7 @@ public class Glass3TilesController {
         }else{
             glass3Tiles.setName();
             glass3Tiles.setPrice(getPrice(glass3Tiles.getExternalTile(),glass3Tiles.getFirstFrame(),glass3Tiles.getMiddleTile(),
-                    glass3Tiles.getSecondFrame(),glass3Tiles.getInternalTile()));
+                    glass3Tiles.getSecondFrame(),glass3Tiles.getInternalTile(),glass3Tiles.getGas()));
             this.glass3TilesRepository.save(glass3Tiles);
             return "redirect:/configurator3Tiles/list";
         }
@@ -62,7 +62,7 @@ public class Glass3TilesController {
         }else{
             glass3Tiles.setName();
             glass3Tiles.setPrice(getPrice(glass3Tiles.getExternalTile(),glass3Tiles.getFirstFrame(),glass3Tiles.getMiddleTile(),
-                    glass3Tiles.getSecondFrame(),glass3Tiles.getInternalTile()));
+                    glass3Tiles.getSecondFrame(),glass3Tiles.getInternalTile(),glass3Tiles.getGas()));
             this.glass3TilesRepository.save(glass3Tiles);
             return "redirect:/configurator3Tiles/list";
         }
@@ -91,12 +91,17 @@ public class Glass3TilesController {
         return this.tileRepository.findAll();
     }
 
-    private double getPrice(Tile externalTile, Frame firstFrame,Tile middlelTile, Frame secondFrame, Tile internalTile ){
+    @ModelAttribute("gasses")
+    public List<Gas> findAllGasses(){
+        return this.gasRepository.findAll();
+    }
+
+    private double getPrice(Tile externalTile, Frame firstFrame,Tile middlelTile, Frame secondFrame, Tile internalTile,Gas gas ){
 
         BasePrice3Tile basePrice3Tiles = this.basePrice3TileRepository.findOne(1l);
 
         return basePrice3Tiles.getValue() + middlelTile.getPrice() + externalTile.getPrice() +
-                internalTile.getPrice() + firstFrame.getPrice() + secondFrame.getPrice();
+                internalTile.getPrice() + firstFrame.getPrice() + secondFrame.getPrice() + (2 * gas.getPrice());
     }
 
 }

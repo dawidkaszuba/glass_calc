@@ -12,6 +12,7 @@ public class Coating {
     private double value;
     @OneToMany
     private List<Tile> tiles;
+    private boolean lowEmisly;
 
     public Long getId() {
         return id;
@@ -43,5 +44,13 @@ public class Coating {
 
     public void setTiles(List<Tile> tiles) {
         this.tiles = tiles;
+    }
+
+    public boolean getLowEmisly() {
+        return lowEmisly;
+    }
+
+    public void setLowEmisly(boolean lowEmisly) {
+        this.lowEmisly = lowEmisly;
     }
 }

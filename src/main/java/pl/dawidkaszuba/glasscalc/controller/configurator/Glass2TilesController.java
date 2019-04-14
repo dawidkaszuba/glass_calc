@@ -5,14 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.dawidkaszuba.glasscalc.entity.BasePrice2Tile;
-import pl.dawidkaszuba.glasscalc.entity.Frame;
-import pl.dawidkaszuba.glasscalc.entity.Glass2Tiles;
-import pl.dawidkaszuba.glasscalc.entity.Tile;
-import pl.dawidkaszuba.glasscalc.repository.BasePrice2TileRepository;
-import pl.dawidkaszuba.glasscalc.repository.FrameRepository;
-import pl.dawidkaszuba.glasscalc.repository.Glass2TilesRepository;
-import pl.dawidkaszuba.glasscalc.repository.TileRepository;
+import pl.dawidkaszuba.glasscalc.entity.*;
+import pl.dawidkaszuba.glasscalc.repository.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -33,6 +27,9 @@ public class Glass2TilesController {
     @Autowired
     BasePrice2TileRepository basePrice2TileRepository;
 
+    @Autowired
+    private GasRepository gasRepository;
+
     @GetMapping("/add")
     public String addGlass2TilesForm(Model model){
         model.addAttribute("glass2", new Glass2Tiles());
@@ -45,7 +42,8 @@ public class Glass2TilesController {
             return "configurator/glass2Tiles/configure2TileGlass";
         }else{
             glass2Tiles.setName();
-            glass2Tiles.setPrice(getPrice(glass2Tiles.getExternalTile(),glass2Tiles.getInternalTile(),glass2Tiles.getFrame()));
+            glass2Tiles.setPrice(getPrice(glass2Tiles.getExternalTile(),glass2Tiles.getInternalTile(),
+                                 glass2Tiles.getFrame(),glass2Tiles.getGas()));
             this.glass2TilesRepository.save(glass2Tiles);
             return "redirect:/configurator2Tiles/list";
         }
@@ -63,7 +61,8 @@ public class Glass2TilesController {
             return "redirect:/configurator2Tiles/edit/" + glass2Tiles.getId();
         }else{
             glass2Tiles.setName();
-            glass2Tiles.setPrice(getPrice(glass2Tiles.getExternalTile(),glass2Tiles.getInternalTile(),glass2Tiles.getFrame()));
+            glass2Tiles.setPrice(getPrice(glass2Tiles.getExternalTile(),glass2Tiles.getInternalTile(),
+                                 glass2Tiles.getFrame(),glass2Tiles.getGas()));
             this.glass2TilesRepository.save(glass2Tiles);
             return "redirect:/configurator2Tiles/list";
         }
@@ -92,11 +91,26 @@ public class Glass2TilesController {
         return this.tileRepository.findAll();
     }
 
-    private double getPrice(Tile externalTile, Tile internalTile, Frame frame){
+    @ModelAttribute("gasses")
+    public List<Gas> findAllGasses(){
+        return this.gasRepository.findAll();
+    }
+
+    private double getPrice(Tile externalTile, Tile internalTile, Frame frame, Gas gas){
 
         BasePrice2Tile basePrice2Tiles = this.basePrice2TileRepository.findOne(1l);
 
-        return basePrice2Tiles.getValue() + externalTile.getPrice() + internalTile.getPrice() + frame.getPrice();
+        return basePrice2Tiles.getValue() + externalTile.getPrice() + internalTile.getPrice()
+                + frame.getPrice() + gas.getPrice();
     }
+
+    private boolean checkIfhasOneLowEmislyCoating(Glass2Tiles glass2Tiles){
+        if(glass2Tiles.getInternalTile().getCoating().equals("true") || glass2Tiles.getExternalTile().getCoating().equals("true")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
 }

@@ -20,10 +20,13 @@
         <div class="col-md-4">
             <span>Name</span>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
             <span>value</span>
         </div>
-         <div class="col-md-4">
+        <div class="col-md-4">
+            <span>low emisly</span>
+        </div>
+         <div class="col-md-2">
             <span>&nbsp</span>
         </div>
 
@@ -34,10 +37,13 @@
             <div class="col-md-4">
                 <div><p><span>${coating.name}</span></p></div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <div><p><span>${coating.value}</span></p></div>
             </div>
             <div class="col-md-4">
+                <div><p><span>${coating.lowEmisly}</span></p></div>
+            </div>
+            <div class="col-md-2">
                 <span><a href="/coating/edit/${coating.id}">edit</a> / <a href="/coating/delete/${coating.id}">delete</a></span>
             </div>
         </c:forEach>

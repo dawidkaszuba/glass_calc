@@ -9,8 +9,6 @@ import javax.persistence.*;
 @Entity
 public class Glass2Tiles {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,6 +20,8 @@ public class Glass2Tiles {
     private Tile internalTile;
     private double price;
     private String name;
+    @ManyToOne
+    private Gas gas;
 
 
 
@@ -75,8 +75,15 @@ public class Glass2Tiles {
     }
 
     public void setName() {
-        this.name = this.externalTile.getName() + " / " +  this.frame.getName() + " / " + this.internalTile.getName();
+        this.name = this.externalTile.getName() + " / " +  this.frame.getName() + " "+ this.gas.getName()
+                     + " / " + this.internalTile.getName();
     }
 
+    public Gas getGas() {
+        return gas;
+    }
 
+    public void setGas(Gas gas) {
+        this.gas = gas;
+    }
 }

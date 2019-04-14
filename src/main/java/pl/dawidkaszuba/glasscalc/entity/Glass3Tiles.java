@@ -24,6 +24,9 @@ public class Glass3Tiles {
     @ManyToOne
     private Frame secondFrame;
 
+    @ManyToOne
+    private Gas Gas;
+
     private String name;
 
     private double price;
@@ -94,5 +97,13 @@ public class Glass3Tiles {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public pl.dawidkaszuba.glasscalc.entity.Gas getGas() {
+        return Gas;
+    }
+
+    public void setGas(pl.dawidkaszuba.glasscalc.entity.Gas gas) {
+        Gas = gas;
     }
 }

@@ -23,6 +23,9 @@
             <form:input path="name" type="text" class="form-control"/>
             <label>value</label>
             <form:input path="value" type="number" min="1" step="0.01" class="form-control"/>
+            <label>Is it low emisly</label>
+            <div><form:radiobutton  path="lowEmisly" value="true"/> YES
+                <form:radiobutton  path="lowEmisly" value="false"/> NO</div>
             <input type="submit" value="Save">
             <div><form:errors path="*"/></div>
         </form:form>

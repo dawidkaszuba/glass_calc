@@ -33,6 +33,9 @@
                 <label>Internal tile</label>
                 <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
 
+                <label>Gas</label>
+                <form:select path="gas" items="${gasses}" itemValue="id" itemLabel="name" class="form-control"/>
+
                 <input type="submit" value="Next">
                 <div><form:errors path="*"/></div>
 

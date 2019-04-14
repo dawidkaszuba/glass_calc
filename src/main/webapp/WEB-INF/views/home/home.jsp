@@ -11,11 +11,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-</head>
-<body style="background-color: dodgerblue";>
-<div class="container">
-    <div>Welcome Mister</div>
+    <style>
+        .menuButton{
+            background-color: yellowgreen;
+            border: 1px solid black;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            margin-left: 10px;
+            height: 50px;
+            border-radius: 10px;
+        }
 
+    </style>
+</head>
+<body style="background-color: lightblue";>
+<div class="container">
+
+        <div class="row">
+            <div class="col-md-6"><a href="/configurator2Tiles/add"><div class="menuButton"><span>new 2 tiles glass</span></div></a></div>
+            <div class="col-md-6"><a href="/configurator3Tiles/add"><div class="menuButton"><span>new 3-tiles glass</span></div></a></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><a href="/configurator2Tiles/list"><div class="menuButton"><span>My 2-tiles glass</span></div></a></div>
+            <div class="col-md-6"><a href="/configurator3Tiles/list"><div class="menuButton"><span>My 3-tiles glass</span></div></a></div>
+        </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
