@@ -127,6 +127,9 @@ public class Glass3TilesController {
        if(checkIfHasTwoLowEmislyCoatings(glass3Tiles) != null){
            errors.add(checkIfHasTwoLowEmislyCoatings(glass3Tiles));
        }
+       if(checkIfMiddleTileIsTempered(glass3Tiles) != null){
+           errors.add(checkIfMiddleTileIsTempered(glass3Tiles));
+       }
 
         return errors;
     }
@@ -168,6 +171,21 @@ public class Glass3TilesController {
             return null;
         }
 
+    }
+
+    private ErrorGlass checkIfMiddleTileIsTempered(Glass3Tiles glass3Tiles){
+
+        String middleLowEmislyShouldBeTempered = "Wewnetrzna tafla jeśli ma powłokę niskoemisyjną musi byc hartowana";
+        boolean externalTileCoating = glass3Tiles.getExternalTile().getCoating().getLowEmisly();
+        boolean internalTileCoating = glass3Tiles.getInternalTile().getCoating().getLowEmisly();
+        boolean middleTileCoating = glass3Tiles.getMiddleTile().getCoating().getLowEmisly();
+
+
+        if(middleTileCoating && ( ! (externalTileCoating) || ! (internalTileCoating))){
+            return new ErrorGlass(middleLowEmislyShouldBeTempered);
+        }else{
+            return null;
+        }
     }
 
 }
