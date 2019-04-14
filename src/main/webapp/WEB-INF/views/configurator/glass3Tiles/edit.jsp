@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>My glasses</title>
+    <title>Configurator</title>
     <!-- Bootstrap CSS -->
     <meta charset="utf-8">
     <meta lang="pl">
@@ -14,33 +14,36 @@
 </head>
 <body style="background-color: lightblue";>
     <div class="container">
-        <h1>My 2-tiles glasses</h1>
-        <div class="row">
-            <div class="col-md-4">
-                <span>specification</span>
-            </div>
-            <div class="col-md-4">
-                <span>price</span>
-            </div>
-            <div class="col-md-4">
-                <span>&nbsp</span>
-            </div>
+        <h1>3 - tiles glass</h1>
+            <div class="row">
+                <form:form method="post" modelAttribute="glass3" action="/configurator3Tiles/saveEdited">
 
-        </div>
+                    <form:input path="id" value="${glass3.id}" type="hidden"/>
 
-        <div class="row">
-            <c:forEach items="${glasses2}" var="glass">
-                <div class="col-md-4">
-                    <div><p><span>${glass.name}</span></p></div>
-                </div>
-                <div class="col-md-4">
-                    <div><p><span>${glass.price}</span></p></div>
-                </div>
-                <div class="col-md-4">
-                    <span><a href="/configurator2Tiles/edit/${glass.id}">edit</a> /
-                        <a href="/configurator2Tiles/delete/${glass.id}">delete</a></span>
-                </div>
-            </c:forEach>
+                    <label>External tile</label>
+                    <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+
+                    <label>first frame</label>
+                    <form:select path="firstFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+
+                    <label>Middle tile</label>
+                    <form:select path="middleTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+
+                    <label>Second frame</label>
+                    <form:select path="secondFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+
+                    <label>Internal tile</label>
+                    <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+
+                    <input type="submit" value="Next">
+                    <div><form:errors path="*"/></div>
+
+                </form:form>
+            </div>
+    </div>
+           <div>tu ma byc grafika szyby</div>
+
+
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -52,7 +55,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
                 integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
                 crossorigin="anonymous"></script>
-    </div>
-    </div>
+
 </body>
 </html>

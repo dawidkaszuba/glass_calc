@@ -12,24 +12,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
-<body style="background-color: dodgerblue";>
-<div class="container">
-    <h1>edit glass</h1>
-    <div class="row"/>
-    <form:form method="post" modelAttribute="glass2" action="/configurator2Tiles/saveEdited">
-        <form:input path="id" value="${glass2.id}" type="hidden"/>
-        <label>External tile</label>
-        <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
-        <label>Frame</label>
-        <form:select path="frame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
-        <label>Internal tile</label>
-        <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
-        <input type="submit" value="Next">
-        <div><form:errors path="*"/></div>
-    </form:form>
-</div>
-
-<div>tu ma byc grafika szyby</div>
+<body style="background-color: lightblue";>
+    <div class="container">
+        <h1>edit glass</h1>
+            <div class="row">
+                <form:form method="post" modelAttribute="glass2" action="/configurator2Tiles/saveEdited">
+                    <form:input path="id" value="${glass2.id}" type="hidden"/>
+                    <label>External tile</label>
+                    <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <label>Frame</label>
+                    <form:select path="frame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <label>Internal tile</label>
+                    <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <input type="submit" value="Next">
+                    <div><form:errors path="*"/></div>
+                </form:form>
+            </div>
+        <div>tu ma byc grafika szyby</div>
+    </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -40,6 +40,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
         integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
-</div>
+
 </body>
 </html>

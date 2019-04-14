@@ -13,34 +13,34 @@
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body style="background-color: lightblue";>
-    <div class="container">
-        <h1>My 2-tiles glasses</h1>
-        <div class="row">
-            <div class="col-md-4">
-                <span>specification</span>
-            </div>
-            <div class="col-md-4">
-                <span>price</span>
-            </div>
-            <div class="col-md-4">
-                <span>&nbsp</span>
-            </div>
-
+<div class="container">
+    <h1>My 3-tiles glasses</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <span>specification</span>
+        </div>
+        <div class="col-md-4">
+            <span>price</span>
+        </div>
+        <div class="col-md-4">
+            <span>&nbsp</span>
         </div>
 
-        <div class="row">
-            <c:forEach items="${glasses2}" var="glass">
-                <div class="col-md-4">
-                    <div><p><span>${glass.name}</span></p></div>
-                </div>
-                <div class="col-md-4">
-                    <div><p><span>${glass.price}</span></p></div>
-                </div>
-                <div class="col-md-4">
-                    <span><a href="/configurator2Tiles/edit/${glass.id}">edit</a> /
-                        <a href="/configurator2Tiles/delete/${glass.id}">delete</a></span>
-                </div>
-            </c:forEach>
+    </div>
+
+    <div class="row">
+        <c:forEach items="${glasses3}" var="glass">
+            <div class="col-md-4">
+                <div><p><span>${glass.name}</span></p></div>
+            </div>
+            <div class="col-md-4">
+                <div><p><span>${glass.price}</span></p></div>
+            </div>
+            <div class="col-md-4">
+                <span><a href="/configurator3Tiles/edit/${glass.id}">edit</a> /
+                    <a href="/configurator3Tiles/delete/${glass.id}">delete</a></span>
+            </div>
+        </c:forEach>
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -53,6 +53,6 @@
                 integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
                 crossorigin="anonymous"></script>
     </div>
-    </div>
+</div>
 </body>
 </html>

@@ -12,23 +12,32 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
-<body style="background-color: dodgerblue";>
+<body style="background-color: lightblue";>
 <div class="container">
     <h1>3 - tiles glass</h1>
+        <div class="row"/>
+            <form:form method="post" modelAttribute="glass3" >
 
-    <form:form method="post" modelAttribute="glass3">
-        <label>External tile</label>
-        <form:select path="externalTile" items="${externalTiles}" itemValue="id" itemLabel="name" class="form-control"/>
-        <label>first frame</label>
-        <form:select path="firstFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
-        <label>Internal tile</label>
-        <form:select path="internalTile" items="${internalTiles}" itemValue="id" itemLabel="name" class="form-control"/>
-        <label>Second frame</label>
-        <form:select path="secondFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
-        <input type="submit" value="Next">
-        <div><form:errors path="*"/></div>
-    </form:form>
+                <label>External tile</label>
+                <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
 
+                <label>first frame</label>
+                <form:select path="firstFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+
+                <label>Middle tile</label>
+                <form:select path="middleTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+
+                <label>Second frame</label>
+                <form:select path="secondFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+
+                <label>Internal tile</label>
+                <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+
+                <input type="submit" value="Next">
+                <div><form:errors path="*"/></div>
+
+            </form:form>
+        </div>
     <div>tu ma byc grafika szyby</div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

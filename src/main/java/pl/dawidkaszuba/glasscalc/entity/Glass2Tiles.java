@@ -1,11 +1,15 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.dawidkaszuba.glasscalc.converter.StringFrameConverter;
+import pl.dawidkaszuba.glasscalc.repository.BasePrice2TileRepository;
 
 import javax.persistence.*;
 
 @Entity
 public class Glass2Tiles {
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,8 +65,9 @@ public class Glass2Tiles {
         return price;
     }
 
-    public void setPrice() {
-        this.price = this.externalTile.getPrice()+this.internalTile.getPrice()+this.frame.getPrice();
+    public void setPrice(double price) {
+        this.price=price;
+
     }
 
     public String getName() {
