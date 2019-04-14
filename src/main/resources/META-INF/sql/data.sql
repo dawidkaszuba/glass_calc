@@ -29,3 +29,6 @@ INSERT INTO Frame(name,price,psi,thickness) VALUES('Chromatech 9005', 7,0.038,18
 
 INSERT INTO BasePrice2Tile(name,value) VALUES("4Th 1.1 - 16 - 4fl", 71);
 INSERT INTO BasePrice3Tile(name,value) VALUES("4Th 1.1 - 16 - 4fl - 16 - 4Th 1.1", 117.5);
+
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id) VALUES('4Th 1.1',0,0,0,4,2,null,1);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id) VALUES('4Fl',0,0,0,4,1,null,1);

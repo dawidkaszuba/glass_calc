@@ -1,5 +1,7 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
+import pl.dawidkaszuba.glasscalc.converter.StringFrameConverter;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,13 +12,17 @@ public class Glass2Tiles {
     private Long id;
     @ManyToOne
     private Tile externalTile;
-    @OneToOne
+    @ManyToOne
     private Frame frame;
     @ManyToOne
     private Tile internalTile;
     private double price;
+    private String name;
+
+
 
     public Glass2Tiles() {
+
     }
 
     public Long getId() {
@@ -55,7 +61,17 @@ public class Glass2Tiles {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrice() {
+        this.price = this.externalTile.getPrice()+this.internalTile.getPrice()+this.frame.getPrice();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName() {
+        this.name = this.externalTile.getName() + " / " +  this.frame.getName() + " / " + this.internalTile.getName();
+    }
+
+
 }

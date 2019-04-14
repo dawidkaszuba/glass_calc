@@ -23,6 +23,7 @@ public class Tile {
     @ManyToOne
     private Foil foil;
 
+
     public Long getId() {
         return id;
     }
@@ -94,4 +95,6 @@ public class Tile {
     public void setFoil(Foil foil) {
         this.foil = foil;
     }
+
+
 }

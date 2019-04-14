@@ -16,9 +16,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import pl.dawidkaszuba.glasscalc.converter.StringCoatingConverter;
-import pl.dawidkaszuba.glasscalc.converter.StringFoilConverter;
-import pl.dawidkaszuba.glasscalc.converter.StringTileGroupConverter;
+import pl.dawidkaszuba.glasscalc.converter.*;
 
 import javax.persistence.EntityManagerFactory;
 import java.util.Locale;
@@ -70,6 +68,9 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         registry.addConverter(stringCoatingConverter());
         registry.addConverter(stringTileGroupConverter());
         registry.addConverter(stringFoilConverter());
+        registry.addConverter(stringTileConverter());
+        registry.addConverter(stringFrameConverter());
+        registry.addConverter(stringGlass2TileConverter());
 
     }
 
@@ -86,5 +87,20 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     StringFoilConverter stringFoilConverter(){
         return new StringFoilConverter();
+    }
+
+    @Bean
+    StringTileConverter stringTileConverter(){
+        return new StringTileConverter();
+    }
+
+    @Bean
+    StringFrameConverter stringFrameConverter(){
+        return new StringFrameConverter();
+    }
+
+    @Bean
+    StringGlass2TileConverter stringGlass2TileConverter(){
+        return new StringGlass2TileConverter();
     }
 }
