@@ -74,6 +74,15 @@
                     <a class="dropdown-item" href="/basePrice3Tile/show">base price for 3-tile</a>
                 </div>
             </li>
+            <li class="nav-item dropdown">
+
+                <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">standard glass prices</a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/standardPrice2/show">std price for 2-tile</a>
+                    <a class="dropdown-item" href="/standardPrice3/show">std price for 3-tile</a>
+                </div>
+            </li>
         </ul>
 
     </div>
