@@ -32,6 +32,9 @@ public class Glass3TilesController {
     @Autowired
     private GasRepository gasRepository;
 
+    @Autowired
+    private StandardPrice3TilesGlassRepository standardPrice3TilesGlassRepository;
+
     @GetMapping("/add")
     public String addGlass3TilesForm(Model model) {
         model.addAttribute("glass3", new Glass3Tiles());
@@ -108,11 +111,19 @@ public class Glass3TilesController {
 
     private double getPrice(Tile externalTile, Frame firstFrame, Tile middlelTile, Frame secondFrame, Tile internalTile, Gas gas) {
 
-        BasePrice3Tile basePrice3Tiles = this.basePrice3TileRepository.findOne(1L);
+        if(externalTile.getPrice()==0 && middlelTile.getPrice()==0 && internalTile.getPrice()==0 && gas.getPrice()==0){
 
-        return basePrice3Tiles.getValue() + middlelTile.getPrice() + externalTile.getPrice() +
-                internalTile.getPrice() + firstFrame.getPrice() + secondFrame.getPrice() + (2 * gas.getPrice());
+            return this.standardPrice3TilesGlassRepository.findOne(1L).getValue();
+        }else {
+
+            BasePrice3Tile basePrice3Tiles = this.basePrice3TileRepository.findOne(1L);
+
+            return basePrice3Tiles.getValue() + middlelTile.getPrice() + externalTile.getPrice() +
+                    internalTile.getPrice() + firstFrame.getPrice() + secondFrame.getPrice() + (2 * gas.getPrice());
+        }
     }
+
+
 
 
 
@@ -175,7 +186,7 @@ public class Glass3TilesController {
 
     private ErrorGlass checkIfMiddleTileIsTempered(Glass3Tiles glass3Tiles){
 
-        String middleLowEmislyShouldBeTempered = "Wewnetrzna tafla jeśli ma powłokę niskoemisyjną musi byc hartowana";
+        String middleLowEmislyShouldBeTempered = "Wewnętrzna tafla jeśli ma powłokę niskoemisyjną musi byc hartowana";
         boolean externalTileCoating = glass3Tiles.getExternalTile().getCoating().getLowEmisly();
         boolean internalTileCoating = glass3Tiles.getInternalTile().getCoating().getLowEmisly();
         boolean middleTileCoating = glass3Tiles.getMiddleTile().getCoating().getLowEmisly();
@@ -187,5 +198,6 @@ public class Glass3TilesController {
             return null;
         }
     }
+
 
 }
