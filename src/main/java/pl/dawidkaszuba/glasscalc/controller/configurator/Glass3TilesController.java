@@ -187,12 +187,9 @@ public class Glass3TilesController {
     private ErrorGlass checkIfMiddleTileIsTempered(Glass3Tiles glass3Tiles){
 
         String middleLowEmislyShouldBeTempered = "Wewnętrzna tafla jeśli ma powłokę niskoemisyjną musi byc hartowana";
-        boolean externalTileCoating = glass3Tiles.getExternalTile().getCoating().getLowEmisly();
-        boolean internalTileCoating = glass3Tiles.getInternalTile().getCoating().getLowEmisly();
         boolean middleTileCoating = glass3Tiles.getMiddleTile().getCoating().getLowEmisly();
 
-
-        if(middleTileCoating && ( ! (externalTileCoating) || ! (internalTileCoating))){
+        if(middleTileCoating){
             return new ErrorGlass(middleLowEmislyShouldBeTempered);
         }else{
             return null;
