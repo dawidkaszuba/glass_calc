@@ -109,11 +109,13 @@ public class Glass3TilesController {
         return this.gasRepository.findAll();
     }
 
+
     private double getPrice(Tile externalTile, Frame firstFrame, Tile middlelTile, Frame secondFrame, Tile internalTile, Gas gas) {
 
         if(externalTile.getPrice()==0 && middlelTile.getPrice()==0 && internalTile.getPrice()==0 && gas.getPrice()==0){
 
-            return this.standardPrice3TilesGlassRepository.findOne(1L).getValue();
+            return this.standardPrice3TilesGlassRepository.findOne(1L).getValue()
+                    + firstFrame.getPrice() + secondFrame.getPrice();
         }else {
 
             BasePrice3Tile basePrice3Tiles = this.basePrice3TileRepository.findOne(1L);
@@ -131,10 +133,6 @@ public class Glass3TilesController {
 
         List<ErrorGlass> errors = new ArrayList<>();
 
-
-       if(checkifHasSameFrame(glass3Tiles) != null){
-           errors.add(checkifHasSameFrame(glass3Tiles));
-       }
        if(checkIfHasTwoLowEmislyCoatings(glass3Tiles) != null){
            errors.add(checkIfHasTwoLowEmislyCoatings(glass3Tiles));
        }
@@ -145,19 +143,6 @@ public class Glass3TilesController {
         return errors;
     }
 
-    private ErrorGlass checkifHasSameFrame(Glass3Tiles glass3Tiles){
-
-        String twoSameFrame = "obie ramki muszą byc takie same";
-        ErrorGlass error = new ErrorGlass(twoSameFrame);
-
-
-        if(glass3Tiles.getFirstFrame().getId() != glass3Tiles.getSecondFrame().getId()){
-            return error;
-
-        }
-        return null;
-
-    }
 
     private ErrorGlass checkIfHasTwoLowEmislyCoatings(Glass3Tiles glass3Tiles){
 
