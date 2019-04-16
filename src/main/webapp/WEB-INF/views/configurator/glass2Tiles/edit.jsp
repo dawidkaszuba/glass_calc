@@ -14,6 +14,7 @@
 </head>
 <body style="background-color: lightblue";>
     <div class="container">
+        <jsp:include page="/WEB-INF/views/fragments/headerConfigurator.jsp"/>
         <h1>edit glass</h1>
             <div class="row">
                 <form:form method="post" modelAttribute="glass2" action="/configurator2Tiles/saveEdited">
