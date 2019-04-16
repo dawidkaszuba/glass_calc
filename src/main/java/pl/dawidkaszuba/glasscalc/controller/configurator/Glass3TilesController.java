@@ -50,6 +50,7 @@ public class Glass3TilesController {
         } else if(checkIsCorrect(glass3Tiles).size()==0) {
 
             glass3Tiles.setName();
+            glass3Tiles.setThickness();
             glass3Tiles.setPrice(getPrice(glass3Tiles.getExternalTile(), glass3Tiles.getFirstFrame(), glass3Tiles.getMiddleTile(),
                     glass3Tiles.getSecondFrame(), glass3Tiles.getInternalTile(), glass3Tiles.getGas()));
             this.glass3TilesRepository.save(glass3Tiles);
@@ -75,6 +76,7 @@ public class Glass3TilesController {
 
         } else if(checkIsCorrect(glass3Tiles).size()==0) {
 
+            glass3Tiles.setThickness();
             glass3Tiles.setName();
             glass3Tiles.setPrice(getPrice(glass3Tiles.getExternalTile(), glass3Tiles.getFirstFrame(), glass3Tiles.getMiddleTile(),
                     glass3Tiles.getSecondFrame(), glass3Tiles.getInternalTile(), glass3Tiles.getGas()));

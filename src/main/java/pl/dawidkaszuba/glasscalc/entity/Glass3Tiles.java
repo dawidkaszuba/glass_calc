@@ -25,11 +25,13 @@ public class Glass3Tiles {
     private Frame secondFrame;
 
     @ManyToOne
-    private Gas Gas;
+    private Gas gas;
 
     private String name;
 
     private double price;
+
+    private double thickness;
 
     public Glass3Tiles() {
     }
@@ -87,8 +89,9 @@ public class Glass3Tiles {
     }
 
     public void setName() {
-        this.name = this.externalTile.getName() + " / " + this.firstFrame.getName() + " / "
-        + this.middleTile.getName() + " / " + this.secondFrame.getName() + " / " + this.internalTile.getName();
+        this.name = this.externalTile.getName() + " / " + this.firstFrame.getName() + " " + this.gas.getName()
+        + " / " + this.middleTile.getName() + " / " + this.secondFrame.getName() + " / " + this.gas.getName() + " / "
+                + this.internalTile.getName();
     }
 
     public double getPrice() {
@@ -99,11 +102,20 @@ public class Glass3Tiles {
         this.price = price;
     }
 
-    public pl.dawidkaszuba.glasscalc.entity.Gas getGas() {
-        return Gas;
+    public Gas getGas() {
+        return gas;
     }
 
-    public void setGas(pl.dawidkaszuba.glasscalc.entity.Gas gas) {
-        Gas = gas;
+    public void setGas(Gas gas) {
+        this.gas = gas;
+    }
+
+    public double getThickness() {
+        return thickness;
+    }
+
+    public void setThickness() {
+        this.thickness = this.getInternalTile().getThickness() + this.middleTile.getThickness() +
+                this.getExternalTile().getThickness() + this.firstFrame.getThickness() + this.secondFrame.getThickness();
     }
 }

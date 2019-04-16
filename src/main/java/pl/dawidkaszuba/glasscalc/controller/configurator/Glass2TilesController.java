@@ -50,6 +50,8 @@ public class Glass2TilesController {
 
         }else if(checkIsCorrect(glass2Tiles).size()==0){
 
+
+            glass2Tiles.setThickness();
             glass2Tiles.setName();
             glass2Tiles.setPrice(getPrice(glass2Tiles.getExternalTile(),glass2Tiles.getInternalTile(),
                                  glass2Tiles.getFrame(),glass2Tiles.getGas()));
@@ -77,6 +79,7 @@ public class Glass2TilesController {
         }else if(checkIsCorrect(glass2Tiles).size()==0){
 
             glass2Tiles.setName();
+            glass2Tiles.setThickness();
             glass2Tiles.setPrice(getPrice(glass2Tiles.getExternalTile(),glass2Tiles.getInternalTile(),
                                  glass2Tiles.getFrame(),glass2Tiles.getGas()));
 
@@ -121,14 +124,16 @@ public class Glass2TilesController {
 
         if((externalTile.getPrice() + internalTile.getPrice() + gas.getPrice()) == 0) {
 
-            BasePrice2Tile basePrice2Tiles = this.basePrice2TileRepository.findOne(1L);
+            return this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
+                    + frame.getPrice();
 
-            return basePrice2Tiles.getValue() + externalTile.getPrice() + internalTile.getPrice()
-                    + frame.getPrice() + gas.getPrice();
         }else{
-            return standardPrice2TilesGlassRepository.getOne(1L).getValue() + frame.getPrice();
+
+            return basePrice2TileRepository.findOne(1L).getValue() + frame.getPrice() + externalTile.getPrice()
+                    + internalTile.getPrice() + gas.getPrice();
         }
     }
+
 
     private List<ErrorGlass> checkIsCorrect(Glass2Tiles glass2Tiles) {
 

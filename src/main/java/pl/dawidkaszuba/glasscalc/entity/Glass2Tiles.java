@@ -1,9 +1,5 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import pl.dawidkaszuba.glasscalc.converter.StringFrameConverter;
-import pl.dawidkaszuba.glasscalc.repository.BasePrice2TileRepository;
-
 import javax.persistence.*;
 
 @Entity
@@ -22,8 +18,7 @@ public class Glass2Tiles {
     private String name;
     @ManyToOne
     private Gas gas;
-
-
+    private double thickness;
 
     public Glass2Tiles() {
 
@@ -85,5 +80,14 @@ public class Glass2Tiles {
 
     public void setGas(Gas gas) {
         this.gas = gas;
+    }
+
+    public void setThickness() {
+        this.thickness = this.getInternalTile().getThickness() +
+                this.getExternalTile().getThickness() + this.frame.getThickness();
+    }
+
+    public double getThickness() {
+        return thickness;
     }
 }

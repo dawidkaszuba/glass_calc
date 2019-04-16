@@ -16,16 +16,17 @@ INSERT INTO Foil(name,isAcustic,isMat,price,thickness) VALUES("PVB",0,0,12,0.38 
 INSERT INTO Foil(name,isAcustic,isMat,price,thickness) VALUES("PVB Aku",1,0,15,0.38 );
 INSERT INTO Foil(name,isAcustic,isMat,price,thickness) VALUES("PVB Mat",0,1,26,0.38 );
 
-INSERT INTO Gas(name, price) VALUES("Argon 90", 0);
-INSERT INTO Gas(name, price) VALUES("Krypton 90", 100);
+INSERT INTO Gas(name, price) VALUES("Ar 90", 0);
+INSERT INTO Gas(name, price) VALUES("Kr 90", 100);
 INSERT INTO Gas(name, price) VALUES("Air", 0);
 
 
-INSERT INTO Frame(name,price,psi,thickness) VALUES('Alu', 2.5,0.8,18);
-INSERT INTO Frame(name,price,psi,thickness) VALUES('Chromatech 7035', 7,0.038,18);
-INSERT INTO Frame(name,price,psi,thickness) VALUES('Chromatech 7040', 7,0.038,18);
-INSERT INTO Frame(name,price,psi,thickness) VALUES('Chromatech 9016', 7,0.038,18);
-INSERT INTO Frame(name,price,psi,thickness) VALUES('Chromatech 9005', 7,0.038,18);
+INSERT INTO Frame(name,price,psi,thickness) VALUES('Alu 16', 0,0.8,16);
+INSERT INTO Frame(name,price,psi,thickness) VALUES('Alu 18', 2.5,0.8,18);
+INSERT INTO Frame(name,price,psi,thickness) VALUES('18 Chromatech 7035', 7,0.038,18);
+INSERT INTO Frame(name,price,psi,thickness) VALUES('18 Chromatech 7040', 7,0.038,18);
+INSERT INTO Frame(name,price,psi,thickness) VALUES('18 Chromatech 9016', 7,0.038,18);
+INSERT INTO Frame(name,price,psi,thickness) VALUES('18 Chromatech 9005', 7,0.038,18);
 
 INSERT INTO BasePrice2Tile(name,value) VALUES("4Th 1.1 - 16 - 4fl", 71);
 INSERT INTO BasePrice3Tile(name,value) VALUES("4Th 1.1 - 16 - 4fl - 16 - 4Th 1.1", 117.5);

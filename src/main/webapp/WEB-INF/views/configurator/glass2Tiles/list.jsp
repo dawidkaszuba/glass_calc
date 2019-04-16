@@ -16,13 +16,16 @@
     <div class="container">
         <h1>My 2-tiles glasses</h1>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <span>specification</span>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <span>price</span>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
+                <span>thickness</span>
+            </div>
+            <div class="col-md-3">
                 <span>&nbsp</span>
             </div>
 
@@ -30,13 +33,16 @@
 
         <div class="row">
             <c:forEach items="${glasses2}" var="glass">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div><p><span>${glass.name}</span></p></div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div><p><span>${glass.price}</span></p></div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <div><p><span>${glass.thickness}</span></p></div>
+                </div>
+                <div class="col-md-3">
                     <span><a href="/configurator2Tiles/edit/${glass.id}">edit</a> /
                         <a href="/configurator2Tiles/delete/${glass.id}">delete</a></span>
                 </div>
