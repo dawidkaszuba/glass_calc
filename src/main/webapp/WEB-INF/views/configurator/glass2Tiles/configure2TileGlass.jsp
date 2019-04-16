@@ -31,7 +31,11 @@
 
             <input type="submit" value="Next">
 
-            <div><form:errors path="*""/></div>
+            <c:forEach var="error" items="${errors}">
+                <div>${error.message}</div>
+            </c:forEach>
+
+            <div><form:errors path="*"/></div>
         </form:form>
         </div>
 

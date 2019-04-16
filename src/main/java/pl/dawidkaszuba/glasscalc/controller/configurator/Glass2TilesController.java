@@ -32,6 +32,9 @@ public class Glass2TilesController {
     @Autowired
     private GasRepository gasRepository;
 
+    @Autowired
+    private StandardPrice2TilesGlassRepository standardPrice2TilesGlassRepository;
+
     @GetMapping("/add")
     public String addGlass2TilesForm(Model model){
         model.addAttribute("glass2", new Glass2Tiles());
@@ -68,15 +71,21 @@ public class Glass2TilesController {
     }
 
     @PostMapping("/saveEdited")
-    public String saveEditedGlass2Tiles(@Valid Glass2Tiles glass2Tiles, BindingResult bindingResult){
+    public String saveEditedGlass2Tiles(@Valid Glass2Tiles glass2Tiles, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             return "redirect:/configurator2Tiles/edit/" + glass2Tiles.getId();
-        }else{
+        }else if(checkIsCorrect(glass2Tiles).size()==0){
+
             glass2Tiles.setName();
             glass2Tiles.setPrice(getPrice(glass2Tiles.getExternalTile(),glass2Tiles.getInternalTile(),
                                  glass2Tiles.getFrame(),glass2Tiles.getGas()));
+
             this.glass2TilesRepository.save(glass2Tiles);
             return "redirect:/configurator2Tiles/list";
+        }else{
+            model.addAttribute("errors",checkIsCorrect(glass2Tiles));
+            model.addAttribute("glass2", this.glass2TilesRepository.findOne(glass2Tiles.getId()));
+            return "configurator/glass2Tiles/edit";
         }
 
     }
@@ -110,10 +119,15 @@ public class Glass2TilesController {
 
     private double getPrice(Tile externalTile, Tile internalTile, Frame frame, Gas gas){
 
-        BasePrice2Tile basePrice2Tiles = this.basePrice2TileRepository.findOne(1l);
+        if((externalTile.getPrice() + internalTile.getPrice() + gas.getPrice()) == 0) {
 
-        return basePrice2Tiles.getValue() + externalTile.getPrice() + internalTile.getPrice()
-                + frame.getPrice() + gas.getPrice();
+            BasePrice2Tile basePrice2Tiles = this.basePrice2TileRepository.findOne(1L);
+
+            return basePrice2Tiles.getValue() + externalTile.getPrice() + internalTile.getPrice()
+                    + frame.getPrice() + gas.getPrice();
+        }else{
+            return standardPrice2TilesGlassRepository.getOne(1L).getValue() + frame.getPrice();
+        }
     }
 
     private List<ErrorGlass> checkIsCorrect(Glass2Tiles glass2Tiles) {
@@ -122,6 +136,10 @@ public class Glass2TilesController {
 
         if(checkIfhasOneLowEmislyCoating(glass2Tiles) != null){
             errors.add(checkIfhasOneLowEmislyCoating(glass2Tiles));
+        }
+
+        if(checkIfHasTwoLowEmislyCoating(glass2Tiles) != null){
+            errors.add(checkIfHasTwoLowEmislyCoating(glass2Tiles));
         }
 
         return errors;
@@ -138,5 +156,15 @@ public class Glass2TilesController {
         }
     }
 
+    private ErrorGlass checkIfHasTwoLowEmislyCoating(Glass2Tiles glass2Tiles){
+        String message = "Szyba jednokomorowa powinna mieć jedną powłokę niskoemisyjną";
+
+        if(glass2Tiles.getExternalTile().getCoating().getLowEmisly() &&
+                glass2Tiles.getInternalTile().getCoating().getLowEmisly()){
+            return new ErrorGlass(message);
+        } else{
+            return null;
+        }
+    }
 
 }
