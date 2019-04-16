@@ -63,21 +63,29 @@ public class Glass3TilesController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editGlass3Tiles(@PathVariable Long id, Model model) {
+    public String editGlass3Tiles(@PathVariable Long id, Model model ) {
         model.addAttribute("glass3", this.glass3TilesRepository.findOne(id));
         return "configurator/glass3Tiles/edit";
     }
 
     @PostMapping("/saveEdited")
-    public String saveEditedGlass3Tiles(@Valid Glass3Tiles glass3Tiles, BindingResult bindingResult) {
+    public String saveEditedGlass3Tiles(@Valid Glass3Tiles glass3Tiles, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "redirect:/configurator3Tiles/edit/" + glass3Tiles.getId();
-        } else {
+
+        } else if(checkIsCorrect(glass3Tiles).size()==0) {
+
             glass3Tiles.setName();
             glass3Tiles.setPrice(getPrice(glass3Tiles.getExternalTile(), glass3Tiles.getFirstFrame(), glass3Tiles.getMiddleTile(),
                     glass3Tiles.getSecondFrame(), glass3Tiles.getInternalTile(), glass3Tiles.getGas()));
             this.glass3TilesRepository.save(glass3Tiles);
             return "redirect:/configurator3Tiles/list";
+        }else{
+
+            model.addAttribute("errors",checkIsCorrect(glass3Tiles));
+            model.addAttribute("glass3", this.glass3TilesRepository.findOne(glass3Tiles.getId()));
+            return "configurator/glass3Tiles/edit";
+
         }
 
     }
@@ -124,9 +132,6 @@ public class Glass3TilesController {
                     internalTile.getPrice() + firstFrame.getPrice() + secondFrame.getPrice() + (2 * gas.getPrice());
         }
     }
-
-
-
 
 
     private List<ErrorGlass> checkIsCorrect(Glass3Tiles glass3Tiles) {

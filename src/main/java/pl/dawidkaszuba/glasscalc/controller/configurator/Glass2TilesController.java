@@ -6,9 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.dawidkaszuba.glasscalc.entity.*;
+import pl.dawidkaszuba.glasscalc.errors.ErrorGlass;
 import pl.dawidkaszuba.glasscalc.repository.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -37,15 +39,25 @@ public class Glass2TilesController {
     }
 
     @PostMapping("/add")
-    public String saveGlass2Tiles(@Valid Glass2Tiles glass2Tiles, BindingResult bindingResult){
+    public String saveGlass2Tiles(@Valid Glass2Tiles glass2Tiles, BindingResult bindingResult, Model model){
+
         if(bindingResult.hasErrors()){
+
             return "configurator/glass2Tiles/configure2TileGlass";
-        }else{
+
+        }else if(checkIsCorrect(glass2Tiles).size()==0){
+
             glass2Tiles.setName();
             glass2Tiles.setPrice(getPrice(glass2Tiles.getExternalTile(),glass2Tiles.getInternalTile(),
                                  glass2Tiles.getFrame(),glass2Tiles.getGas()));
             this.glass2TilesRepository.save(glass2Tiles);
             return "redirect:/configurator2Tiles/list";
+
+        }else{
+
+            model.addAttribute("errors",checkIsCorrect(glass2Tiles));
+            model.addAttribute("glass2", new Glass2Tiles());
+            return "configurator/glass2Tiles/configure2TileGlass";
         }
     }
 
@@ -104,11 +116,25 @@ public class Glass2TilesController {
                 + frame.getPrice() + gas.getPrice();
     }
 
-    private boolean checkIfhasOneLowEmislyCoating(Glass2Tiles glass2Tiles){
+    private List<ErrorGlass> checkIsCorrect(Glass2Tiles glass2Tiles) {
+
+        List<ErrorGlass> errors = new ArrayList<>();
+
+        if(checkIfhasOneLowEmislyCoating(glass2Tiles) != null){
+            errors.add(checkIfhasOneLowEmislyCoating(glass2Tiles));
+        }
+
+        return errors;
+    }
+
+
+    private ErrorGlass checkIfhasOneLowEmislyCoating(Glass2Tiles glass2Tiles){
+        String message = " szyba jednokomorowa powinna mieć conajmniej jedną powłokę niskoemisyjną";
+
         if(glass2Tiles.getInternalTile().getCoating().getLowEmisly() || glass2Tiles.getExternalTile().getCoating().getLowEmisly()){
-            return true;
+            return null;
         }else{
-            return false;
+            return new ErrorGlass(message);
         }
     }
 

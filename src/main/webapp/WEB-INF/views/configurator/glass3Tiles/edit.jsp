@@ -39,6 +39,9 @@
                     <form:select path="gas" items="${gasses}" itemValue="id" itemLabel="name" class="form-control"/>
 
                     <input type="submit" value="Next">
+                    <c:forEach var="error" items="${errors}">
+                        <div>${error.message}</div>
+                    </c:forEach>
                     <div><form:errors path="*"/></div>
 
                 </form:form>
