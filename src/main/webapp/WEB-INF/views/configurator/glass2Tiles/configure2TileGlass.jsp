@@ -30,6 +30,12 @@
             <label>Gas</label>
             <form:select path="gas" items="${gasses}" itemValue="id" itemLabel="name" class="form-control"/>
 
+            <label>width</label>
+            <form:input path="width" type="number" min="30" class="form-control"/>
+
+            <label>height</label>
+            <form:input path="height" type="number" min="30" class="form-control"/>
+
             <input type="submit" value="Next">
 
             <c:forEach var="error" items="${errors}">

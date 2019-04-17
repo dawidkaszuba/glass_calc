@@ -38,10 +38,10 @@
                     <div><p><span>${glass.name}</span></p></div>
                 </div>
                 <div class="col-md-3">
-                    <div><p><span>${glass.price}</span></p></div>
+                    <div><p><span>${glass.price} zł/m2</span></p></div>
                 </div>
                 <div class="col-md-3">
-                    <div><p><span>${glass.thickness}</span></p></div>
+                    <div><p><span>${glass.thickness} mm</span></p></div>
                 </div>
                 <div class="col-md-3">
                     <span><a href="/configurator2Tiles/edit/${glass.id}">edit</a> /

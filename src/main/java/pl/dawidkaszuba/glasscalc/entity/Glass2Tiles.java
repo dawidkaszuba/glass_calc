@@ -1,6 +1,7 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Glass2Tiles {
@@ -19,6 +20,10 @@ public class Glass2Tiles {
     @ManyToOne
     private Gas gas;
     private double thickness;
+    @NotNull
+    private int width;
+    @NotNull
+    private int height;
 
     public Glass2Tiles() {
 
@@ -89,5 +94,21 @@ public class Glass2Tiles {
 
     public double getThickness() {
         return thickness;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 }

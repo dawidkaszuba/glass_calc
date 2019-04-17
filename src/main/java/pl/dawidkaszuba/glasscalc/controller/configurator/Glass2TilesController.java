@@ -53,8 +53,7 @@ public class Glass2TilesController {
 
             glass2Tiles.setThickness();
             glass2Tiles.setName();
-            glass2Tiles.setPrice(getPrice(glass2Tiles.getExternalTile(),glass2Tiles.getInternalTile(),
-                                 glass2Tiles.getFrame(),glass2Tiles.getGas()));
+            glass2Tiles.setPrice(getPrice(glass2Tiles));
             this.glass2TilesRepository.save(glass2Tiles);
             return "redirect:/configurator2Tiles/list";
 
@@ -80,8 +79,7 @@ public class Glass2TilesController {
 
             glass2Tiles.setName();
             glass2Tiles.setThickness();
-            glass2Tiles.setPrice(getPrice(glass2Tiles.getExternalTile(),glass2Tiles.getInternalTile(),
-                                 glass2Tiles.getFrame(),glass2Tiles.getGas()));
+            glass2Tiles.setPrice(getPrice(glass2Tiles));
 
             this.glass2TilesRepository.save(glass2Tiles);
             return "redirect:/configurator2Tiles/list";
@@ -120,17 +118,21 @@ public class Glass2TilesController {
         return this.gasRepository.findAll();
     }
 
-    private double getPrice(Tile externalTile, Tile internalTile, Frame frame, Gas gas){
 
-        if((externalTile.getPrice() + internalTile.getPrice() + gas.getPrice()) == 0) {
+    private double getPrice(Glass2Tiles glass2Tiles){
 
-            return this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
-                    + frame.getPrice();
+        if((glass2Tiles.getExternalTile().getPrice() + glass2Tiles.getInternalTile().getPrice() +
+                glass2Tiles.getGas().getPrice()) == 0) {
+
+            return (this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
+                    + glass2Tiles.getFrame().getPrice()) * 0.000001*(glass2Tiles.getWidth() * glass2Tiles.getHeight());
 
         }else{
 
-            return basePrice2TileRepository.findOne(1L).getValue() + frame.getPrice() + externalTile.getPrice()
-                    + internalTile.getPrice() + gas.getPrice();
+            return (basePrice2TileRepository.findOne(1L).getValue() + glass2Tiles.getFrame().getPrice() +
+                    glass2Tiles.getExternalTile().getPrice()
+                    + glass2Tiles.getInternalTile().getPrice() + glass2Tiles.getGas().getPrice())
+                    * 0.000001*(glass2Tiles.getWidth() * glass2Tiles.getHeight());
         }
     }
 

@@ -21,8 +21,8 @@ INSERT INTO Gas(name, price) VALUES("Kr 90", 100);
 INSERT INTO Gas(name, price) VALUES("Air", 0);
 
 
-INSERT INTO Frame(name,price,psi,thickness) VALUES('Alu 16', 0,0.8,16);
-INSERT INTO Frame(name,price,psi,thickness) VALUES('Alu 18', 2.5,0.8,18);
+INSERT INTO Frame(name,price,psi,thickness) VALUES('16 Alu', 0,0.8,16);
+INSERT INTO Frame(name,price,psi,thickness) VALUES('18 Alu', 2.5,0.8,18);
 INSERT INTO Frame(name,price,psi,thickness) VALUES('18 Chromatech 7035', 7,0.038,18);
 INSERT INTO Frame(name,price,psi,thickness) VALUES('18 Chromatech 7040', 7,0.038,18);
 INSERT INTO Frame(name,price,psi,thickness) VALUES('18 Chromatech 9016', 7,0.038,18);
