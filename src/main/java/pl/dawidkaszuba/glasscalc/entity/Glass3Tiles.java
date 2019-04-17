@@ -33,6 +33,9 @@ public class Glass3Tiles {
 
     private double thickness;
 
+    private int width;
+    private int height;
+
     public Glass3Tiles() {
     }
 
@@ -117,5 +120,21 @@ public class Glass3Tiles {
     public void setThickness() {
         this.thickness = this.getInternalTile().getThickness() + this.middleTile.getThickness() +
                 this.getExternalTile().getThickness() + this.firstFrame.getThickness() + this.secondFrame.getThickness();
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 }

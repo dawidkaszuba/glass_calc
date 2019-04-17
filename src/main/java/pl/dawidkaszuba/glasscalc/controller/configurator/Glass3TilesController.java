@@ -51,8 +51,7 @@ public class Glass3TilesController {
 
             glass3Tiles.setName();
             glass3Tiles.setThickness();
-            glass3Tiles.setPrice(getPrice(glass3Tiles.getExternalTile(), glass3Tiles.getFirstFrame(), glass3Tiles.getMiddleTile(),
-                    glass3Tiles.getSecondFrame(), glass3Tiles.getInternalTile(), glass3Tiles.getGas()));
+            glass3Tiles.setPrice(getPrice(glass3Tiles));
             this.glass3TilesRepository.save(glass3Tiles);
             return "redirect:/configurator3Tiles/list";
 
@@ -78,8 +77,7 @@ public class Glass3TilesController {
 
             glass3Tiles.setThickness();
             glass3Tiles.setName();
-            glass3Tiles.setPrice(getPrice(glass3Tiles.getExternalTile(), glass3Tiles.getFirstFrame(), glass3Tiles.getMiddleTile(),
-                    glass3Tiles.getSecondFrame(), glass3Tiles.getInternalTile(), glass3Tiles.getGas()));
+            glass3Tiles.setPrice(getPrice(glass3Tiles));
             this.glass3TilesRepository.save(glass3Tiles);
             return "redirect:/configurator3Tiles/list";
         }else{
@@ -120,18 +118,23 @@ public class Glass3TilesController {
     }
 
 
-    private double getPrice(Tile externalTile, Frame firstFrame, Tile middlelTile, Frame secondFrame, Tile internalTile, Gas gas) {
+    private double getPrice(Glass3Tiles glass3Tiles) {
 
-        if(externalTile.getPrice()==0 && middlelTile.getPrice()==0 && internalTile.getPrice()==0 && gas.getPrice()==0){
+        if((glass3Tiles.getExternalTile().getPrice()+ glass3Tiles.getMiddleTile().getPrice()
+                + glass3Tiles.getInternalTile().getPrice() + glass3Tiles.getGas().getPrice())==0){
 
-            return this.standardPrice3TilesGlassRepository.findOne(1L).getValue()
-                    + firstFrame.getPrice() + secondFrame.getPrice();
+            return (this.standardPrice3TilesGlassRepository.findOne(1L).getValue()
+                    + glass3Tiles.getFirstFrame().getPrice() + glass3Tiles.getSecondFrame().getPrice())
+                    * 0.000001*(glass3Tiles.getWidth() * glass3Tiles.getHeight());
         }else {
 
             BasePrice3Tile basePrice3Tiles = this.basePrice3TileRepository.findOne(1L);
 
-            return basePrice3Tiles.getValue() + middlelTile.getPrice() + externalTile.getPrice() +
-                    internalTile.getPrice() + firstFrame.getPrice() + secondFrame.getPrice() + (2 * gas.getPrice());
+            return (basePrice3Tiles.getValue() + glass3Tiles.getMiddleTile().getPrice()
+                    + glass3Tiles.getExternalTile().getPrice() +
+                    glass3Tiles.getInternalTile().getPrice() + glass3Tiles.getFirstFrame().getPrice()
+                    + glass3Tiles.getSecondFrame().getPrice() + (2 * glass3Tiles.getGas().getPrice()))
+                    * 0.000001*(glass3Tiles.getWidth() * glass3Tiles.getHeight());
         }
     }
 
