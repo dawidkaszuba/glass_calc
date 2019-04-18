@@ -148,6 +148,9 @@ public class Glass2TilesController {
         if(checkIfHasTwoLowEmislyCoating(glass2Tiles) != null){
             errors.add(checkIfHasTwoLowEmislyCoating(glass2Tiles));
         }
+        if(checkIfHasCorrectDimension(glass2Tiles) !=null){
+            errors.add(checkIfHasCorrectDimension(glass2Tiles));
+        }
 
         return errors;
     }
@@ -174,4 +177,45 @@ public class Glass2TilesController {
         }
     }
 
+    private Tile getThinnestTile(Glass2Tiles glass2Tiles){
+
+        if(glass2Tiles.getInternalTile().getThickness() > glass2Tiles.getExternalTile().getThickness()) {
+            return glass2Tiles.getExternalTile();
+        }else{
+            return glass2Tiles.getInternalTile();
+        }
+    }
+
+    private double checkThicknessToCalculating(Tile tile){
+
+        if(tile.getFoil() != null){
+            double thickness = tile.getFoil().getThickness() -
+                    tile.getFoil().getThickness();
+            return thickness * 0.63;
+        }else{
+            return tile.getThickness();
+        }
+    }
+
+    private ErrorGlass checkIfHasCorrectDimension(Glass2Tiles glass2Tiles){
+
+        String for4ThicknessMessage = "przekroczony stosunek boków dla szyby 4, prawidłowy max 1:6";
+        String for6ThicknessMessage = "przekroczony stosunek boków dla szyby 6 i grubszych, prawidłowy max 1:10";
+
+        if(checkThicknessToCalculating(getThinnestTile(glass2Tiles)) >= 3.78) {
+            if(glass2Tiles.getHeight() / glass2Tiles.getWidth() > 6 ) {
+                return new ErrorGlass(for4ThicknessMessage);
+            }else{
+                return null;
+            }
+        } else if(checkThicknessToCalculating(getThinnestTile(glass2Tiles)) >= 5){
+            if(glass2Tiles.getHeight() / glass2Tiles.getWidth() > 10 ) {
+                return new ErrorGlass(for6ThicknessMessage);
+            } else {
+                return null;
+            }
+
+        }
+        return null;
+    }
 }
