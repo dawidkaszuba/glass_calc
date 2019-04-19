@@ -257,6 +257,8 @@ public class Glass2Tiles {
         }else if(greater > 4000 && lower > 2000){
             return 2;
         }else if(greater > 3000 && lower > 2400){
+            return 2;
+        }else if(greater > 3000 && lower > 2000){
             return 1.75;
         }else if(greater > 2400 && lower > 2400){
             return 1.5;
