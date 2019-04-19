@@ -34,6 +34,8 @@ INSERT INTO BasePrice3Tile(name,value) VALUES("4Th 1.1 - 16 - 4fl - 16 - 4Th 1.1
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id) VALUES('4Th 1.1',0,0,0,4,2,null,1);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id) VALUES('4Fl',0,0,0,4,1,null,1);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id) VALUES('4 ESG Tf 1.1',1,50,0,4,2,null,2);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id) VALUES('6 Tf 1.1',0,26,0,6,2,null,1);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id) VALUES('6 float1.1',0,18,0,6,1,null,1);
 
 INSERT  INTO StandardPrice2TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL',71);
 INSERT  INTO StandardPrice3TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL - 16 - 4Th 1.1',119);

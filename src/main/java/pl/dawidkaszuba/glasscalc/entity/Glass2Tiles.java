@@ -165,7 +165,7 @@ public class Glass2Tiles {
 
         if(this.getInternalTile().getThickness() > this.getExternalTile().getThickness()) {
             return this.getExternalTile();
-        }else{
+        }else {
             return this.getInternalTile();
         }
     }
@@ -213,19 +213,64 @@ public class Glass2Tiles {
         if(checkThicknessToCalculating(getThinnestTile()) <= 4){
             if((this.getHeight() * this.getWidth() * 0.000001) > 3.35) {
                 return new ErrorGlass(for4MaxAreaMessage);
-            }else if(checkThicknessToCalculating(getThinnestTile()) <= 5){
-                if((this.getHeight() * this.getWidth() * 0.000001) > 5) {
-                    return new ErrorGlass(for5MaxAreaMessage);
-                }else if(checkThicknessToCalculating(getThinnestTile()) <= 6){
-                    if((this.getHeight() * this.getWidth() * 0.000001) > 7){
-                        return new ErrorGlass(for6MaxAreaMessage);
-                    }else{
-                        return null;
-                    }
-                }
+            }else{
+                return null;
+            }
+        }else if(checkThicknessToCalculating(getThinnestTile()) <= 5){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 5) {
+                return new ErrorGlass(for5MaxAreaMessage);
+            }else{
+                return null;
+            }
+        }else if(checkThicknessToCalculating(getThinnestTile()) <= 6){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 7){
+                return new ErrorGlass(for6MaxAreaMessage);
+            }else{
+                return null;
             }
         }
         return null;
+    }
+
+
+
+    public double getHowIncreasePriceDependOnDimensions(){
+
+        double greater = 0;
+        double lower = 0;
+
+
+        if(this.getHeight() > this.getWidth()){
+             greater = this.height;
+             lower = this.width;
+        }else{
+            greater = this.width;
+            lower = this.height;
+        }
+
+        if(greater > 5000 && lower > 2400) {
+            return 2.5;
+        }else if(greater > 5000 && lower > 2000){
+            return 2.25;
+        }else if(greater > 4000 && lower > 2400){
+            return 2.25;
+        }else if(greater > 4000 && lower > 2000){
+            return 2;
+        }else if(greater > 3000 && lower > 2400){
+            return 1.75;
+        }else if(greater > 2400 && lower > 2400){
+            return 1.5;
+        }else if(greater > 5000){
+            return 2;
+        }else if(greater > 4000){
+            return 1.75;
+        }else if(greater > 3000){
+            return 1.5;
+        }
+        else{
+            return 1;
+        }
+
     }
 
 

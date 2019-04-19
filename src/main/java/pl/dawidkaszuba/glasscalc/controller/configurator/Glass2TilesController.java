@@ -108,17 +108,31 @@ public class Glass2TilesController {
     private double getPrice(Glass2Tiles glass2Tiles){
 
         if((glass2Tiles.getExternalTile().getPrice() + glass2Tiles.getInternalTile().getPrice() +
-                glass2Tiles.getGas().getPrice()) == 0) {
+                glass2Tiles.getGas().getPrice()) == 0 ) {
+            if(glass2Tiles.getHowIncreasePriceDependOnDimensions() == 1) {
 
-            return (this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
-                    + glass2Tiles.getFrame().getPrice()) * 0.000001*(glass2Tiles.getWidth() * glass2Tiles.getHeight());
+                return (this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
+                        + glass2Tiles.getFrame().getPrice()) * 0.000001 * (glass2Tiles.getWidth() * glass2Tiles.getHeight());
+            }else {
+                return ((this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
+                        + glass2Tiles.getFrame().getPrice()) * 0.000001 *
+                        (glass2Tiles.getWidth() * glass2Tiles.getHeight()))
+                        * glass2Tiles.getHowIncreasePriceDependOnDimensions();
+            }
 
-        }else{
+        }else if(glass2Tiles.getHowIncreasePriceDependOnDimensions() == 1){
 
             return  (basePrice2TileRepository.findOne(1L).getValue() + glass2Tiles.getFrame().getPrice() +
                     glass2Tiles.getExternalTile().getPrice()
                     + glass2Tiles.getInternalTile().getPrice() + glass2Tiles.getGas().getPrice())
                     * 0.000001*(glass2Tiles.getWidth() * glass2Tiles.getHeight());
+        }else{
+            return  ((basePrice2TileRepository.findOne(1L).getValue() + glass2Tiles.getFrame().getPrice() +
+                    glass2Tiles.getExternalTile().getPrice()
+                    + glass2Tiles.getInternalTile().getPrice() + glass2Tiles.getGas().getPrice())
+                    * 0.000001*(glass2Tiles.getWidth() * glass2Tiles.getHeight()))
+                    * glass2Tiles.getHowIncreasePriceDependOnDimensions();
+
         }
     }
 
