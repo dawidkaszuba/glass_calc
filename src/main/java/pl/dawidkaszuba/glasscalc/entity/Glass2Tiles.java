@@ -133,6 +133,9 @@ public class Glass2Tiles {
         if(this.checkIfHasCorrectDimension() !=null){
             errors.add(this.checkIfHasCorrectDimension());
         }
+        if(this.checkIfHasCorrectArea() !=null){
+            errors.add(this.checkIfHasCorrectArea());
+        }
 
         return errors;
     }
@@ -196,6 +199,31 @@ public class Glass2Tiles {
                 return null;
             }
 
+        }
+        return null;
+    }
+
+    private ErrorGlass checkIfHasCorrectArea(){
+
+        String for4MaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 4 mm max 3.35m2";
+        String for5MaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 5 mm max 5 m2";
+        String for6MaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 6 mm max 7 m2";
+
+
+        if(checkThicknessToCalculating(getThinnestTile()) <= 4){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 3.35) {
+                return new ErrorGlass(for4MaxAreaMessage);
+            }else if(checkThicknessToCalculating(getThinnestTile()) <= 5){
+                if((this.getHeight() * this.getWidth() * 0.000001) > 5) {
+                    return new ErrorGlass(for5MaxAreaMessage);
+                }else if(checkThicknessToCalculating(getThinnestTile()) <= 6){
+                    if((this.getHeight() * this.getWidth() * 0.000001) > 7){
+                        return new ErrorGlass(for6MaxAreaMessage);
+                    }else{
+                        return null;
+                    }
+                }
+            }
         }
         return null;
     }
