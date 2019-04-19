@@ -1,5 +1,7 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
+import org.springframework.beans.factory.annotation.Configurable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
