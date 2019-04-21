@@ -67,6 +67,15 @@
             </li>
             <li class="nav-item dropdown">
 
+                <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">addition</a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/addition/add">add addition</a>
+                    <a class="dropdown-item" href="/addition/list">additions list</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+
                 <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">base prices</a>
 
                 <div class="dropdown-menu">

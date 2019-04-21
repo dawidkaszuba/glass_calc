@@ -39,3 +39,7 @@ INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil
 
 INSERT  INTO StandardPrice2TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL',71);
 INSERT  INTO StandardPrice3TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL - 16 - 4Th 1.1',119);
+
+INSERT INTO Addition(name, price, methodToCalculatePrice) VALUES('HST 3mm',8,'BY_AREA');
+INSERT INTO Addition(name, price, methodToCalculatePrice) VALUES('HST 4mm',12,'BY_AREA');
+INSERT INTO Addition(name, price, methodToCalculatePrice) VALUES('Altimeter',26,'BY_PIECE');
