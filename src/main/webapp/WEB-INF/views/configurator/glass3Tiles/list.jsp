@@ -17,7 +17,7 @@
     <jsp:include page="/WEB-INF/views/fragments/headerConfigurator.jsp"/>
     <h1>My 3-tiles glasses</h1>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
             <span>specification</span>
         </div>
         <div class="col-md-2">
@@ -26,7 +26,10 @@
         <div class="col-md-1">
             <span>thickness</span>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
+            <span>dimension [w.h]</span>
+        </div>
+        <div class="col-md-2">
             <span>&nbsp</span>
         </div>
 
@@ -34,7 +37,7 @@
 
     <div class="row">
         <c:forEach items="${glasses3}" var="glass">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div><p><span>${glass.name}</span></p></div>
             </div>
             <div class="col-md-2">
@@ -43,7 +46,10 @@
             <div class="col-md-1">
                 <div><p><span>${glass.thickness} mm</span></p></div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
+                <div><p><span>${glass.width} x ${glass.height} [mm]</span></p></div>
+            </div>
+            <div class="col-md-2">
                 <span><a href="/configurator3Tiles/edit/${glass.id}">edit</a> /
                     <a href="/configurator3Tiles/delete/${glass.id}">delete</a></span>
             </div>

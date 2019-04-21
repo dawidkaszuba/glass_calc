@@ -1,9 +1,6 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import pl.dawidkaszuba.glasscalc.errors.ErrorGlass;
-import pl.dawidkaszuba.glasscalc.repository.BasePrice2TileRepository;
-import pl.dawidkaszuba.glasscalc.repository.StandardPrice2TilesGlassRepository;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -140,7 +137,7 @@ public class Glass2Tiles {
         return errors;
     }
 
-    public ErrorGlass checkIfhasOneLowEmislyCoating(){
+    private ErrorGlass checkIfhasOneLowEmislyCoating(){
         String message = " szyba jednokomorowa powinna mieć conajmniej jedną powłokę niskoemisyjną";
 
         if(this.getInternalTile().getCoating().getLowEmisly() || this.getExternalTile().getCoating().getLowEmisly()){

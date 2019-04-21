@@ -54,7 +54,8 @@ public class Glass2TilesController {
 
             glass2Tiles.setThickness();
             glass2Tiles.setName();
-            glass2Tiles.setPrice(getPrice(glass2Tiles));
+            double price = Math.round(getPrice(glass2Tiles)*100) / 100;
+            glass2Tiles.setPrice(price);
             this.glass2TilesRepository.save(glass2Tiles);
             return "redirect:/configurator2Tiles/list";
 
@@ -80,7 +81,8 @@ public class Glass2TilesController {
 
             glass2Tiles.setName();
             glass2Tiles.setThickness();
-            glass2Tiles.setPrice(getPrice(glass2Tiles));
+            double price = Math.round(getPrice(glass2Tiles)*100) / 100;
+            glass2Tiles.setPrice(price);
 
             this.glass2TilesRepository.save(glass2Tiles);
             return "redirect:/configurator2Tiles/list";
