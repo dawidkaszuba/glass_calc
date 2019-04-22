@@ -28,6 +28,8 @@ public class Glass2Tiles {
     private int width;
     @NotNull
     private int height;
+    @OneToMany
+    private List<Addition> additions;
 
     public Glass2Tiles() {
 
@@ -114,6 +116,14 @@ public class Glass2Tiles {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public List<Addition> getAdditions() {
+        return additions;
+    }
+
+    public void setAdditions(List<Addition> additions) {
+        this.additions = additions;
     }
 
     public List<ErrorGlass> checkIsCorrect() {
@@ -270,6 +280,11 @@ public class Glass2Tiles {
             return 1;
         }
 
+    }
+
+    public boolean checkIfAreaLowerThen04(){
+
+        return ((this.getHeight() * 0.001) * (this.getWidth() * 0.001)) <= 0.4;
     }
 
 

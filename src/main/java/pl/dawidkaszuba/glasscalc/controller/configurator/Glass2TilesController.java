@@ -12,6 +12,8 @@ import pl.dawidkaszuba.glasscalc.entity.Tile;
 import pl.dawidkaszuba.glasscalc.repository.*;
 
 import javax.validation.Valid;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Controller
@@ -54,7 +56,7 @@ public class Glass2TilesController {
 
             glass2Tiles.setThickness();
             glass2Tiles.setName();
-            double price = Math.round(getPrice(glass2Tiles)*100) / 100;
+            double price = getPrice(glass2Tiles);
             glass2Tiles.setPrice(price);
             this.glass2TilesRepository.save(glass2Tiles);
             return "redirect:/configurator2Tiles/list";
@@ -81,7 +83,7 @@ public class Glass2TilesController {
 
             glass2Tiles.setName();
             glass2Tiles.setThickness();
-            double price = Math.round(getPrice(glass2Tiles)*100) / 100;
+            double price = getPrice(glass2Tiles);
             glass2Tiles.setPrice(price);
 
             this.glass2TilesRepository.save(glass2Tiles);
@@ -110,32 +112,38 @@ public class Glass2TilesController {
     private double getPrice(Glass2Tiles glass2Tiles){
 
         if((glass2Tiles.getExternalTile().getPrice() + glass2Tiles.getInternalTile().getPrice() +
-                glass2Tiles.getGas().getPrice()) == 0 ) {
-            if(glass2Tiles.getHowIncreasePriceDependOnDimensions() == 1) {
+                glass2Tiles.getGas().getPrice()) == 0) {
+            if(! glass2Tiles.checkIfAreaLowerThen04()) {
 
-                return (this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
-                        + glass2Tiles.getFrame().getPrice()) * 0.000001 * (glass2Tiles.getWidth() * glass2Tiles.getHeight());
-            }else {
                 return ((this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
                         + glass2Tiles.getFrame().getPrice()) * 0.000001 *
                         (glass2Tiles.getWidth() * glass2Tiles.getHeight()))
                         * glass2Tiles.getHowIncreasePriceDependOnDimensions();
+            }else {
+
+                return (this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
+                        + glass2Tiles.getFrame().getPrice()) * 0.4;
+
+                }
+            }else{
+
+            if(! glass2Tiles.checkIfAreaLowerThen04()) {
+
+                return ((basePrice2TileRepository.findOne(1L).getValue() + glass2Tiles.getFrame().getPrice() +
+                        glass2Tiles.getExternalTile().getPrice()
+                        + glass2Tiles.getInternalTile().getPrice() + glass2Tiles.getGas().getPrice())
+                        * 0.000001 * (glass2Tiles.getWidth() * glass2Tiles.getHeight()))
+                        * glass2Tiles.getHowIncreasePriceDependOnDimensions();
+            }else {
+
+                return (basePrice2TileRepository.findOne(1L).getValue() + glass2Tiles.getFrame().getPrice() +
+                        glass2Tiles.getExternalTile().getPrice()
+                        + glass2Tiles.getInternalTile().getPrice() + glass2Tiles.getGas().getPrice()) * 0.4;
+
             }
-
-        }else if(glass2Tiles.getHowIncreasePriceDependOnDimensions() == 1){
-
-            return  (basePrice2TileRepository.findOne(1L).getValue() + glass2Tiles.getFrame().getPrice() +
-                    glass2Tiles.getExternalTile().getPrice()
-                    + glass2Tiles.getInternalTile().getPrice() + glass2Tiles.getGas().getPrice())
-                    * 0.000001*(glass2Tiles.getWidth() * glass2Tiles.getHeight());
-        }else{
-            return  ((basePrice2TileRepository.findOne(1L).getValue() + glass2Tiles.getFrame().getPrice() +
-                    glass2Tiles.getExternalTile().getPrice()
-                    + glass2Tiles.getInternalTile().getPrice() + glass2Tiles.getGas().getPrice())
-                    * 0.000001*(glass2Tiles.getWidth() * glass2Tiles.getHeight()))
-                    * glass2Tiles.getHowIncreasePriceDependOnDimensions();
-
         }
+
+
     }
 
     @ModelAttribute("frames")
