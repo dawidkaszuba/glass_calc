@@ -29,6 +29,14 @@
                     <a class="dropdown-item" href="/configurator3Tiles/list">my three tiles glass</a>
                 </div>
             </li>
+            <li class="nav-item dropdown">
+
+                <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">user</a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/logout">logout</a>
+                </div>
+            </li>
         </ul>
 
     </div>

@@ -282,6 +282,7 @@ public class Glass2Tiles {
 
     }
 
+
     public boolean checkIfAreaLowerThen04(){
 
         return ((this.getHeight() * 0.001) * (this.getWidth() * 0.001)) <= 0.4;

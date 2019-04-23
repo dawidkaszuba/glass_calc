@@ -2,7 +2,6 @@ package pl.dawidkaszuba.glasscalc.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
-import pl.dawidkaszuba.glasscalc.entity.Glass;
 import pl.dawidkaszuba.glasscalc.entity.Glass2Tiles;
 import pl.dawidkaszuba.glasscalc.repository.Glass2TilesRepository;
 

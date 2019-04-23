@@ -5,15 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.dawidkaszuba.glasscalc.entity.Frame;
-import pl.dawidkaszuba.glasscalc.entity.Gas;
-import pl.dawidkaszuba.glasscalc.entity.Glass2Tiles;
-import pl.dawidkaszuba.glasscalc.entity.Tile;
+import pl.dawidkaszuba.glasscalc.entity.*;
 import pl.dawidkaszuba.glasscalc.repository.*;
 
 import javax.validation.Valid;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.List;
 
 @Controller
@@ -37,6 +32,9 @@ public class Glass2TilesController {
 
     @Autowired
     private StandardPrice2TilesGlassRepository standardPrice2TilesGlassRepository;
+
+    @Autowired
+    private TileGroupRepository tileGroupRepository;
 
     @GetMapping("/add")
     public String addGlass2TilesForm(Model model){
@@ -159,6 +157,11 @@ public class Glass2TilesController {
     @ModelAttribute("gasses")
     public List<Gas> findAllGasses(){
         return this.gasRepository.findAll();
+    }
+
+    @ModelAttribute("tilesGroups")
+    public List<TileGroup> findAllTileGroups(){
+        return this.tileGroupRepository.findAll();
     }
 
 }

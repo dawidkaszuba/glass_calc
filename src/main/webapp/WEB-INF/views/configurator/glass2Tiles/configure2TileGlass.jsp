@@ -11,16 +11,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
 </head>
-<body style="background-color: lightblue";>
+<body style="background-color: lightblue">
 <div class="container">
     <jsp:include page="/WEB-INF/views/fragments/headerConfigurator.jsp"/>
     <h1>2 - tiles glass</h1>
     <div class="row"/>
-        <form:form method="post" modelAttribute="glass2">
-            <label>External tile</label>
-            <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
 
+
+        <form:form method="post" modelAttribute="glass2">
+            <label>External tiles</label>
+            <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
             <label>Frame</label>
             <form:select path="frame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
 
@@ -48,7 +50,6 @@
 
 
     </div>
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
