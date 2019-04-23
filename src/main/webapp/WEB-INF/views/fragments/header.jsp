@@ -92,6 +92,15 @@
                     <a class="dropdown-item" href="/standardPrice3/show">std price for 3-tile</a>
                 </div>
             </li>
+            <li class="nav-item"><a class="nav-link text-dark active" href="/">Configurator</a></li>
+            <li class="nav-item dropdown">
+
+                <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">user</a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/logout">logout</a>
+                </div>
+            </li>
         </ul>
 
     </div>
