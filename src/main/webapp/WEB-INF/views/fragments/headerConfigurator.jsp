@@ -35,6 +35,7 @@
 
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/logout">logout</a>
+                    <a class="dropdown-item" href="#">settings</a>
                 </div>
             </li>
         </ul>

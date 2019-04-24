@@ -326,4 +326,6 @@ public class Glass3Tiles {
 
         return ((this.getHeight() * 0.001) * (this.getWidth() * 0.001)) <= 0.4;
     }
+
+
 }

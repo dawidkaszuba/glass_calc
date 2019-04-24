@@ -143,6 +143,9 @@ public class Glass2Tiles {
         if(this.checkIfHasCorrectArea() !=null){
             errors.add(this.checkIfHasCorrectArea());
         }
+        if(this.checkIfSideIsToLong() != null){
+            errors.add(this.checkIfSideIsToLong());
+        }
 
         return errors;
     }
@@ -282,10 +285,97 @@ public class Glass2Tiles {
 
     }
 
-
     public boolean checkIfAreaLowerThen04(){
 
         return ((this.getHeight() * 0.001) * (this.getWidth() * 0.001)) <= 0.4;
+    }
+
+    private ErrorGlass checkIfSideIsToLong(){
+        Tile tile = this.getThinnestTile();
+        String messageFor4and9Frame = "max długość boku dla szyby <=4 mm i ramki <= 9 wynosi 2500 mm";
+        String messageFor4and6Frame = "max długość boku dla szyby <=4 mm i ramki <= 6 wynosi 2000 mm";
+        String messageFor5and12Frame = "max długość boku dla szyby <=5 mm i ramki <= 12 wynosi 3300 mm";
+        String messageFor5and9Frame = "max długość boku dla szyby <=5 mm i ramki <= 9 wynosi 3000 mm";
+        String messageFor5and6Frame = "max długość boku dla szyby <=5 mm i ramki <= 6 wynosi 2500 mm";
+        String messageFor6and12Frame = "max długość boku dla szyby <=6 mm i ramki <= 12 wynosi 3500 mm";
+        String messageFor6and6Frame = "max długość boku dla szyby <=6 mm i ramki <= 6 wynosi 3500 mm";
+        String messageFor8and16Frame = "max długość boku dla szyby <=8 mm i ramki <= 16 wynosi 5000 mm";
+        String messageFor8and12Frame = "max długość boku dla szyby <=8 mm i ramki <= 12 wynosi 3500 mm";
+        String messageFor8and6Frame = "max długość boku dla szyby <=8 mm i ramki <= 6 wynosi 3000 mm";
+
+        if((tile.getThickness() <= 4) && (this.frame.getThickness() >= 9)) {
+            if((this.getWidth() > 2500 || this.getHeight() > 2500)){
+                return new ErrorGlass(messageFor4and9Frame);
+            }else {
+                return null;
+            }
+
+        }
+        if((tile.getThickness() <= 4) && (this.frame.getThickness() >= 6)){
+            if((this.getWidth() > 2000 || this.getHeight() > 2000)){
+                return new ErrorGlass(messageFor4and6Frame);
+            }else{
+                return null;
+            }
+        }
+        if((tile.getThickness() <= 5) && (this.getFrame().getThickness() >= 12)){
+            if((this.getWidth() > 3300 || this.getHeight() > 3300)){
+                return new ErrorGlass(messageFor5and12Frame);
+            }else{
+                return null;
+            }
+        }
+        if((tile.getThickness() <= 5) && (this.getFrame().getThickness() >= 9)){
+            if((this.getWidth() > 3000 || this.getHeight() > 3000)){
+                return new ErrorGlass(messageFor5and9Frame);
+            }else{
+                return null;
+            }
+        }
+        if((tile.getThickness() <= 5) && (this.getFrame().getThickness() >= 6)){
+            if((this.getWidth() > 2500 || this.getHeight() > 2500)){
+                return new ErrorGlass(messageFor5and6Frame);
+            }else{
+                return null;
+            }
+        }
+        if((tile.getThickness() <= 6) && (this.getFrame().getThickness() >= 12)){
+            if((this.getWidth() > 3500 || this.getHeight() > 3500)){
+                return new ErrorGlass(messageFor6and12Frame);
+            }else{
+                return null;
+            }
+        }
+        if((tile.getThickness() <= 6) && (this.getFrame().getThickness() >= 6)){
+            if((this.getWidth() > 3000 || this.getHeight() > 3000)){
+                return new ErrorGlass(messageFor6and6Frame);
+            }else{
+                return null;
+            }
+        }
+        if((tile.getThickness() <= 8) && (this.getFrame().getThickness() >= 16)){
+            if((this.getWidth() > 5000 || this.getHeight() > 5000)){
+                return new ErrorGlass(messageFor8and16Frame);
+            }else{
+                return null;
+            }
+        }
+        if((tile.getThickness() <= 8) && (this.getFrame().getThickness() >= 12)){
+            if((this.getWidth() > 3500 || this.getHeight() > 3500)){
+                return new ErrorGlass(messageFor8and12Frame);
+            }else{
+                return null;
+            }
+        }
+        if((tile.getThickness() <= 8) && (this.getFrame().getThickness() >= 6)){
+            if((this.getWidth() > 3000 || this.getHeight() > 3000)){
+                return new ErrorGlass(messageFor8and6Frame);
+            }else{
+                return null;
+            }
+        }
+
+        return null;
     }
 
 
