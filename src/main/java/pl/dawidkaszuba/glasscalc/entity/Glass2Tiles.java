@@ -215,31 +215,139 @@ public class Glass2Tiles {
 
     private ErrorGlass checkIfHasCorrectArea(){
 
-        String for4MaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 4 mm max 3.35m2";
-        String for5MaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 5 mm max 5 m2";
-        String for6MaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 6 mm max 7 m2";
+        String incorrectFrame = "niepoprawna ramka";
+        String incorrectFrameFor3 = "szyba 3mm dostepona w pakiecie z ramką min 9mm";
+        String for3FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 3 mm max 1.5 m2";
+        String for4And6FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 4 mm i ramce <=6 max 2 m2";
+        String for4And9FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 4 mm i ramce <=9 max 2.5 m2";
+        String for4And16FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 4 mm i ramce <=16 max 3.5 m2";
+        String for5And6FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 5 mm i ramce <=6 max 2.5 m2";
+        String for5And9FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 5 mm i ramce <=9 max 3.5 m2";
+        String for6And6FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 6 mm i ramce <=6 max 3 m2";
+        String for6And9FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 6 mm i ramce <=9 max 4.5 m2";
+        String for6And16FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 6 mm i ramce <=16 max 7 m2";
+        String for8And6FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=6 max 4 m2";
+        String for8And9FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=9 max 6 m2";
+        String for8And12FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=12 max 8.75 m2";
+        String for8And16FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=16 max 10 m2";
+        String for10And16FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 10 mm i ramce <=16 max 13.5 m2";
 
+        if(this.frame.getThickness() < 6){
 
-        if(checkThicknessToCalculating(getThinnestTile()) <= 4){
-            if((this.getHeight() * this.getWidth() * 0.000001) > 3.35) {
-                return new ErrorGlass(for4MaxAreaMessage);
-            }else{
-                return null;
-            }
-        }else if(checkThicknessToCalculating(getThinnestTile()) <= 5){
-            if((this.getHeight() * this.getWidth() * 0.000001) > 5) {
-                return new ErrorGlass(for5MaxAreaMessage);
-            }else{
-                return null;
-            }
-        }else if(checkThicknessToCalculating(getThinnestTile()) <= 6){
-            if((this.getHeight() * this.getWidth() * 0.000001) > 7){
-                return new ErrorGlass(for6MaxAreaMessage);
+                return new ErrorGlass(incorrectFrame);
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 3 && this.frame.getThickness() <9){
+            return new ErrorGlass(incorrectFrameFor3);
+
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 3 && this.frame.getThickness() <=16){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 1.5) {
+                return new ErrorGlass(for3FrameMaxAreaMessage);
             }else{
                 return null;
             }
         }
-        return null;
+        if(checkThicknessToCalculating(getThinnestTile()) <= 4 && this.frame.getThickness() <=8){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 2) {
+                return new ErrorGlass(for4And6FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 4 && (this.frame.getThickness() > 8 && this.frame.getThickness() < 16)){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 2.5) {
+                return new ErrorGlass(for4And9FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 4 && this.frame.getThickness() > 15){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 3.5) {
+                return new ErrorGlass(for4And16FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 5 && this.frame.getThickness() <=8){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 2.5) {
+                return new ErrorGlass(for5And6FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 5 && (this.frame.getThickness() > 8 && this.frame.getThickness() < 16)){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 3.5) {
+                return new ErrorGlass(for5And9FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 5 && this.frame.getThickness() > 15){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 3.3) {
+                return new ErrorGlass(for5And9FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 6 && this.frame.getThickness() <=8){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 3) {
+                return new ErrorGlass(for6And6FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 6 && (this.frame.getThickness() > 8 && this.frame.getThickness() < 16)){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 4.5) {
+                return new ErrorGlass(for6And9FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 6 && this.frame.getThickness() > 15){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 7) {
+                return new ErrorGlass(for6And16FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 8 && this.frame.getThickness() <=8){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 4) {
+                return new ErrorGlass(for8And6FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 8 && (this.frame.getThickness() > 8 && this.frame.getThickness() < 12)){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 4) {
+                return new ErrorGlass(for8And9FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 8 && (this.frame.getThickness() > 11 && this.frame.getThickness() < 16)){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 8.75) {
+                return new ErrorGlass(for8And12FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 8 && this.frame.getThickness() > 15){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 10) {
+                return new ErrorGlass(for8And16FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        if(checkThicknessToCalculating(getThinnestTile()) <= 10 && this.frame.getThickness() >= 16){
+            if((this.getHeight() * this.getWidth() * 0.000001) > 13.5) {
+                return new ErrorGlass(for10And16FrameMaxAreaMessage);
+            }else{
+                return null;
+            }
+        }
+        else{
+            return null;
+        }
     }
 
 

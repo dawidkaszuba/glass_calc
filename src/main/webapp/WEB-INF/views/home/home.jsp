@@ -22,7 +22,6 @@
             height: 50px;
             border-radius: 10px;
         }
-
     </style>
 </head>
 <body style="background-color: lightblue";>
@@ -30,8 +29,8 @@
     <h1>GlassCalc</h1>
 
         <div class="row">
-            <div class="col-md-6"><a href="/configurator2Tiles/add"><div class="menuButton"><span>new 2 tiles glass</span></div></a></div>
-            <div class="col-md-6"><a href="/configurator3Tiles/add"><div class="menuButton"><span>new 3-tiles glass</span></div></a></div>
+            <div class="col-md-6"><a href="/configurator2Tiles/add"><img border="0" alt="two tiles glass" src="<c:url value="/resources/images/2tiles.jpg"/>" width="200" height="200"></a></div>
+            <div class="col-md-6"><a href="/configurator3Tiles/add"><img border="0" alt="two tiles glass" src="<c:url value="/resources/images/3tiles.jpg"/>" width="200" height="200"></a></div>
         </div>
         <div class="row">
             <div class="col-md-6"><a href="/configurator2Tiles/list"><div class="menuButton"><span>My 2-tiles glass</span></div></a></div>

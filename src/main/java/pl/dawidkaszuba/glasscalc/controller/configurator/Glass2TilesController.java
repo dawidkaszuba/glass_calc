@@ -114,8 +114,8 @@ public class Glass2TilesController {
             if(! glass2Tiles.checkIfAreaLowerThen04()) {
 
                 return ((this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
-                        + glass2Tiles.getFrame().getPrice()) * 0.000001 *
-                        (glass2Tiles.getWidth() * glass2Tiles.getHeight()))
+                        + glass2Tiles.getFrame().getPrice()) / 1000000
+                        * (glass2Tiles.getWidth() * glass2Tiles.getHeight()))
                         * glass2Tiles.getHowIncreasePriceDependOnDimensions();
             }else {
 
@@ -130,7 +130,7 @@ public class Glass2TilesController {
                 return ((basePrice2TileRepository.findOne(1L).getValue() + glass2Tiles.getFrame().getPrice() +
                         glass2Tiles.getExternalTile().getPrice()
                         + glass2Tiles.getInternalTile().getPrice() + glass2Tiles.getGas().getPrice())
-                        * 0.000001 * (glass2Tiles.getWidth() * glass2Tiles.getHeight()))
+                        / 1000000 * (glass2Tiles.getWidth() * glass2Tiles.getHeight()))
                         * glass2Tiles.getHowIncreasePriceDependOnDimensions();
             }else {
 
