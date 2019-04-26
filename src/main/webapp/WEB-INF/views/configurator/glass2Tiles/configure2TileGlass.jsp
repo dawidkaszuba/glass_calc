@@ -15,6 +15,11 @@
             src="https://code.jquery.com/jquery-3.4.0.js"
             integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
             crossorigin="anonymous"></script>
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
 
 </head>
 <body style="background-color: lightblue">
@@ -23,7 +28,7 @@
     <h1>two tiles glass</h1>
     <div class="row"/>
 
-        <div class="col-md-4">
+        <div class="col-md-2">
             <form:form method="post" modelAttribute="glass2">
                 <label>External tiles</label>
                 <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
@@ -37,34 +42,51 @@
                 <form:select path="gas" items="${gasses}" itemValue="id" itemLabel="name" class="form-control"/>
 
                 <label>width</label>
-                <form:input path="width" type="number" min="30" class="form-control"/>
+                <form:input path="width" type="number" min="30" class="form-control" value="1000"/>
 
                 <label>height</label>
-                <form:input path="height" type="number" min="30" class="form-control"/>
+                <form:input path="height" type="number" min="30" class="form-control" value="1000"/>
 
                 <input type="submit" value="Next">
-
-                <c:forEach var="error" items="${errors}">
-                    <div>${error.message}</div>
-                </c:forEach>
-
-                <div><form:errors path="*"/></div>
             </form:form>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-5">
             <svg id="svgExTile" width="40" height="300" class="svg">
-                <rect id="exTile" width="45" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                <rect id="exTile" width="40"  height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+            </svg>
+            <svg id="svgCoatingExt" display="none" width="3" height="300" class="svg">
+                <rect id="coatingExt" width="3" height="300" style="fill:rgb(255,0,0)"></rect>
             </svg>
             <svg id="svgFrame" width="160" height="300" class="svg">
                 <rect id="glassFrame" width="160" height="300" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
                 <rect id="frameBottom" y="260" width="160" height="40" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0)"></rect>
             </svg>
+            <svg id="svgCoatingInt" width="3" display="none" height="300" class="svg">
+                <rect id="coatingInt" width="3" height="300" style="fill:rgb(255,0,0)"></rect>
+            </svg>
             <svg id="svgIntTile" width="40" height="300" class="svg">
                 <rect id="intTile"width="40" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
             </svg>
         </div>
+
+        <div class="col-md-5">
+            <svg height="150" width="20" style="float: left">
+                <text id="textHeight" x="0" y="0" fill="black" transform="rotate(90,2,3)">height</text>
+            </svg>
+            <svg id="svgGlass" width="100" height="100" class="svg" display="block">
+                <rect id="glass" width="100" height="100" style="fill:rgb(240,255,240);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+            </svg>
+            <svg height="30" width="200">
+                <text id="textWidth" x="20" y="15" fill="black">width</text>
+            </svg>
         </div>
+        </div>
+    <div class="row">
+        <c:forEach var="error" items="${errors}">
+            <div class="error">${error.message}</div>
+        </c:forEach>
+    </div>
 
 
     </div>
@@ -72,6 +94,11 @@
 
     <script>
         $(function(){
+
+            doAjaxExtTile();
+            doAjaxFrame();
+            doAjaxIntTile();
+            changeDimensions();
 
             var selectedExTile = document.getElementById('externalTile');
             selectedExTile.addEventListener("change", function(){
@@ -88,7 +115,32 @@
                 doAjaxFrame();
             });
 
+            var width = document.getElementById('width');
+            var height = document.getElementById('height');
 
+            width.addEventListener("change",changeDimensions);
+            height.addEventListener("change",changeDimensions);
+
+
+
+            function changeDimensions() {
+                var svgGlass = document.getElementById('svgGlass');
+                var glass = document.getElementById('glass');
+                var width = document.getElementById('width');
+                var height = document.getElementById('height');
+                var textWidth = document.getElementById('textWidth');
+                var textHeight = document.getElementById('textHeight');
+
+
+                svgGlass.setAttribute('width',width.value / 6);
+                glass.setAttribute('width',width.value / 6);
+                svgGlass.setAttribute('height',height.value / 6);
+                glass.setAttribute('height',height.value / 6);
+                textHeight.innerHTML = height.value + " [mm]";
+                textWidth.innerHTML = width.value + " [mm]";
+
+
+            }
 
             function doAjaxExtTile(){
                 var id = document.getElementById('externalTile').value;
@@ -103,6 +155,19 @@
                      var svgExTile = document.getElementById('svgExTile');
                         svgExTile.setAttribute("width",result["thickness"] * 10);
                         exTile.setAttribute("width",result["thickness"] * 10);
+                    if(result.coating.lowEmisly){
+                        var coating = document.getElementById("svgCoatingExt");
+                        coating.setAttribute("display","inline");
+                    }else {
+                        var coating = document.getElementById("svgCoatingExt");
+                        coating.setAttribute("display","none");
+                    }
+
+                    if(result.isTempered){
+                        exTile.setAttribute("style","fill:rgb(0,0,102);stroke-width:3;stroke:rgb(0,0,0)")
+                    }else{
+                        exTile.setAttribute("style","fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)")
+                    }
 
                 }).fail(function(xhr,status,err){
                 }).always(function(xhr,status){
@@ -123,6 +188,20 @@
                     var svgintTile = document.getElementById('svgIntTile');
                     svgintTile.setAttribute("width",result["thickness"] * 10);
                     intTile.setAttribute("width",result["thickness"] * 10);
+
+
+                    if(result.coating.lowEmisly){
+                        var coating = document.getElementById("svgCoatingInt");
+                        coating.setAttribute("display","inline");
+                    }else {
+                        var coating = document.getElementById("svgCoatingInt");
+                        coating.setAttribute("display","none");
+                    }
+                    if(result.isTempered){
+                        intTile.setAttribute("style","fill:rgb(0,0,102);stroke-width:3;stroke:rgb(0,0,0)")
+                    }else{
+                        intTile.setAttribute("style","fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)")
+                    }
 
                 }).fail(function(xhr,status,err){
                 }).always(function(xhr,status){
@@ -151,8 +230,6 @@
 
                 });
             }
-
-
         });
 
 

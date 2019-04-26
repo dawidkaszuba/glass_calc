@@ -28,6 +28,7 @@ INSERT INTO Frame(name,price,psi,thickness) VALUES('18 Chromatech 7035', 7,0.038
 INSERT INTO Frame(name,price,psi,thickness) VALUES('18 Chromatech 7040', 7,0.038,18);
 INSERT INTO Frame(name,price,psi,thickness) VALUES('18 Chromatech 9016', 7,0.038,18);
 INSERT INTO Frame(name,price,psi,thickness) VALUES('18 Chromatech 9005', 7,0.038,18);
+INSERT INTO Frame(name,price,psi,thickness) VALUES('10 Alu', 0,0.08,10);
 
 INSERT INTO BasePrice2Tile(name,value) VALUES("4Th 1.1 - 16 - 4fl", 71);
 INSERT INTO BasePrice3Tile(name,value) VALUES("4Th 1.1 - 16 - 4fl - 16 - 4Th 1.1", 117.5);
@@ -39,6 +40,8 @@ INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id) VALUES('6 Fl',0,21,0,6,1,null,1);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id) VALUES('5 Fl',0,18,0,5,1,null,1);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id) VALUES('5 Th 1.1 ',0,25,0,5,2,null,1);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id) VALUES('10 Th 1.1 ',0,100,0,10,2,null,1);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id) VALUES('10 Fl ',0,88,0,10,1,null,1);
 
 INSERT  INTO StandardPrice2TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL',71);
 INSERT  INTO StandardPrice3TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL - 16 - 4Th 1.1',119);
