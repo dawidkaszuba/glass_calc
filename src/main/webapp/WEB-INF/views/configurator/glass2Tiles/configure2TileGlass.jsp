@@ -16,36 +16,49 @@
 <body style="background-color: lightblue">
 <div class="container">
     <jsp:include page="/WEB-INF/views/fragments/headerConfigurator.jsp"/>
-    <h1>2 - tiles glass</h1>
+    <h1>two tiles glass</h1>
     <div class="row"/>
 
+        <div class="col-md-4">
+            <form:form method="post" modelAttribute="glass2">
+                <label>External tiles</label>
+                <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                <label>Frame</label>
+                <form:select path="frame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
 
-        <form:form method="post" modelAttribute="glass2">
-            <label>External tiles</label>
-            <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
-            <label>Frame</label>
-            <form:select path="frame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+                <label>Internal tile</label>
+                <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
 
-            <label>Internal tile</label>
-            <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                <label>Gas</label>
+                <form:select path="gas" items="${gasses}" itemValue="id" itemLabel="name" class="form-control"/>
 
-            <label>Gas</label>
-            <form:select path="gas" items="${gasses}" itemValue="id" itemLabel="name" class="form-control"/>
+                <label>width</label>
+                <form:input path="width" type="number" min="30" class="form-control"/>
 
-            <label>width</label>
-            <form:input path="width" type="number" min="30" class="form-control"/>
+                <label>height</label>
+                <form:input path="height" type="number" min="30" class="form-control"/>
 
-            <label>height</label>
-            <form:input path="height" type="number" min="30" class="form-control"/>
+                <input type="submit" value="Next">
 
-            <input type="submit" value="Next">
+                <c:forEach var="error" items="${errors}">
+                    <div>${error.message}</div>
+                </c:forEach>
 
-            <c:forEach var="error" items="${errors}">
-                <div>${error.message}</div>
-            </c:forEach>
+                <div><form:errors path="*"/></div>
+            </form:form>
+        </div>
 
-            <div><form:errors path="*"/></div>
-        </form:form>
+        <div class="col-md-8">
+            <svg width="40" height="300" class="svg">
+                <rect width="45" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+            </svg>
+            <svg width="160" height="300" class="svg">
+                <rect width="160" height="300" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+            </svg>
+            <svg width="40" height="300" class="svg">
+                <rect width="40" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+            </svg>
+        </div>
         </div>
 
 

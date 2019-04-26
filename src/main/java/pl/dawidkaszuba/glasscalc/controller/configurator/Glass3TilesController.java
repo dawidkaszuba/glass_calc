@@ -126,7 +126,7 @@ public class Glass3TilesController {
 
                 return ((this.standardPrice3TilesGlassRepository.findOne(1L).getValue()
                         + glass3Tiles.getFirstFrame().getPrice() + glass3Tiles.getSecondFrame().getPrice())
-                        * 0.000001 * (glass3Tiles.getWidth() * glass3Tiles.getHeight()))
+                        / 1000000 * (glass3Tiles.getWidth() * glass3Tiles.getHeight()))
                         * glass3Tiles.getHowIncreasePriceDependOnDimensions();
             }else{
 
@@ -143,7 +143,7 @@ public class Glass3TilesController {
                         + glass3Tiles.getExternalTile().getPrice() +
                         glass3Tiles.getInternalTile().getPrice() + glass3Tiles.getFirstFrame().getPrice()
                         + glass3Tiles.getSecondFrame().getPrice() + (2 * glass3Tiles.getGas().getPrice()))
-                        * 0.000001 * (glass3Tiles.getWidth() * glass3Tiles.getHeight()))
+                        / 1000000 * (glass3Tiles.getWidth() * glass3Tiles.getHeight()))
                         * glass3Tiles.getHowIncreasePriceDependOnDimensions();
             }else{
 

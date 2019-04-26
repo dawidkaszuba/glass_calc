@@ -15,42 +15,64 @@
 <body style="background-color: lightblue";>
 <div class="container">
     <jsp:include page="/WEB-INF/views/fragments/headerConfigurator.jsp"/>
-    <h1>3 - tiles glass</h1>
+    <h1>three tiles glass</h1>
         <div class="row"/>
-            <form:form method="post" modelAttribute="glass3" >
+            <div class="col-md-3">
+                <form:form method="post" modelAttribute="glass3" >
 
-                <label>External tile</label>
-                <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <label>External tile</label>
+                    <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                <label>first frame</label>
-                <form:select path="firstFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <label>first frame</label>
+                    <form:select path="firstFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                <label>Middle tile</label>
-                <form:select path="middleTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <label>Middle tile</label>
+                    <form:select path="middleTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                <label>Second frame</label>
-                <form:select path="secondFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <label>Second frame</label>
+                    <form:select path="secondFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                <label>Internal tile</label>
-                <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <label>Internal tile</label>
+                    <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                <label>Gas</label>
-                <form:select path="gas" items="${gasses}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <label>Gas</label>
+                    <form:select path="gas" items="${gasses}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                <label>width</label>
-                <form:input path="width" type="number" min="30" class="form-control"/>
+                    <label>width</label>
+                    <form:input path="width" type="number" min="30" class="form-control"/>
 
-                <label>height</label>
-                <form:input path="height" type="number" min="30" class="form-control"/>
+                    <label>height</label>
+                    <form:input path="height" type="number" min="30" class="form-control"/>
 
-                <input type="submit" value="Next">
-                    <c:forEach var="error" items="${errors}">
-                        <div>${error.message}</div>
-                    </c:forEach>
+                    <input type="submit" value="Next">
+                        <c:forEach var="error" items="${errors}">
+                            <div>${error.message}</div>
+                        </c:forEach>
 
-                <div><form:errors path="*"/></div>
+                    <div><form:errors path="*"/></div>
 
-            </form:form>
+                </form:form>
+            </div>
+            <div class="col-md-9">
+                <div class="col-md-8">
+                    <svg width="40" height="300" class="svg">
+                        <rect width="45" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                    </svg>
+                    <svg width="160" height="300" class="svg">
+                        <rect width="160" height="300" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                    </svg>
+                    <svg width="40" height="300" class="svg">
+                        <rect width="40" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                    </svg>
+                    <svg width="160" height="300" class="svg">
+                        <rect width="160" height="300" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                    </svg>
+                    <svg width="40" height="300" class="svg">
+                        <rect width="40" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                    </svg>
+                </div>
+            </div>
+
         </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
