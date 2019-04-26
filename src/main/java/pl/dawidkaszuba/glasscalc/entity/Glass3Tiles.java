@@ -190,7 +190,7 @@ public class Glass3Tiles {
 
     private ErrorGlass checkIfMiddleTileIsTempered(){
 
-        String middleLowEmislyShouldBeTempered = "Wewnętrzna tafla jeśli ma powłokę niskoemisyjną musi byc hartowana";
+        String middleLowEmislyShouldBeTempered = "Wewnętrzna tafla jeśli ma powłokę niskoemisyjną musi być hartowana";
         boolean middleTileCoating = this.getMiddleTile().getCoating().getLowEmisly();
 
         if(middleTileCoating){
@@ -255,7 +255,8 @@ public class Glass3Tiles {
 
     private ErrorGlass checkIfHasCorrectArea(){
 
-        String incorrectFrame = "niepoprawna ramka";
+        String incorrectTile = "tafla powinna mieć conajmniej 3 mm grubości";
+        String incorrectFrame = "ramka powinna mieć conajmniej 6 mm grubości";
         String incorrectFrameFor3 = "szyba 3mm dostepona w pakiecie z ramką min 9mm";
         String for3FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 3 mm max 1.5 m2";
         String for4And6FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 4 mm i ramce <=6 max 2 m2";
@@ -272,6 +273,11 @@ public class Glass3Tiles {
         String for8And16FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=16 max 10 m2";
         String for10And16FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 10 mm i ramce <=16 max 13.5 m2";
 
+
+        if(checkThicknessToCalculating(getThinnestTile()) < 3){
+
+            return new ErrorGlass(incorrectTile);
+        }
         if(this.getThicknessOfThinnestFrame() < 6){
 
             return new ErrorGlass(incorrectFrame);
@@ -357,14 +363,16 @@ public class Glass3Tiles {
                 return null;
             }
         }
-        if(checkThicknessToCalculating(getThinnestTile()) <= 8 && (this.getThicknessOfThinnestFrame() > 8 && this.getThicknessOfThinnestFrame() < 12)){
+        if(checkThicknessToCalculating(getThinnestTile()) <= 8
+                && (this.getThicknessOfThinnestFrame() > 8 && this.getThicknessOfThinnestFrame() < 12)){
             if((this.getHeight() * this.getWidth() * 0.000001) > 4) {
                 return new ErrorGlass(for8And9FrameMaxAreaMessage);
             }else{
                 return null;
             }
         }
-        if(checkThicknessToCalculating(getThinnestTile()) <= 8 && (this.getThicknessOfThinnestFrame() > 11 && this.getThicknessOfThinnestFrame() < 16)){
+        if(checkThicknessToCalculating(getThinnestTile()) <= 8
+                && (this.getThicknessOfThinnestFrame() > 11 && this.getThicknessOfThinnestFrame() < 16)){
             if((this.getHeight() * this.getWidth() * 0.000001) > 8.75) {
                 return new ErrorGlass(for8And12FrameMaxAreaMessage);
             }else{
@@ -450,7 +458,13 @@ public class Glass3Tiles {
     }
 
     private ErrorGlass checkIfSideIsToLong(){
+
         Tile tile = this.getThinnestTile();
+
+        String messageForFrameLowerThen6 = "minimalna szerokość ramki to 6 mm";
+        String messageForTileLowerThen3 = "minimalna grubość tafli to 3 mm";
+        String messageFor3AndLowerThen9 = "minimalna szerokość ramki dla szyby 3 mm wynosi 9 mm";
+        String messageFor3 = "max długość boku dla szyby 3 mm wynosi 1500 mm";
         String messageFor4and9Frame = "max długość boku dla szyby <=4 mm i ramki <= 9 wynosi 2500 mm";
         String messageFor4and6Frame = "max długość boku dla szyby <=4 mm i ramki <= 6 wynosi 2000 mm";
         String messageFor5and12Frame = "max długość boku dla szyby <=5 mm i ramki <= 12 wynosi 3300 mm";
@@ -462,6 +476,28 @@ public class Glass3Tiles {
         String messageFor8and12Frame = "max długość boku dla szyby <=8 mm i ramki <= 12 wynosi 3500 mm";
         String messageFor8and6Frame = "max długość boku dla szyby <=8 mm i ramki <= 6 wynosi 3000 mm";
 
+        if(this.getThicknessOfThinnestFrame() < 6){
+            return new ErrorGlass(messageForFrameLowerThen6);
+        }
+        if(tile.getThickness() < 3){
+            return new ErrorGlass(messageForTileLowerThen3);
+        }
+        if((tile.getThickness() == 3) && (this.getThicknessOfThinnestFrame() < 9)) {
+            if((this.getWidth() > 1500 || this.getHeight() > 1500)){
+                return new ErrorGlass(messageFor3AndLowerThen9);
+            }else {
+                return null;
+            }
+
+        }
+        if((tile.getThickness() == 3) && (this.getThicknessOfThinnestFrame() > 8)) {
+            if((this.getWidth() > 1500 || this.getHeight() > 1500)){
+                return new ErrorGlass(messageFor3);
+            }else {
+                return null;
+            }
+
+        }
         if((tile.getThickness() <= 4) && (this.getThicknessOfThinnestFrame() >= 9)) {
             if((this.getWidth() > 2500 || this.getHeight() > 2500)){
                 return new ErrorGlass(messageFor4and9Frame);

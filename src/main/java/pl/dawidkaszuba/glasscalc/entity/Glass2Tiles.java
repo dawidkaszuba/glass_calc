@@ -215,7 +215,8 @@ public class Glass2Tiles {
 
     private ErrorGlass checkIfHasCorrectArea(){
 
-        String incorrectFrame = "niepoprawna ramka";
+        String incorrectTile = "tafla powinna mieć conajmniej 3 mm grubości";
+        String incorrectFrame = "ramka powinna mieć conajmniej 6 mm grubości";
         String incorrectFrameFor3 = "szyba 3mm dostepona w pakiecie z ramką min 9mm";
         String for3FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 3 mm max 1.5 m2";
         String for4And6FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 4 mm i ramce <=6 max 2 m2";
@@ -232,11 +233,15 @@ public class Glass2Tiles {
         String for8And16FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=16 max 10 m2";
         String for10And16FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 10 mm i ramce <=16 max 13.5 m2";
 
+        if(checkThicknessToCalculating(getThinnestTile()) < 3){
+
+            return new ErrorGlass(incorrectTile);
+        }
         if(this.frame.getThickness() < 6){
 
                 return new ErrorGlass(incorrectFrame);
         }
-        if(checkThicknessToCalculating(getThinnestTile()) <= 3 && this.frame.getThickness() <9){
+        if(checkThicknessToCalculating(getThinnestTile()) <= 3 && this.frame.getThickness() < 9){
             return new ErrorGlass(incorrectFrameFor3);
 
         }
@@ -399,19 +404,48 @@ public class Glass2Tiles {
     }
 
     private ErrorGlass checkIfSideIsToLong(){
-        Tile tile = this.getThinnestTile();
-        String messageFor4and9Frame = "max długość boku dla szyby <=4 mm i ramki <= 9 wynosi 2500 mm";
-        String messageFor4and6Frame = "max długość boku dla szyby <=4 mm i ramki <= 6 wynosi 2000 mm";
-        String messageFor5and12Frame = "max długość boku dla szyby <=5 mm i ramki <= 12 wynosi 3300 mm";
-        String messageFor5and9Frame = "max długość boku dla szyby <=5 mm i ramki <= 9 wynosi 3000 mm";
-        String messageFor5and6Frame = "max długość boku dla szyby <=5 mm i ramki <= 6 wynosi 2500 mm";
-        String messageFor6and12Frame = "max długość boku dla szyby <=6 mm i ramki <= 12 wynosi 3500 mm";
-        String messageFor6and6Frame = "max długość boku dla szyby <=6 mm i ramki <= 6 wynosi 3500 mm";
-        String messageFor8and16Frame = "max długość boku dla szyby <=8 mm i ramki <= 16 wynosi 5000 mm";
-        String messageFor8and12Frame = "max długość boku dla szyby <=8 mm i ramki <= 12 wynosi 3500 mm";
-        String messageFor8and6Frame = "max długość boku dla szyby <=8 mm i ramki <= 6 wynosi 3000 mm";
 
-        if((tile.getThickness() <= 4) && (this.frame.getThickness() >= 9)) {
+        Tile tile = this.getThinnestTile();
+
+        String messageForFrameLowerThen6 = "minimalna szerokość ramki to 6 mm";
+        String messageForTileLowerThen3 = "minimalna grubość tafli to 3 mm";
+        String messageFor3AndLowerThen9 = "minimalna szerokość ramki dla szyby 3 mm wynosi 9 mm";
+        String messageFor3 = "max długość boku dla szyby 3 mm wynosi 1500 mm";
+        String messageFor4and9Frame = "max długość boku dla szyby 4 mm i ramki <= 9 wynosi 2500 mm";
+        String messageFor4and6Frame = "max długość boku dla szyby 4 mm i ramki <= 6 wynosi 2000 mm";
+        String messageFor5and12Frame = "max długość boku dla szyby 5 mm i ramki <= 12 wynosi 3300 mm";
+        String messageFor5and9Frame = "max długość boku dla szyby 5 mm i ramki <= 9 wynosi 3000 mm";
+        String messageFor5and6Frame = "max długość boku dla szyby 5 mm i ramki <= 6 wynosi 2500 mm";
+        String messageFor6and12Frame = "max długość boku dla szyby 6 mm i ramki <= 12 wynosi 3500 mm";
+        String messageFor6and6Frame = "max długość boku dla szyby 6 mm i ramki <= 6 wynosi 3500 mm";
+        String messageFor8and16Frame = "max długość boku dla szyby 8 mm i ramki <= 16 wynosi 5000 mm";
+        String messageFor8and12Frame = "max długość boku dla szyby 8 mm i ramki <= 12 wynosi 3500 mm";
+        String messageFor8and6Frame = "max długość boku dla szyby 8 mm i ramki <= 6 wynosi 3000 mm";
+        String messageFor10and16Frame = "max długość boku dla szyby 10mm i ramki >= 16 wynosi 5000 mm";
+
+        if(this.frame.getThickness() < 6){
+            return new ErrorGlass(messageForFrameLowerThen6);
+        }
+        if(tile.getThickness() < 3){
+            return new ErrorGlass(messageForTileLowerThen3);
+        }
+        if((tile.getThickness() == 3) && (this.frame.getThickness() < 9)) {
+            if((this.getWidth() > 1500 || this.getHeight() > 1500)){
+                return new ErrorGlass(messageFor3AndLowerThen9);
+            }else {
+                return null;
+            }
+
+        }
+        if((tile.getThickness() == 3) && (this.frame.getThickness() > 8)) {
+            if((this.getWidth() > 1500 || this.getHeight() > 1500)){
+                return new ErrorGlass(messageFor3);
+            }else {
+                return null;
+            }
+
+        }
+        if((tile.getThickness() == 4) && (this.frame.getThickness() >= 9)) {
             if((this.getWidth() > 2500 || this.getHeight() > 2500)){
                 return new ErrorGlass(messageFor4and9Frame);
             }else {
@@ -419,65 +453,72 @@ public class Glass2Tiles {
             }
 
         }
-        if((tile.getThickness() <= 4) && (this.frame.getThickness() >= 6)){
+        if((tile.getThickness() == 4) && (this.frame.getThickness() >= 6)){
             if((this.getWidth() > 2000 || this.getHeight() > 2000)){
                 return new ErrorGlass(messageFor4and6Frame);
             }else{
                 return null;
             }
         }
-        if((tile.getThickness() <= 5) && (this.getFrame().getThickness() >= 12)){
+        if((tile.getThickness() == 5) && (this.getFrame().getThickness() >= 12)){
             if((this.getWidth() > 3300 || this.getHeight() > 3300)){
                 return new ErrorGlass(messageFor5and12Frame);
             }else{
                 return null;
             }
         }
-        if((tile.getThickness() <= 5) && (this.getFrame().getThickness() >= 9)){
+        if((tile.getThickness() == 5) && (this.getFrame().getThickness() >= 9)){
             if((this.getWidth() > 3000 || this.getHeight() > 3000)){
                 return new ErrorGlass(messageFor5and9Frame);
             }else{
                 return null;
             }
         }
-        if((tile.getThickness() <= 5) && (this.getFrame().getThickness() >= 6)){
+        if((tile.getThickness() == 5) && (this.getFrame().getThickness() >= 6)){
             if((this.getWidth() > 2500 || this.getHeight() > 2500)){
                 return new ErrorGlass(messageFor5and6Frame);
             }else{
                 return null;
             }
         }
-        if((tile.getThickness() <= 6) && (this.getFrame().getThickness() >= 12)){
+        if((tile.getThickness() == 6) && (this.getFrame().getThickness() >= 12)){
             if((this.getWidth() > 3500 || this.getHeight() > 3500)){
                 return new ErrorGlass(messageFor6and12Frame);
             }else{
                 return null;
             }
         }
-        if((tile.getThickness() <= 6) && (this.getFrame().getThickness() >= 6)){
+        if((tile.getThickness() == 6) && (this.getFrame().getThickness() >= 6)){
             if((this.getWidth() > 3000 || this.getHeight() > 3000)){
                 return new ErrorGlass(messageFor6and6Frame);
             }else{
                 return null;
             }
         }
-        if((tile.getThickness() <= 8) && (this.getFrame().getThickness() >= 16)){
+        if((tile.getThickness() == 8) && (this.getFrame().getThickness() >= 16)){
             if((this.getWidth() > 5000 || this.getHeight() > 5000)){
                 return new ErrorGlass(messageFor8and16Frame);
             }else{
                 return null;
             }
         }
-        if((tile.getThickness() <= 8) && (this.getFrame().getThickness() >= 12)){
+        if((tile.getThickness() == 8) && (this.getFrame().getThickness() >= 12)){
             if((this.getWidth() > 3500 || this.getHeight() > 3500)){
                 return new ErrorGlass(messageFor8and12Frame);
             }else{
                 return null;
             }
         }
-        if((tile.getThickness() <= 8) && (this.getFrame().getThickness() >= 6)){
+        if((tile.getThickness() == 8) && (this.getFrame().getThickness() >= 6)){
             if((this.getWidth() > 3000 || this.getHeight() > 3000)){
                 return new ErrorGlass(messageFor8and6Frame);
+            }else{
+                return null;
+            }
+        }
+        if((tile.getThickness() == 10) && (this.getFrame().getThickness() >= 16)){
+            if((this.getWidth() > 5000 || this.getHeight() > 5000)){
+                return new ErrorGlass(messageFor10and16Frame);
             }else{
                 return null;
             }
@@ -485,6 +526,5 @@ public class Glass2Tiles {
 
         return null;
     }
-
 
 }
