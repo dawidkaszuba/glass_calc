@@ -4,11 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.dawidkaszuba.glasscalc.entity.Frame;
+import pl.dawidkaszuba.glasscalc.entity.Tile;
 import pl.dawidkaszuba.glasscalc.repository.FrameRepository;
 
 import javax.validation.Valid;
@@ -57,5 +55,11 @@ public class FrameController {
             this.frameRepository.save(frame);
             return "redirect:/frame/list";
         }
+    }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Frame findFrameById(@PathVariable Long id){
+        return this.frameRepository.findOne(id);
     }
 }

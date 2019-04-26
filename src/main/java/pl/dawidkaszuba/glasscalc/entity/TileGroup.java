@@ -9,6 +9,7 @@ public class TileGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Transient
     @OneToMany(mappedBy = "group")
     private List<Tile> tiles;
 

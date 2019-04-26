@@ -54,6 +54,11 @@ public class TileController {
         model.addAttribute("tiles",this.tileRepository.findAll());
         return "cms/tile/list";
     }
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Tile findTileById(@PathVariable Long id){
+        return this.tileRepository.findOne(id);
+    }
 
     @GetMapping("/edit/{id}")
     public String editTileForm(@PathVariable Long id, Model model){

@@ -11,6 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script
+            src="https://code.jquery.com/jquery-3.4.0.js"
+            integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+            crossorigin="anonymous"></script>
 
 </head>
 <body style="background-color: lightblue">
@@ -49,14 +53,15 @@
         </div>
 
         <div class="col-md-8">
-            <svg width="40" height="300" class="svg">
-                <rect width="45" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+            <svg id="svgExTile" width="40" height="300" class="svg">
+                <rect id="exTile" width="45" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
             </svg>
-            <svg width="160" height="300" class="svg">
-                <rect width="160" height="300" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+            <svg id="svgFrame" width="160" height="300" class="svg">
+                <rect id="glassFrame" width="160" height="300" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                <rect id="frameBottom" y="260" width="160" height="40" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0)"></rect>
             </svg>
-            <svg width="40" height="300" class="svg">
-                <rect width="40" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+            <svg id="svgIntTile" width="40" height="300" class="svg">
+                <rect id="intTile"width="40" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
             </svg>
         </div>
         </div>
@@ -64,15 +69,102 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+
+    <script>
+        $(function(){
+
+            var selectedExTile = document.getElementById('externalTile');
+            selectedExTile.addEventListener("change", function(){
+                doAjaxExtTile();
+            });
+
+            var selectedIntTile = document.getElementById('internalTile');
+            selectedIntTile.addEventListener("change", function(){
+                doAjaxIntTile();
+            });
+
+            var selectedFrame= document.getElementById('frame');
+            selectedFrame.addEventListener("change", function(){
+                doAjaxFrame();
+            });
+
+
+
+            function doAjaxExtTile(){
+                var id = document.getElementById('externalTile').value;
+                $.ajax({
+                    type:"GET",
+                    url:"http://localhost:8080/tile/"+id,
+                    dataType: "json",
+                 }).done(function(result) {
+
+
+                     var exTile = document.getElementById('exTile');
+                     var svgExTile = document.getElementById('svgExTile');
+                        svgExTile.setAttribute("width",result["thickness"] * 10);
+                        exTile.setAttribute("width",result["thickness"] * 10);
+
+                }).fail(function(xhr,status,err){
+                }).always(function(xhr,status){
+
+                });
+            }
+
+            function doAjaxIntTile(){
+                var id = document.getElementById('internalTile').value;
+                $.ajax({
+                    type:"GET",
+                    url:"http://localhost:8080/tile/"+id,
+                    dataType: "json",
+                }).done(function(result) {
+
+
+                    var intTile = document.getElementById('intTile');
+                    var svgintTile = document.getElementById('svgIntTile');
+                    svgintTile.setAttribute("width",result["thickness"] * 10);
+                    intTile.setAttribute("width",result["thickness"] * 10);
+
+                }).fail(function(xhr,status,err){
+                }).always(function(xhr,status){
+
+                });
+            }
+
+            function doAjaxFrame(){
+                var id = document.getElementById('frame').value;
+                $.ajax({
+                    type:"GET",
+                    url:"http://localhost:8080/frame/"+id,
+                    dataType: "json",
+                }).done(function(result) {
+
+                    var frame = document.getElementById('glassFrame');
+                    var svgFrame = document.getElementById('svgFrame');
+                    var frameBottom =document.getElementById('frameBottom')
+                    svgFrame.setAttribute("width",result["thickness"] * 10);
+                    frame.setAttribute("width",result["thickness"] * 10);
+                    frameBottom.setAttribute("width",result["thickness"] * 10);
+
+
+                }).fail(function(xhr,status,err){
+                }).always(function(xhr,status){
+
+                });
+            }
+
+
+        });
+
+
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
             integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
             integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
             crossorigin="anonymous"></script>
+
 
 </body>
 </html>

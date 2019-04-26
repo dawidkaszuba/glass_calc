@@ -42,6 +42,7 @@ public class Glass2TilesController {
         return "configurator/glass2Tiles/configure2TileGlass";
     }
 
+
     @PostMapping("/add")
     public String saveGlass2Tiles(@Valid Glass2Tiles glass2Tiles, BindingResult bindingResult, Model model){
 

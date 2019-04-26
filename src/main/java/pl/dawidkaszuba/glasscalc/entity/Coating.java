@@ -11,6 +11,7 @@ public class Coating {
     private String name;
     private double value;
     @OneToMany
+    @Transient
     private List<Tile> tiles;
     private boolean lowEmisly;
 
