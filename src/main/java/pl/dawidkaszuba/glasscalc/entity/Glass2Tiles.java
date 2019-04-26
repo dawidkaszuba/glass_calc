@@ -146,6 +146,9 @@ public class Glass2Tiles {
         if(this.checkIfSideIsToLong() != null){
             errors.add(this.checkIfSideIsToLong());
         }
+        if(this.checkIfShorterSideIsCorrect() != null){
+            errors.add(checkIfShorterSideIsCorrect());
+        }
 
         return errors;
     }
@@ -525,6 +528,25 @@ public class Glass2Tiles {
         }
 
         return null;
+    }
+
+    private ErrorGlass checkIfShorterSideIsCorrect(){
+
+        String messageForToLongShorterSide = " krótszy bok nie może byc dłuższy niż 2700 mm";
+
+        if(this.width < this.height){
+            if(this.width > 2700){
+                return new ErrorGlass(messageForToLongShorterSide);
+            }else{
+                return null;
+            }
+        }else{
+            if(this.height > 2700){
+                return new ErrorGlass(messageForToLongShorterSide);
+            }else{
+                return null;
+            }
+        }
     }
 
 }
