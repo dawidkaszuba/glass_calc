@@ -51,7 +51,8 @@
                 </div>
                 <div class="col-md-1">
                     <span><a href="/configurator2Tiles/edit/${glass.id}">edit</a> /
-                        <a href="/configurator2Tiles/delete/${glass.id}">delete</a></span>
+                        <a href="/configurator2Tiles/delete/${glass.id}">delete</a>
+                        <a href="/pdfreport/${glass.id}">PDF</a></span>
                 </div>
             </c:forEach>
 

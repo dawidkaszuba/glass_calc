@@ -52,21 +52,21 @@
         </div>
 
         <div class="col-md-3">
-            <svg id="svgExTile" width="40" height="300" class="svg">
-                <rect id="exTile" width="40"  height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+            <svg id="svgExTile" width="16" height="300" class="svg">
+                <rect id="exTile" width="16"  height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
             </svg>
             <svg id="svgCoatingExt" display="none" width="3" height="300" class="svg">
                 <rect id="coatingExt" width="3" height="300" style="fill:rgb(255,0,0)"></rect>
             </svg>
-            <svg id="svgFrame" width="160" height="300" class="svg">
-                <rect id="glassFrame" width="160" height="300" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+            <svg id="svgFrame" width="64" height="300" class="svg">
+                <rect id="glassFrame" width="64" height="300" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
                 <rect id="frameBottom" y="260" width="160" height="40" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0)"></rect>
             </svg>
             <svg id="svgCoatingInt" width="3" display="none" height="300" class="svg">
                 <rect id="coatingInt" width="3" height="300" style="fill:rgb(255,0,0)"></rect>
             </svg>
-            <svg id="svgIntTile" width="40" height="300" class="svg">
-                <rect id="intTile"width="40" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+            <svg id="svgIntTile" width="16" height="300" class="svg">
+                <rect id="intTile"width="16" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
             </svg>
         </div>
 

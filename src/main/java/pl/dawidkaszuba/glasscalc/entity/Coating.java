@@ -17,6 +17,7 @@ public class Coating {
     @OneToMany
     private List<Tile> tiles;
     private boolean lowEmisly;
+    
 
     public Long getId() {
         return id;
