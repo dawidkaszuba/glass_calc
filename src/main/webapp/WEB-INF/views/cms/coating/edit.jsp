@@ -27,6 +27,8 @@
             <label>Is it low emisly</label>
             <div><form:radiobutton  path="lowEmisly" value="true"/> YES
                 <form:radiobutton  path="lowEmisly" value="false"/> NO</div>
+            <label>delivery time</label>
+            <form:input path="deliveryTime" type="number" min="1" class="form-control"/>
             <input type="submit" value="Save">
             <div><form:errors path="*"/></div>
         </form:form>

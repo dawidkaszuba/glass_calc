@@ -17,14 +17,17 @@
     <jsp:include page="/WEB-INF/views/fragments/header.jsp"/>
     <h1>Coatings</h1>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <span>Name</span>
         </div>
         <div class="col-md-2">
             <span>value</span>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <span>low emisly</span>
+        </div>
+        <div class="col-md-2">
+            <span>delivery time</span>
         </div>
          <div class="col-md-2">
             <span>&nbsp</span>
@@ -34,14 +37,17 @@
 
     <div class="row">
         <c:forEach items="${coatings}" var="coating">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div><p><span>${coating.name}</span></p></div>
             </div>
             <div class="col-md-2">
                 <div><p><span>${coating.value}</span></p></div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div><p><span>${coating.lowEmisly}</span></p></div>
+            </div>
+            <div class="col-md-2">
+                <div><p><span>${coating.deliveryTime}</span></p></div>
             </div>
             <div class="col-md-2">
                 <span><a href="/coating/edit/${coating.id}">edit</a> / <a href="/coating/delete/${coating.id}">delete</a></span>
