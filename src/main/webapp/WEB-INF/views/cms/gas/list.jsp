@@ -20,8 +20,11 @@
         <div class="col-md-4">
             <span>Name</span>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
             <span>price</span>
+        </div>
+        <div class="col-md-2">
+            <span>delivery time</span>
         </div>
         <div class="col-md-4">
             <span>&nbsp</span>
@@ -34,8 +37,11 @@
             <div class="col-md-4">
                 <div><p><span>${gas.name}</span></p></div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <div><p><span>${gas.price}</span></p></div>
+            </div>
+            <div class="col-md-2">
+                <div><p><span>${gas.deliveryTime}</span></p></div>
             </div>
             <div class="col-md-4">
                 <span><a href="/gas/edit/${gas.id}">edit</a> / <a href="/gas/delete/${gas.id}">delete</a></span>
