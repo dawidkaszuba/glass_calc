@@ -20,7 +20,7 @@
         <div class="col-md-2">
             <span>Name</span>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
             <span>thickness</span>
         </div>
         <div class="col-md-2">
@@ -28,6 +28,9 @@
         </div>
         <div class="col-md-2">
             <span>price</span>
+        </div>
+        <div class="col-md-2">
+            <span>delivery time [days]</span>
         </div>
         <div class="col-md-3">
             <span>&nbsp</span>
@@ -40,7 +43,7 @@
             <div class="col-md-2">
                 <div><p><span>${tile.name}</span></p></div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <div><p><span>${tile.thickness} mm</span></p></div>
             </div>
             <div class="col-md-2">
@@ -48,6 +51,9 @@
             </div>
             <div class="col-md-2">
                 <div><p><span>${tile.price}</span></p></div>
+            </div>
+            <div class="col-md-2">
+                <div><p><span>${tile.deliveryTime}</span></p></div>
             </div>
             <div class="col-md-3">
                 <span><a href="/tile/edit/${tile.id}">edit</a> / <a href="/tile/delete/${tile.id}">delete</a></span>

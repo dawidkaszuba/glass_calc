@@ -37,6 +37,8 @@
             <form:select path="coating" items="${coatings}" itemValue="id" itemLabel="name" class="form-control"/>
             <label>price</label>
             <form:input path="price" type="number" min="0" step="0.01" class="form-control"/>
+            <label>delivery time</label>
+            <form:input path="deliveryTime" type="number" min="0" class="form-control"/>
             <input type="submit" value="Save changes">
             <div><form:errors path="*"/></div>
         </form:form>

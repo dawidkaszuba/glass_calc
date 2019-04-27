@@ -27,7 +27,7 @@
             <span>low emisly</span>
         </div>
         <div class="col-md-2">
-            <span>delivery time</span>
+            <span>delivery time [days]</span>
         </div>
          <div class="col-md-2">
             <span>&nbsp</span>

@@ -30,7 +30,7 @@
             <span>psi</span>
         </div>
         <div class="col-md-1">
-            <span>delivery time</span>
+            <span>delivery time [days]</span>
         </div>
         <div class="col-md-3">
             <span>&nbsp</span>

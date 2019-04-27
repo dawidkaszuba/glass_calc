@@ -24,7 +24,7 @@
             <span>price</span>
         </div>
         <div class="col-md-2">
-            <span>delivery time</span>
+            <span>delivery time [days]</span>
         </div>
         <div class="col-md-4">
             <span>&nbsp</span>
