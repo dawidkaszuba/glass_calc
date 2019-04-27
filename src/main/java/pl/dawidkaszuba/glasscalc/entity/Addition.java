@@ -12,6 +12,7 @@ public class Addition {
     private String name;
 
     private double price;
+    private int deliveryTime;
 
     @Enumerated(EnumType.STRING)
     private MethodToCalculatePrice methodToCalculatePrice;
@@ -49,5 +50,13 @@ public class Addition {
 
     public void setMethodToCalculatePrice(MethodToCalculatePrice methodToCalculatePrice) {
         this.methodToCalculatePrice = methodToCalculatePrice;
+    }
+
+    public int getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(int deliveryTime) {
+        this.deliveryTime = deliveryTime;
     }
 }

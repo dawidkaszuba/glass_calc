@@ -29,6 +29,8 @@
                 <option value="BY_AREA">AREA</option>
                 <option value="BY_CIRCUIT">CIRCUIT</option>
             </select>
+            <label>delivery time</label>
+            <form:input path="deliveryTime" type="number" min="1" class="form-control"/>
             <input type="submit" value="Save">
             <div><form:errors path="*"/></div>
         </form:form>

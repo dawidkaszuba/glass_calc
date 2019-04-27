@@ -20,11 +20,14 @@
         <div class="col-md-3">
             <span>Name</span>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <span>price</span>
         </div>
         <div class="col-md-3">
             <span>price by</span>
+        </div>
+        <div class="col-md-1">
+            <span>delivery time [days]</span>
         </div>
         <div class="col-md-3">
             <span>&nbsp</span>
@@ -37,11 +40,14 @@
             <div class="col-md-3">
                 <div><p><span>${addition.name}</span></p></div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div><p><span>${addition.price}</span></p></div>
             </div>
             <div class="col-md-3">
                 <div><p><span>${addition.methodToCalculatePrice}</span></p></div>
+            </div>
+            <div class="col-md-1">
+                <div><p><span>${addition.deliveryTime}</span></p></div>
             </div>
             <div class="col-md-3">
                 <span><a href="/addition/edit/${addition.id}">edit</a> / <a href="/addition/delete/${addition.id}">delete</a></span>

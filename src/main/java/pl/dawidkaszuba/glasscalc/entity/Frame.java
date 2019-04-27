@@ -12,6 +12,7 @@ public class Frame {
     private double thickness;
     private double psi;
     private double price;
+    private int deliveryTime;
 
     public Frame() {
     }
@@ -56,5 +57,11 @@ public class Frame {
         this.price = price;
     }
 
+    public int getDeliveryTime() {
+        return deliveryTime;
+    }
 
+    public void setDeliveryTime(int deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
 }

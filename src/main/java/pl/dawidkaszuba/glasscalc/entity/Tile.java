@@ -22,6 +22,7 @@ public class Tile {
     private int quantityOfFoils;
     @ManyToOne
     private Foil foil;
+    private int deliveryTime;
 
 
     public Long getId() {
@@ -96,5 +97,11 @@ public class Tile {
         this.foil = foil;
     }
 
+    public int getDeliveryTime() {
+        return deliveryTime;
+    }
 
+    public void setDeliveryTime(int deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
 }

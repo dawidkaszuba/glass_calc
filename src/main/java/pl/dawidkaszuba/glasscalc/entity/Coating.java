@@ -17,7 +17,8 @@ public class Coating {
     @OneToMany
     private List<Tile> tiles;
     private boolean lowEmisly;
-    
+    private int deliveryTime;
+
 
     public Long getId() {
         return id;
@@ -57,5 +58,13 @@ public class Coating {
 
     public void setLowEmisly(boolean lowEmisly) {
         this.lowEmisly = lowEmisly;
+    }
+
+    public int getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(int deliveryTime) {
+        this.deliveryTime = deliveryTime;
     }
 }

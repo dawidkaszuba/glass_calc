@@ -13,8 +13,8 @@ public class Foil {
     private boolean isMat;
     private boolean isAcustic;
     private double price;
-//    @OneToMany
-//    private List<Tile> tiles;
+    private int deliveryTime;
+
     public Long getId() {
         return id;
     }
@@ -63,5 +63,11 @@ public class Foil {
         isAcustic = acustic;
     }
 
+    public int getDeliveryTime() {
+        return deliveryTime;
+    }
 
+    public void setDeliveryTime(int deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
 }

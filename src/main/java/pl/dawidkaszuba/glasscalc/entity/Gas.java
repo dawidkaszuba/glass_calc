@@ -13,6 +13,7 @@ public class Gas {
     private Long id;
     private String name;
     private double price;
+    private int deliveryTime;
 
     public Gas() {
     }
@@ -39,5 +40,13 @@ public class Gas {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(int deliveryTime) {
+        this.deliveryTime = deliveryTime;
     }
 }
