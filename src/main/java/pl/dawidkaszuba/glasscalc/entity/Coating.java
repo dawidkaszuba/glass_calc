@@ -1,5 +1,8 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,8 +13,8 @@ public class Coating {
     private Long id;
     private String name;
     private double value;
+    @JsonIgnore
     @OneToMany
-    @Transient
     private List<Tile> tiles;
     private boolean lowEmisly;
 

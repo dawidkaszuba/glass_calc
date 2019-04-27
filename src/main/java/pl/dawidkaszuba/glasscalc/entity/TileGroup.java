@@ -1,5 +1,8 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,7 +12,7 @@ public class TileGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @Transient
+    @JsonIgnore
     @OneToMany(mappedBy = "group")
     private List<Tile> tiles;
 

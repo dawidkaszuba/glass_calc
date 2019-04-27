@@ -164,7 +164,7 @@ public class Glass2Tiles {
     }
 
     private ErrorGlass checkIfHasTwoLowEmislyCoating(){
-        String message = "Szyba jednokomorowa powinna mieć jedną powłokę niskoemisyjną";
+        String message = " Szyba jednokomorowa powinna mieć jedną powłokę niskoemisyjną";
 
         if(this.getExternalTile().getCoating().getLowEmisly() &&
                 this.getInternalTile().getCoating().getLowEmisly()){
@@ -196,8 +196,8 @@ public class Glass2Tiles {
 
     private ErrorGlass checkIfHasCorrectDimension(){
 
-        String for4ThicknessMessage = "przekroczony stosunek boków dla szyby 4, prawidłowy max 1:6";
-        String for6ThicknessMessage = "przekroczony stosunek boków dla szyby 6 i grubszych, prawidłowy max 1:10";
+        String for4ThicknessMessage = " przekroczony stosunek boków dla szyby 4, prawidłowy max 1:6";
+        String for6ThicknessMessage = " przekroczony stosunek boków dla szyby 6 i grubszych, prawidłowy max 1:10";
 
         if(checkThicknessToCalculating(getThinnestTile()) >= 3.78) {
             if(this.getHeight() / this.getWidth() > 6 ) {
@@ -218,23 +218,23 @@ public class Glass2Tiles {
 
     private ErrorGlass checkIfHasCorrectArea(){
 
-        String incorrectTile = "tafla powinna mieć conajmniej 3 mm grubości";
-        String incorrectFrame = "ramka powinna mieć conajmniej 6 mm grubości";
-        String incorrectFrameFor3 = "szyba 3mm dostepona w pakiecie z ramką min 9mm";
-        String for3FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 3 mm max 1.5 m2";
-        String for4And6FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 4 mm i ramce <=6 max 2 m2";
-        String for4And9FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 4 mm i ramce <=9 max 2.5 m2";
-        String for4And16FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 4 mm i ramce <=16 max 3.5 m2";
-        String for5And6FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 5 mm i ramce <=6 max 2.5 m2";
-        String for5And9FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 5 mm i ramce <=9 max 3.5 m2";
-        String for6And6FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 6 mm i ramce <=6 max 3 m2";
-        String for6And9FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 6 mm i ramce <=9 max 4.5 m2";
-        String for6And16FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 6 mm i ramce <=16 max 7 m2";
-        String for8And6FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=6 max 4 m2";
-        String for8And9FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=9 max 6 m2";
-        String for8And12FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=12 max 8.75 m2";
-        String for8And16FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=16 max 10 m2";
-        String for10And16FrameMaxAreaMessage = "powierzchnia szyby za duża. Przy tafli 10 mm i ramce <=16 max 13.5 m2";
+        String incorrectTile = " tafla powinna mieć conajmniej 3 mm grubości";
+        String incorrectFrame = " ramka powinna mieć conajmniej 6 mm grubości";
+        String incorrectFrameFor3 = " szyba 3mm dostepona w pakiecie z ramką min 9mm";
+        String for3FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 3 mm max 1.5 m2";
+        String for4And6FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 4 mm i ramce <=6 max 2 m2";
+        String for4And9FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 4 mm i ramce <=9 max 2.5 m2";
+        String for4And16FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 4 mm i ramce <=16 max 3.5 m2";
+        String for5And6FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 5 mm i ramce <=6 max 2.5 m2";
+        String for5And9FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 5 mm i ramce <=9 max 3.5 m2";
+        String for6And6FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 6 mm i ramce <=6 max 3 m2";
+        String for6And9FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 6 mm i ramce <=9 max 4.5 m2";
+        String for6And16FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 6 mm i ramce <=16 max 7 m2";
+        String for8And6FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=6 max 4 m2";
+        String for8And9FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=9 max 6 m2";
+        String for8And12FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=12 max 8.75 m2";
+        String for8And16FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 8 mm i ramce <=16 max 10 m2";
+        String for10And16FrameMaxAreaMessage = " powierzchnia szyby za duża. Przy tafli 10 mm i ramce <=16 max 13.5 m2";
 
         if(checkThicknessToCalculating(getThinnestTile()) < 3){
 
@@ -410,21 +410,21 @@ public class Glass2Tiles {
 
         Tile tile = this.getThinnestTile();
 
-        String messageForFrameLowerThen6 = "minimalna szerokość ramki to 6 mm";
-        String messageForTileLowerThen3 = "minimalna grubość tafli to 3 mm";
-        String messageFor3AndLowerThen9 = "minimalna szerokość ramki dla szyby 3 mm wynosi 9 mm";
-        String messageFor3 = "max długość boku dla szyby 3 mm wynosi 1500 mm";
-        String messageFor4and9Frame = "max długość boku dla szyby 4 mm i ramki <= 9 wynosi 2500 mm";
-        String messageFor4and6Frame = "max długość boku dla szyby 4 mm i ramki <= 6 wynosi 2000 mm";
-        String messageFor5and12Frame = "max długość boku dla szyby 5 mm i ramki <= 12 wynosi 3300 mm";
-        String messageFor5and9Frame = "max długość boku dla szyby 5 mm i ramki <= 9 wynosi 3000 mm";
-        String messageFor5and6Frame = "max długość boku dla szyby 5 mm i ramki <= 6 wynosi 2500 mm";
-        String messageFor6and12Frame = "max długość boku dla szyby 6 mm i ramki <= 12 wynosi 3500 mm";
-        String messageFor6and6Frame = "max długość boku dla szyby 6 mm i ramki <= 6 wynosi 3500 mm";
-        String messageFor8and16Frame = "max długość boku dla szyby 8 mm i ramki <= 16 wynosi 5000 mm";
-        String messageFor8and12Frame = "max długość boku dla szyby 8 mm i ramki <= 12 wynosi 3500 mm";
-        String messageFor8and6Frame = "max długość boku dla szyby 8 mm i ramki <= 6 wynosi 3000 mm";
-        String messageFor10and16Frame = "max długość boku dla szyby 10mm i ramki >= 16 wynosi 5000 mm";
+        String messageForFrameLowerThen6 = " minimalna szerokość ramki to 6 mm";
+        String messageForTileLowerThen3 = " minimalna grubość tafli to 3 mm";
+        String messageFor3AndLowerThen9 = " minimalna szerokość ramki dla szyby 3 mm wynosi 9 mm";
+        String messageFor3 = " max długość boku dla szyby 3 mm wynosi 1500 mm";
+        String messageFor4and9Frame = " max długość boku dla szyby 4 mm i ramki >=9 wynosi 2500 mm";
+        String messageFor4and6Frame = " max długość boku dla szyby 4 mm i ramki <= 6 wynosi 2000 mm";
+        String messageFor5and12Frame = " max długość boku dla szyby 5 mm i ramki <= 12 wynosi 3300 mm";
+        String messageFor5and9Frame = " max długość boku dla szyby 5 mm i ramki <= 9 wynosi 3000 mm";
+        String messageFor5and6Frame = " max długość boku dla szyby 5 mm i ramki <= 6 wynosi 2500 mm";
+        String messageFor6and12Frame = " max długość boku dla szyby 6 mm i ramki <= 12 wynosi 3500 mm";
+        String messageFor6and6Frame = " max długość boku dla szyby 6 mm i ramki <= 6 wynosi 3500 mm";
+        String messageFor8and16Frame = " max długość boku dla szyby 8 mm i ramki <= 16 wynosi 5000 mm";
+        String messageFor8and12Frame = " max długość boku dla szyby 8 mm i ramki <= 12 wynosi 3500 mm";
+        String messageFor8and6Frame = " max długość boku dla szyby 8 mm i ramki <= 6 wynosi 3000 mm";
+        String messageFor10and16Frame = " max długość boku dla szyby 10mm i ramki >= 16 wynosi 5000 mm";
 
         if(this.frame.getThickness() < 6){
             return new ErrorGlass(messageForFrameLowerThen6);
