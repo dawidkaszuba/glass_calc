@@ -30,6 +30,7 @@ public class Glass2Tiles {
     private int height;
     @OneToMany
     private List<Addition> additions;
+    private int deliveryTime;
 
     public Glass2Tiles() {
 
@@ -548,5 +549,25 @@ public class Glass2Tiles {
             }
         }
     }
+
+    public int getDeliveryTime(){
+
+        List<Integer> deliveryTimes = new ArrayList<>();
+
+        deliveryTimes.add(this.externalTile.getDeliveryTime());
+        deliveryTimes.add(this.internalTile.getDeliveryTime());
+        deliveryTimes.add(this.frame.getDeliveryTime());
+        int max = Integer.MIN_VALUE;
+
+        for(int i = 0; i < deliveryTimes.size(); i++) {
+            if(deliveryTimes.get(i)>max){
+                max = deliveryTimes.get(i);
+            }
+        }
+        deliveryTime=max;
+        return deliveryTime;
+
+    }
+
 
 }

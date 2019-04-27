@@ -23,13 +23,16 @@
             <div class="col-md-3">
                 <span>price</span>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <span>thickness</span>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <span>dimension [w,h]</span>
             </div>
             <div class="col-md-1">
+                <span>delivery time [days]</span>
+            </div>
+            <div class="col-md-2">
                 <span>&nbsp</span>
             </div>
 
@@ -43,15 +46,18 @@
                 <div class="col-md-3">
                     <div><p><span>${(glass.price /100)*100} zł/m2</span></p></div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-1">
                     <div><p><span>${glass.thickness} mm</span></p></div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div><p><span>${glass.width} x ${glass.height} [mm]</span></p></div>
                 </div>
                 <div class="col-md-1">
+                    <div><p><span>${glass.deliveryTime}</span></p></div>
+                </div>
+                <div class="col-md-2">
                     <span><a href="/configurator2Tiles/edit/${glass.id}">edit</a> /
-                        <a href="/configurator2Tiles/delete/${glass.id}">delete</a>
+                        <a href="/configurator2Tiles/delete/${glass.id}">delete</a> /
                         <a href="/pdfreport/${glass.id}">PDF</a></span>
                 </div>
             </c:forEach>
