@@ -29,6 +29,8 @@
             <form:input path="thickness" type="number" min="1" step="1" class="form-control"/>
             <label>psi</label>
             <form:input path="psi" type="number" min="0.001" step="0.001" class="form-control"/>
+            <label>delivery time</label>
+            <form:input path="deliveryTime" type="number" min="0" class="form-control"/>
             <input type="submit" value="Save">
             <div><form:errors path="*"/></div>
         </form:form>

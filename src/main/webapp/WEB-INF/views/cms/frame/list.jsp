@@ -23,11 +23,14 @@
         <div class="col-md-2">
             <span>price</span>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
             <span>thickness</span>
         </div>
         <div class="col-md-2">
             <span>psi</span>
+        </div>
+        <div class="col-md-1">
+            <span>delivery time</span>
         </div>
         <div class="col-md-3">
             <span>&nbsp</span>
@@ -43,11 +46,14 @@
             <div class="col-md-2">
                 <div><p><span>${frame.price}</span></p></div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <div><p><span>${frame.thickness}</span></p></div>
             </div>
             <div class="col-md-2">
                 <div><p><span>${frame.psi}</span></p></div>
+            </div>
+            <div class="col-md-1">
+                <div><p><span>${frame.deliveryTime}</span></p></div>
             </div>
             <div class="col-md-3">
                 <span><a href="/frame/edit/${frame.id}">edit</a> / <a href="/frame/delete/${frame.id}">delete</a></span>

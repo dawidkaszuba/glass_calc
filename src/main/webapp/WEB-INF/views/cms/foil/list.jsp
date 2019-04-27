@@ -20,11 +20,14 @@
         <div class="col-md-3">
             <span>Name</span>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <span>thickness</span>
         </div>
         <div class="col-md-3">
             <span>price</span>
+        </div>
+        <div class="col-md-1">
+            <span>delivery time [days]</span>
         </div>
         <div class="col-md-3">
             <span>&nbsp</span>
@@ -37,11 +40,14 @@
             <div class="col-md-3">
                 <div><p><span>${foil.name}</span></p></div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div><p><span>${foil.thickness} mm</span></p></div>
             </div>
             <div class="col-md-3">
                 <div><p><span>${foil.price}</span></p></div>
+            </div>
+            <div class="col-md-1">
+                <div><p><span>${foil.deliveryTime}</span></p></div>
             </div>
             <div class="col-md-3">
                 <span><a href="/foil/edit/${foil.id}">edit</a> / <a href="/foil/delete/${foil.id}">delete</a></span>
