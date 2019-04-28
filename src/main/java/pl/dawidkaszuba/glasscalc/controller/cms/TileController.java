@@ -60,6 +60,12 @@ public class TileController {
         return this.tileRepository.findOne(id);
     }
 
+    @GetMapping("/allByGroupId/{id}")
+    @ResponseBody
+    public List<Tile> findAllByTileGroupId(@PathVariable Long id){
+        return this.tileRepository.findAllByGroupId(id);
+    }
+
     @GetMapping("/edit/{id}")
     public String editTileForm(@PathVariable Long id, Model model){
        model.addAttribute("tile", this.tileRepository.findOne(id));

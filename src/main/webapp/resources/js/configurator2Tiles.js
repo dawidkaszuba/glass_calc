@@ -4,6 +4,8 @@ $(function(){
     doAjaxFrame();
     doAjaxIntTile();
     changeDimensions();
+    updateName();
+    doAjaxGroupTiles();
 
     var selectedExTile = document.getElementById('externalTile');
     selectedExTile.addEventListener("change", function(){
@@ -26,6 +28,35 @@ $(function(){
     width.addEventListener("change",changeDimensions);
     height.addEventListener("change",changeDimensions);
 
+    var exTileName = document.getElementById('exTileName');
+    var exTilePopup = document.getElementById('exTilePopup');
+    exTileName.addEventListener("click", function(){
+        exTilePopup.style.display='inline';
+    });
+
+    var tilesGroup = document.getElementById('tilesGroup');
+    tilesGroup.addEventListener('change',doAjaxGroupTiles);
+
+    var name = document.getElementById('externalTile');
+    exTileName.innerText = name.options[name.selectedIndex].text;
+
+    var close = document.getElementById('close');
+    close.addEventListener('click',function () {
+        var exTilePopup = document.getElementById('exTilePopup');
+        exTilePopup.style.display='none';
+    })
+
+
+    function updateName(){
+
+        var exTileName = document.getElementById('exTileName');
+        var name = document.getElementById('externalTile');
+        name.addEventListener("change", function(){
+            exTileName.innerText = this.options[this.selectedIndex].text
+
+        })
+
+    }
 
 
     function changeDimensions() {
@@ -45,6 +76,36 @@ $(function(){
         textWidth.innerHTML = width.value + " [mm]";
 
 
+    }
+
+    function doAjaxGroupTiles(){
+        var id = document.getElementById('tilesGroup').value;
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:8080/tile/allByGroupId/"+id,
+            dataType: "json",
+        }).done(function(result) {
+
+            var externalTile = document.getElementById('externalTile');
+
+            for(var i = 0; i < externalTile.options.length; i++){
+                externalTile.options[i].style.display='none';
+            }
+
+
+            for(var j = 0; j < result.length; j++) {
+
+                var option = document.createElement("OPTION");
+                option.innerText = result[j]['name'];
+                option.value = result[j]['id'];
+                externalTile.appendChild(option);
+            }
+
+
+        }).fail(function(xhr,status,err){
+        }).always(function(xhr,status){
+
+        });
     }
 
     function doAjaxExtTile(){

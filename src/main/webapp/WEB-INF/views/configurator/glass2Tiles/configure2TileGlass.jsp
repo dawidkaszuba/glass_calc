@@ -19,6 +19,28 @@
         .error{
             color:red;
         }
+        #exTilePopup{
+            width: 300px;
+            height: 180px;
+            display: none;
+            position: fixed;
+            left:35%;
+            background-color: white;
+            z-index:1;
+            border: 1px solid;
+            padding: 10px;
+            box-shadow: 5px 10px #888888;
+        }
+        #close{
+            position: absolute;
+            top:0;
+            right:14px;
+            font-size: 42px;
+            transform: rotate(45deg);
+        }
+        .select{
+            width:200px;
+        }
     </style>
 
 </head>
@@ -30,8 +52,27 @@
 
         <div class="col-md-2">
             <form:form method="post" modelAttribute="glass2">
-                <label>External tiles</label>
-                <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                <div id="exTileName">External tile</div>
+                <div id="exTilePopup">
+
+                    <div class="select">
+                    <label>select group</label>
+                    <select class="form-control" id="tilesGroup" name="groups">
+
+
+                            <c:forEach items="${tilesGroups}" var="group">
+                            <option value="${group.id}">${group.name}</option>
+                            </c:forEach>
+
+
+                    </select>
+
+                            <label>select tile</label>
+                            <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                    </div>
+                    <div id="close">+</div>
+                </div>
+
                 <label>Frame</label>
                 <form:select path="frame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
 

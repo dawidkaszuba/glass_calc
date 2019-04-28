@@ -42,6 +42,7 @@ INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('5 Th 1.1 ',0,25,0,5,2,null,1,6);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('10 Th 1.1 ',0,100,0,10,2,null,1,5);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('10 Fl ',0,88,0,10,1,null,1,8);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('4 Decormat Fl ',0,40,0,4,1,null,3,5);
 
 INSERT  INTO StandardPrice2TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL',71);
 INSERT  INTO StandardPrice3TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL - 16 - 4Th 1.1',119);

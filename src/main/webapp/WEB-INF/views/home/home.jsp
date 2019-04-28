@@ -22,9 +22,12 @@
             height: 50px;
             border-radius: 10px;
         }
+        body{
+            background-color: lightblue;
+        }
     </style>
 </head>
-<body style="background-color: lightblue";>
+<body>S
 <div class="container">
     <h1>GlassCalc</h1>
 
