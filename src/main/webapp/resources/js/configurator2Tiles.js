@@ -9,6 +9,7 @@ $(function(){
     doAjaxIntTilesGroup();
     updateName('intTileName','internalTile');
     updateName('exTileName', 'externalTile');
+    doAjaxGroupsFrame();
 
     var selectedExTile = document.getElementById('externalTile');
     selectedExTile.addEventListener("change", function(){
@@ -48,6 +49,9 @@ $(function(){
 
     var intTilesGroup = document.getElementById('intTilesGroup');
     intTilesGroup.addEventListener('change',doAjaxIntTilesGroup);
+
+     var frameGroup = document.getElementById('framesGroup');
+    frameGroup.addEventListener('change', doAjaxGroupsFrame);
 
     var name1 = document.getElementById('externalTile');
     exTileName.innerText = name1.options[name1.selectedIndex].text;
@@ -118,6 +122,37 @@ $(function(){
                 option.innerText = result[j]['name'];
                 option.value = result[j]['id'];
                 tiles.appendChild(option);
+            }
+
+
+        }).fail(function(xhr,status,err){
+        }).always(function(xhr,status){
+
+        });
+    }
+
+    function doAjaxGroupsFrame(){
+
+
+        var id = document.getElementById('framesGroup').value;
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:8080/frame/allByGroupId/"+id,
+            dataType: "json",
+        }).done(function(result) {
+
+            var frames = document.getElementById('frame');
+
+            for(var i = 0; i < frames.options.length; i++){
+                frames.options[i].style.display='none';
+            }
+
+            for(var j = 0; j < result.length; j++) {
+
+                var option = document.createElement("OPTION");
+                option.innerText = result[j]['name'];
+                option.value = result[j]['id'];
+                frames.appendChild(option);
             }
 
 

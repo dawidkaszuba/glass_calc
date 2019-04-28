@@ -6,6 +6,12 @@ INSERT INTO TileGroup(name) VALUES("sunscreen");
 INSERT INTO TileGroup(name) VALUES("selective");
 INSERT INTO TileGroup(name) VALUES("laminated");
 
+
+INSERT INTO FrameGroup(name) VALUES("Alu");
+INSERT INTO FrameGroup(name) VALUES("Chromatech");
+INSERT INTO FrameGroup(name) VALUES("TGI");
+INSERT INTO FrameGroup(name) VALUES("MultiTech");
+
 INSERT INTO Coating(name,value,lowEmisly,deliveryTime) VALUES("Float", 0,0,5);
 INSERT INTO Coating(name,value,lowEmisly,deliveryTime) VALUES("Thermofloat 1.1", 1.1,1,5);
 INSERT INTO Coating(name,value,lowEmisly,deliveryTime) VALUES("Thermofloat 1.0", 1.1,1,5);
@@ -22,13 +28,13 @@ INSERT INTO Gas(name, price,deliveryTime) VALUES("Kr 90", 100,10);
 INSERT INTO Gas(name, price,deliveryTime) VALUES("Air", 0,5);
 
 
-INSERT INTO Frame(name,price,psi,thickness,deliveryTime) VALUES('16 Alu', 0,0.8,16,5);
-INSERT INTO Frame(name,price,psi,thickness,deliveryTime) VALUES('18 Alu', 2.5,0.8,18,5);
-INSERT INTO Frame(name,price,psi,thickness,deliveryTime) VALUES('18 Chromatech 7035', 7,0.038,18,8);
-INSERT INTO Frame(name,price,psi,thickness,deliveryTime) VALUES('18 Chromatech 7040', 7,0.038,18,3);
-INSERT INTO Frame(name,price,psi,thickness,deliveryTime) VALUES('18 Chromatech 9016', 7,0.038,18,5);
-INSERT INTO Frame(name,price,psi,thickness,deliveryTime) VALUES('18 Chromatech 9005', 7,0.038,18,10);
-INSERT INTO Frame(name,price,psi,thickness,deliveryTime) VALUES('10 Alu', 0,0.08,10);
+INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('16 Alu', 0,0.8,16,5,1);
+INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('18 Alu', 2.5,0.8,18,5,1);
+INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('18 Chromatech 7035', 7,0.038,18,8,2);
+INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('18 Chromatech 7040', 7,0.038,18,3,2);
+INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('18 Chromatech 9016', 7,0.038,18,5,2);
+INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('18 Chromatech 9005', 7,0.038,18,10,2);
+INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('10 Alu', 0,0.08,10,10,1);
 
 INSERT INTO BasePrice2Tile(name,value) VALUES("4Th 1.1 - 16 - 4fl", 71);
 INSERT INTO BasePrice3Tile(name,value) VALUES("4Th 1.1 - 16 - 4fl - 16 - 4Th 1.1", 117.5);

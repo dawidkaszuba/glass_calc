@@ -62,21 +62,37 @@
                 <div id="exTilePopup">
 
                     <div class="select">
-                    <label>select group</label>
-                    <select class="form-control" id="tilesGroup" name="groups">
-                         <c:forEach items="${tilesGroups}" var="group">
-                            <option value="${group.id}">${group.name}</option>
-                         </c:forEach>
-                    </select>
+                        <label>select group</label>
+                        <select class="form-control" id="tilesGroup" name="groups">
+                             <c:forEach items="${tilesGroups}" var="group">
+                                <option value="${group.id}">${group.name}</option>
+                             </c:forEach>
+                        </select>
 
                             <label>select tile</label>
                             <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
                     </div>
                     <div id="close">+</div>
                 </div>
+                <div>Frame</div>
+                <div id="frameName" class="elementName">Frame</div>
+                <div id="framePopup">
 
-                <label>Frame</label>
-                <form:select path="frame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <div class="select">
+                        <label>select group</label>
+                        <select class="form-control" id="framesGroup" name="groups">
+                            <c:forEach items="${frameGroups}" var="group">
+                                <option value="${group.id}">${group.name}</option>
+                            </c:forEach>
+                        </select>
+
+                        <label>Frame</label>
+                        <form:select path="frame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+
+                    </div>
+
+                </div>
+
 
                 <div>Internal tile</div>
                 <div id="intTileName" class="elementName">Internal tile</div>

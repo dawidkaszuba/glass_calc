@@ -63,9 +63,10 @@ public class FrameController {
         }
     }
 
-    @ModelAttribute("frameGroups")
-    public List<FrameGroup> findAllFrameGroups(){
-        return this.frameGroupRepository.findAll();
+    @GetMapping("/allByGroupId/{id}")
+    @ResponseBody
+    public List<Frame> findAllByTileGroupId(@PathVariable Long id){
+        return this.frameRepository.findAllByGroupId(id);
     }
 
     @GetMapping("/{id}")
