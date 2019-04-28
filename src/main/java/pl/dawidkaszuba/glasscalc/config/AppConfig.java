@@ -79,6 +79,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         registry.addConverter(stringFrameConverter());
         registry.addConverter(stringGlass2TileConverter());
         registry.addConverter(stringGasConverter());
+        registry.addConverter(stringFrameGroupConverter());
 
     }
 
@@ -115,5 +116,10 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     StringGasConverter stringGasConverter() {
         return new StringGasConverter();
+    }
+
+    @Bean
+    StringFrameGroupConverter stringFrameGroupConverter(){
+        return new StringFrameGroupConverter();
     }
 }

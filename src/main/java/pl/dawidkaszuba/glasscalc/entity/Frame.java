@@ -12,6 +12,8 @@ public class Frame {
     private double thickness;
     private double psi;
     private double price;
+    @ManyToOne
+    private FrameGroup group;
     private int deliveryTime;
 
     public Frame() {
@@ -63,5 +65,13 @@ public class Frame {
 
     public void setDeliveryTime(int deliveryTime) {
         this.deliveryTime = deliveryTime;
+    }
+
+    public FrameGroup getGroup() {
+        return group;
+    }
+
+    public void setGroup(FrameGroup group) {
+        this.group = group;
     }
 }

@@ -6,10 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.dawidkaszuba.glasscalc.entity.Frame;
+import pl.dawidkaszuba.glasscalc.entity.FrameGroup;
 import pl.dawidkaszuba.glasscalc.entity.Tile;
+import pl.dawidkaszuba.glasscalc.repository.FrameGroupRepository;
 import pl.dawidkaszuba.glasscalc.repository.FrameRepository;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/frame")
@@ -17,6 +20,9 @@ public class FrameController {
 
     @Autowired
     private FrameRepository frameRepository;
+
+    @Autowired
+    private FrameGroupRepository frameGroupRepository;
 
     @GetMapping("/add")
     public String addFrame(Model model){
@@ -55,6 +61,11 @@ public class FrameController {
             this.frameRepository.save(frame);
             return "redirect:/frame/list";
         }
+    }
+
+    @ModelAttribute("frameGroups")
+    public List<FrameGroup> findAllFrameGroups(){
+        return this.frameGroupRepository.findAll();
     }
 
     @GetMapping("/{id}")

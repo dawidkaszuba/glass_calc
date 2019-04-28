@@ -19,7 +19,7 @@
         .error{
             color:red;
         }
-        #exTilePopup{
+        #exTilePopup, #intTilePopup{
             width: 300px;
             height: 180px;
             display: none;
@@ -31,18 +31,7 @@
             padding: 10px;
             box-shadow: 5px 10px #888888;
         }
-        #intTilePopup{
-            width: 300px;
-            height: 180px;
-            display: none;
-            position: fixed;
-            left:35%;
-            background-color: white;
-            z-index:1;
-            border: 1px solid;
-            padding: 10px;
-            box-shadow: 5px 10px #888888;
-        }
+
         #close,#intTilePopupClose{
             position: absolute;
             top:0;

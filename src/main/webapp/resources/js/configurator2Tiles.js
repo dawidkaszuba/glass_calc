@@ -5,7 +5,7 @@ $(function(){
     doAjaxIntTile();
     changeDimensions();
 
-    doAjaxGroupTiles();
+    doAjaxGroupTiles('tilesGroup','externalTile');
     doAjaxIntTilesGroup();
     updateName('intTileName','internalTile');
     updateName('exTileName', 'externalTile');
@@ -69,19 +69,14 @@ $(function(){
         intTilePopup.style.display='none';
     })
 
-
     function updateName(div,element){
-
 
         var divName = document.getElementById(div);
         var name = document.getElementById(element);
         name.addEventListener("change", function(){
             divName.innerText = this.options[this.selectedIndex].text;
-
         })
-
     }
-
 
     function changeDimensions() {
         var svgGlass = document.getElementById('svgGlass');
@@ -98,11 +93,11 @@ $(function(){
         glass.setAttribute('height',height.value / 6);
         textHeight.innerHTML = height.value + " [mm]";
         textWidth.innerHTML = width.value + " [mm]";
-
-
     }
 
-    function doAjaxGroupTiles(){
+    function doAjaxGroupTiles(group, tile){
+
+        //var id = document.getElementById(group).value;
         var id = document.getElementById('tilesGroup').value;
         $.ajax({
             type:"GET",
@@ -110,19 +105,19 @@ $(function(){
             dataType: "json",
         }).done(function(result) {
 
-            var externalTile = document.getElementById('externalTile');
+           var tiles = document.getElementById('externalTile');
+           // var tiles = document.getElementById(tile);
 
-            for(var i = 0; i < externalTile.options.length; i++){
-                externalTile.options[i].style.display='none';
+            for(var i = 0; i < tiles.options.length; i++){
+                tiles.options[i].style.display='none';
             }
-
 
             for(var j = 0; j < result.length; j++) {
 
                 var option = document.createElement("OPTION");
                 option.innerText = result[j]['name'];
                 option.value = result[j]['id'];
-                externalTile.appendChild(option);
+                tiles.appendChild(option);
             }
 
 
@@ -205,15 +200,15 @@ $(function(){
 
             var intTile = document.getElementById('intTile');
             var svgintTile = document.getElementById('svgIntTile');
+            var coating = document.getElementById("svgCoatingInt");
             svgintTile.setAttribute("width",result["thickness"] * 4);
             intTile.setAttribute("width",result["thickness"] * 4);
 
 
             if(result.coating.lowEmisly){
-                var coating = document.getElementById("svgCoatingInt");
+
                 coating.setAttribute("display","inline");
             }else {
-                var coating = document.getElementById("svgCoatingInt");
                 coating.setAttribute("display","none");
             }
             if(result.isTempered){
@@ -238,11 +233,10 @@ $(function(){
 
             var frame = document.getElementById('glassFrame');
             var svgFrame = document.getElementById('svgFrame');
-            var frameBottom =document.getElementById('frameBottom')
+            var frameBottom = document.getElementById('frameBottom')
             svgFrame.setAttribute("width",result["thickness"] * 4);
             frame.setAttribute("width",result["thickness"] * 4);
             frameBottom.setAttribute("width",result["thickness"] * 4);
-
 
         }).fail(function(xhr,status,err){
         }).always(function(xhr,status){

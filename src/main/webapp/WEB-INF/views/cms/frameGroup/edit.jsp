@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>add frame</title>
+    <title>edit frame group</title>
     <!-- Bootstrap CSS -->
     <meta charset="utf-8">
     <meta lang="pl">
@@ -15,22 +15,13 @@
 <body class="bg-dark text-light">
 <div class="container">
     <jsp:include page="/WEB-INF/views/fragments/header.jsp"/>
-    <h1>add frame</h1>
+    <h1>edit frame group</h1>
     <div class="row">
 
-        <form:form method="post" modelAttribute="frame">
+        <form:form method="post" modelAttribute="frameGroup" action="/frameGroup/saveEdited">
+            <form:input path="id" type="hidden" value="${frameGroup.id}"/>
             <label>name</label>
             <form:input path="name" type="text" class="form-control"/>
-            <label>price</label>
-            <form:input path="price" type="number" min="1" step="0.01" class="form-control"/>
-            <label>thickness</label>
-            <form:input path="thickness" type="number" min="1" step="1" class="form-control"/>
-            <label>psi</label>
-            <form:input path="psi" type="number" min="0.001" step="0.001" class="form-control"/>
-            <label>group</label>
-            <form:select path="group" items="${frameGroups}" itemValue="id" itemLabel="name" class="form-control"/>
-            <label>delivery time</label>
-            <form:input path="deliveryTime" type="number" min="0" class="form-control"/>
             <input type="submit" value="Save">
             <div><form:errors path="*"/></div>
         </form:form>

@@ -58,11 +58,20 @@
             </li>
             <li class="nav-item dropdown">
 
-                <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">tile group</a>
+                <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">tile gr.</a>
 
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/tileGroup/add">add tile group</a>
                     <a class="dropdown-item" href="/tileGroup/list">all tile groups</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+
+                <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">frame gr.</a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/frameGroup/add">add frame group</a>
+                    <a class="dropdown-item" href="/frameGroup/list">all frame groups</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -85,7 +94,7 @@
             </li>
             <li class="nav-item dropdown">
 
-                <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">standard glass prices</a>
+                <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">std glass prices</a>
 
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/standardPrice2/show">std price for 2-tile</a>
