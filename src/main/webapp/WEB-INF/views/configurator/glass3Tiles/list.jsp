@@ -11,61 +11,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+        .boldSpan{
+            font-weight: bold;
+        }
+        body{
+            background-color: lightblue;
+        }
+    </style>
 </head>
-<body style="background-color: lightblue";>
-<div class="container">
-    <jsp:include page="/WEB-INF/views/fragments/headerConfigurator.jsp"/>
-    <h1>My 3-tiles glasses</h1>
-    <div class="row">
-        <div class="col-md-5">
-            <span>specification</span>
-        </div>
-        <div class="col-md-2">
-            <span>price</span>
-        </div>
-        <div class="col-md-1">
-            <span>thickness</span>
-        </div>
-        <div class="col-md-2">
-            <span>dimension [w.h]</span>
-        </div>
-        <div class="col-md-2">
-            <span>&nbsp</span>
-        </div>
-
-    </div>
-
-    <div class="row">
-        <c:forEach items="${glasses3}" var="glass">
+<body>
+    <div class="container">
+        <jsp:include page="/WEB-INF/views/fragments/headerConfigurator.jsp"/>
+        <h1>My 3-tiles glasses</h1>
+        <div class="row">
             <div class="col-md-5">
-                <div><p><span>${glass.name}</span></p></div>
-            </div>
-            <div class="col-md-2">
-                <div><p><span>${glass.price} zł/m2</span></p></div>
+                <span class="boldSpan">specification</span>
             </div>
             <div class="col-md-1">
-                <div><p><span>${glass.thickness} mm</span></p></div>
+                <span class="boldSpan">price</span>
+            </div>
+            <div class="col-md-1">
+                <span class="boldSpan">thickness</span>
             </div>
             <div class="col-md-2">
-                <div><p><span>${glass.width} x ${glass.height} [mm]</span></p></div>
+                <span class="boldSpan">dimension [w.h]</span>
+            </div>
+            <div class="col-md-1">
+                <span class="boldSpan">delivery time [days]</span>
             </div>
             <div class="col-md-2">
-                <span><a href="/configurator3Tiles/edit/${glass.id}">edit</a> /
-                    <a href="/configurator3Tiles/delete/${glass.id}">delete</a></span>
+                <span class="boldSpan">&nbsp</span>
             </div>
-        </c:forEach>
+
+        </div>
+
+        <div class="row">
+            <c:forEach items="${glasses3}" var="glass">
+                <div class="col-md-5">
+                    <div><p><span>${glass.name}</span></p></div>
+                </div>
+                <div class="col-md-1">
+                    <div><p><span>${glass.price} zł/m2</span></p></div>
+                </div>
+                <div class="col-md-1">
+                    <div><p><span>${glass.thickness} mm</span></p></div>
+                </div>
+                <div class="col-md-2">
+                    <div><p><span>${glass.width} x ${glass.height} [mm]</span></p></div>
+                </div>
+                <div class="col-md-1">
+                    <div><p><span>${glass.deliveryTime}</span></p></div>
+                </div>
+                <div class="col-md-2">
+                    <span><a href="/configurator3Tiles/edit/${glass.id}">edit</a> /
+                        <a href="/configurator3Tiles/delete/${glass.id}">delete</a></span>
+                </div>
+            </c:forEach>
 
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-                crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-                integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-                crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                    crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+                    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+                    crossorigin="anonymous"></script>
+        </div>
     </div>
-</div>
 </body>
 </html>

@@ -11,63 +11,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script
+            src="https://code.jquery.com/jquery-3.4.0.js"
+            integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+            crossorigin="anonymous"></script>
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
 </head>
 <body style="background-color: lightblue";>
     <div class="container">
         <jsp:include page="/WEB-INF/views/fragments/headerConfigurator.jsp"/>
         <h1>3 - tiles glass</h1>
             <div class="row">
-                <form:form method="post" modelAttribute="glass3" action="/configurator3Tiles/saveEdited">
+                <div class="col-md-2">
+                    <form:form method="post" modelAttribute="glass3" action="/configurator3Tiles/saveEdited">
 
-                    <form:input path="id" value="${glass3.id}" type="hidden"/>
+                        <form:input path="id" value="${glass3.id}" type="hidden"/>
 
-                    <label>External tile</label>
-                    <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                        <label>External tile</label>
+                        <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                    <label>first frame</label>
-                    <form:select path="firstFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+                        <label>first frame</label>
+                        <form:select path="firstFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                    <label>Middle tile</label>
-                    <form:select path="middleTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                        <label>Middle tile</label>
+                        <form:select path="middleTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                    <label>Second frame</label>
-                    <form:select path="secondFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+                        <label>Second frame</label>
+                        <form:select path="secondFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                    <label>Internal tile</label>
-                    <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                        <label>Internal tile</label>
+                        <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                    <label>Gas</label>
-                    <form:select path="gas" items="${gasses}" itemValue="id" itemLabel="name" class="form-control"/>
+                        <label>Gas</label>
+                        <form:select path="gas" items="${gasses}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                    <label>width</label>
-                    <form:input path="width" type="number" min="30" class="form-control"/>
+                        <label>width</label>
+                        <form:input path="width" type="number" min="30" class="form-control"/>
 
-                    <label>height</label>
-                    <form:input path="height" type="number" min="30" class="form-control"/>
+                        <label>height</label>
+                        <form:input path="height" type="number" min="30" class="form-control"/>
 
-                    <input type="submit" value="Next">
-                    <c:forEach var="error" items="${errors}">
-                        <div>${error.message}</div>
-                    </c:forEach>
-                    <div><form:errors path="*"/></div>
+                        <input type="submit" value="Next">
+                        <c:forEach var="error" items="${errors}">
+                            <div>${error.message}</div>
+                        </c:forEach>
+                        <div><form:errors path="*"/></div>
 
-                </form:form>
+                    </form:form>
+                </div>
+                <div class="col-md-4">
+                    <svg id="svgExTile" width="16" height="300" class="svg">
+                        <rect id="exTile" width="16"  height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                    </svg>
+                    <svg id="svgCoatingExt" display="none" width="3" height="300" class="svg">
+                        <rect id="coatingExt" width="3" height="300" style="fill:rgb(255,0,0)"></rect>
+                    </svg>
+                    <svg id="svgFirstFrame" width="64" height="300" class="svg">
+                        <rect id="firstFrameSvg" width="64" height="300" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect id="firstFrameBottom" y="260" width="160" height="40" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                    </svg>
+                    <svg id="svgMidTile" width="16" height="300" class="svg">
+                        <rect id="midTile" width="16"  height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                    </svg>
+                    <svg id="svgCoatingMid" width="3" display="none" height="300" class="svg">
+                        <rect id="coatingMid" width="3" height="300" style="fill:rgb(255,0,0)"></rect>
+                    </svg>
+                    <svg id="svgSecondFrame" width="64" height="300" class="svg">
+                        <rect id="secondFrameSvg" width="64" height="300" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect id="secondFrameBottom" y="260" width="160" height="40" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                    </svg>
+                    <svg id="svgCoatingInt" width="3" display="none" height="300" class="svg">
+                        <rect id="coatingInt" width="3" height="300" style="fill:rgb(255,0,0)"></rect>
+                    </svg>
+                    <svg id="svgIntTile" width="16" height="300" class="svg">
+                        <rect id="intTile"width="16" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                    </svg>
+                </div>
+                <div class="col-md-6">
+                    <svg height="150" width="20" style="float: left">
+                        <text id="textHeight" x="0" y="0" fill="black" transform="rotate(90,2,3)">height</text>
+                    </svg>
+                    <svg id="svgGlass" width="100" height="100" class="svg" display="block">
+                        <rect id="glass" width="100" height="100" style="fill:rgb(240,255,240);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                    </svg>
+                    <svg height="30" width="200">
+                        <text id="textWidth" x="20" y="15" fill="black">width</text>
+                    </svg>
+                </div>
+            </div>
+            <div class="row">
+                <c:forEach var="error" items="${errors}">
+                    <div class="error">${error.message}&nbsp</div>
+                </c:forEach>
             </div>
     </div>
-           <div>tu ma byc grafika szyby</div>
 
-
-
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-                crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-                integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-                crossorigin="anonymous"></script>
+    <script src="<c:url value="/resources/js/configurator3Tiles.js"/>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous">
+    </script>
 
 </body>
 </html>

@@ -81,14 +81,12 @@
                 <text id="textWidth" x="20" y="15" fill="black">width</text>
             </svg>
         </div>
-        </div>
+    </div>
             <div class="row">
                 <c:forEach var="error" items="${errors}">
                     <div class="error">${error.message}&nbsp</div>
                 </c:forEach>
             </div>
-
-
     </div>
     <script src="<c:url value="/resources/js/configurator2Tiles.js"/>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"

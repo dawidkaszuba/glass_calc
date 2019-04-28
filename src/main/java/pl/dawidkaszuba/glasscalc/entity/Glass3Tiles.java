@@ -39,6 +39,7 @@ public class Glass3Tiles {
 
     private int width;
     private int height;
+    private int deliveryTime;
 
     public Glass3Tiles() {
     }
@@ -594,6 +595,27 @@ public class Glass3Tiles {
                 return null;
             }
         }
+    }
+
+    public int getDeliveryTime(){
+
+        List<Integer> deliveryTimes = new ArrayList<>();
+
+        deliveryTimes.add(this.externalTile.getDeliveryTime());
+        deliveryTimes.add(this.internalTile.getDeliveryTime());
+        deliveryTimes.add(this.middleTile.getDeliveryTime());
+        deliveryTimes.add(this.firstFrame.getDeliveryTime());
+        deliveryTimes.add(this.secondFrame.getDeliveryTime());
+        int max = Integer.MIN_VALUE;
+
+        for(int i = 0; i < deliveryTimes.size(); i++) {
+            if(deliveryTimes.get(i)>max){
+                max = deliveryTimes.get(i);
+            }
+        }
+        deliveryTime=max;
+        return deliveryTime;
+
     }
 
 

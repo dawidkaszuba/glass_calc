@@ -23,6 +23,7 @@ public class GeneratePdfReport {
         Chunk price = new Chunk(String.valueOf(glass2Tiles.getPrice())+ " ", font);
         Chunk dimension = new Chunk(String.valueOf(glass2Tiles.getWidth())
                 + "x" + String.valueOf(glass2Tiles.getHeight())+"[mm]", font);
+        Chunk deliveryTime = new Chunk("czas oczekiwania [dni]: " + String.valueOf(glass2Tiles.getDeliveryTime()));
 
         try {
             PdfWriter.getInstance(document, out);
@@ -34,6 +35,7 @@ public class GeneratePdfReport {
             document.add(name);
             document.add(price);
             document.add(dimension);
+            document.add(deliveryTime);
         } catch (DocumentException e) {
             e.printStackTrace();
         }

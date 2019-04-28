@@ -11,6 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <style>
+        .boldSpan{
+            font-weight: bold;
+        }
+    </style>
+
 </head>
 <body style="background-color: lightblue";>
     <div class="container">
@@ -18,22 +25,22 @@
         <h1>My 2-tiles glasses</h1>
         <div class="row">
             <div class="col-md-3">
-                <span>specification</span>
-            </div>
-            <div class="col-md-3">
-                <span>price</span>
-            </div>
-            <div class="col-md-1">
-                <span>thickness</span>
+                <span class="boldSpan">specification</span>
             </div>
             <div class="col-md-2">
-                <span>dimension [w,h]</span>
+                <span class="boldSpan">price</span>
             </div>
             <div class="col-md-1">
-                <span>delivery time [days]</span>
+                <span class="boldSpan">thickness</span>
             </div>
             <div class="col-md-2">
-                <span>&nbsp</span>
+                <span class="boldSpan">dimension [w,h]</span>
+            </div>
+            <div class="col-md-2">
+                <span class="boldSpan">delivery time [days]</span>
+            </div>
+            <div class="col-md-2">
+                <span class="boldSpan">&nbsp</span>
             </div>
 
         </div>
@@ -43,7 +50,7 @@
                 <div class="col-md-3">
                     <div><p><span>${glass.name}</span></p></div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div><p><span>${(glass.price /100)*100} zł/m2</span></p></div>
                 </div>
                 <div class="col-md-1">
@@ -52,7 +59,7 @@
                 <div class="col-md-2">
                     <div><p><span>${glass.width} x ${glass.height} [mm]</span></p></div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <div><p><span>${glass.deliveryTime}</span></p></div>
                 </div>
                 <div class="col-md-2">

@@ -52,6 +52,7 @@ public class Glass3TilesController {
             glass3Tiles.setName();
             glass3Tiles.setThickness();
             glass3Tiles.setPrice(getPrice(glass3Tiles));
+            glass3Tiles.getDeliveryTime();
             this.glass3TilesRepository.save(glass3Tiles);
             return "redirect:/configurator3Tiles/list";
 
@@ -78,6 +79,7 @@ public class Glass3TilesController {
             glass3Tiles.setThickness();
             glass3Tiles.setName();
             glass3Tiles.setPrice(getPrice(glass3Tiles));
+            glass3Tiles.getDeliveryTime();
             this.glass3TilesRepository.save(glass3Tiles);
             return "redirect:/configurator3Tiles/list";
         }else{
