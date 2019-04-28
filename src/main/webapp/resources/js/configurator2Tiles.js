@@ -4,8 +4,11 @@ $(function(){
     doAjaxFrame();
     doAjaxIntTile();
     changeDimensions();
-    updateName();
+
     doAjaxGroupTiles();
+    doAjaxIntTilesGroup();
+    updateName('intTileName','internalTile');
+    updateName('exTileName', 'externalTile');
 
     var selectedExTile = document.getElementById('externalTile');
     selectedExTile.addEventListener("change", function(){
@@ -34,11 +37,25 @@ $(function(){
         exTilePopup.style.display='inline';
     });
 
+    var intTileName = document.getElementById('intTileName');
+    var intTilePopup = document.getElementById('intTilePopup');
+    intTileName.addEventListener("click", function(){
+        intTilePopup.style.display='inline';
+    });
+
     var tilesGroup = document.getElementById('tilesGroup');
     tilesGroup.addEventListener('change',doAjaxGroupTiles);
 
-    var name = document.getElementById('externalTile');
-    exTileName.innerText = name.options[name.selectedIndex].text;
+    var intTilesGroup = document.getElementById('intTilesGroup');
+    intTilesGroup.addEventListener('change',doAjaxIntTilesGroup);
+
+    var name1 = document.getElementById('externalTile');
+    exTileName.innerText = name1.options[name1.selectedIndex].text;
+
+    var name2 = document.getElementById('internalTile');
+    intTileName.innerText = name2.options[name2.selectedIndex].text;
+
+
 
     var close = document.getElementById('close');
     close.addEventListener('click',function () {
@@ -46,13 +63,20 @@ $(function(){
         exTilePopup.style.display='none';
     })
 
+    var intTilePopupClose = document.getElementById('intTilePopupClose');
+    intTilePopupClose.addEventListener('click',function () {
+        var intTilePopup = document.getElementById('intTilePopup');
+        intTilePopup.style.display='none';
+    })
 
-    function updateName(){
 
-        var exTileName = document.getElementById('exTileName');
-        var name = document.getElementById('externalTile');
+    function updateName(div,element){
+
+
+        var divName = document.getElementById(div);
+        var name = document.getElementById(element);
         name.addEventListener("change", function(){
-            exTileName.innerText = this.options[this.selectedIndex].text
+            divName.innerText = this.options[this.selectedIndex].text;
 
         })
 
@@ -99,6 +123,35 @@ $(function(){
                 option.innerText = result[j]['name'];
                 option.value = result[j]['id'];
                 externalTile.appendChild(option);
+            }
+
+
+        }).fail(function(xhr,status,err){
+        }).always(function(xhr,status){
+
+        });
+    }
+
+    function doAjaxIntTilesGroup(){
+        var id = document.getElementById('intTilesGroup').value;
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:8080/tile/allByGroupId/"+id,
+            dataType: "json",
+        }).done(function(result) {
+
+            var internalTile = document.getElementById('internalTile');
+
+            for(var i = 0; i < internalTile.options.length; i++){
+                internalTile.options[i].style.display='none';
+            }
+
+            for(var j = 0; j < result.length; j++) {
+
+                var option = document.createElement("OPTION");
+                option.innerText = result[j]['name'];
+                option.value = result[j]['id'];
+                internalTile.appendChild(option);
             }
 
 
