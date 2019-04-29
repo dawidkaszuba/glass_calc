@@ -19,7 +19,7 @@
         .error{
             color:red;
         }
-        #exTilePopup, #intTilePopup{
+        #exTilePopup, #intTilePopup, #framePopup{
             width: 300px;
             height: 180px;
             display: none;
@@ -32,7 +32,7 @@
             box-shadow: 5px 10px #888888;
         }
 
-        #close,#intTilePopupClose{
+        #close,#intTilePopupClose, #framePopupClose{
             position: absolute;
             top:0;
             right:14px;
@@ -44,6 +44,9 @@
         }
         .elementName{
             font-weight: bold;
+            background-color: dodgerblue;
+            border-radius: 5px;
+            text-align: center;
         }
 
     </style>
@@ -90,6 +93,7 @@
                         <form:select path="frame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
 
                     </div>
+                    <div id="framePopupClose">+</div>
 
                 </div>
 

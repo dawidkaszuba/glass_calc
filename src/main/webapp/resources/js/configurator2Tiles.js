@@ -9,6 +9,7 @@ $(function(){
     doAjaxIntTilesGroup();
     updateName('intTileName','internalTile');
     updateName('exTileName', 'externalTile');
+    updateName('frameName', 'frame');
     doAjaxGroupsFrame();
 
     var selectedExTile = document.getElementById('externalTile');
@@ -44,6 +45,12 @@ $(function(){
         intTilePopup.style.display='inline';
     });
 
+    var frameName = document.getElementById('frameName');
+    var framePopup = document.getElementById('framePopup');
+    frameName.addEventListener("click", function(){
+        framePopup.style.display='inline';
+    });
+
     var tilesGroup = document.getElementById('tilesGroup');
     tilesGroup.addEventListener('change',doAjaxGroupTiles);
 
@@ -59,6 +66,9 @@ $(function(){
     var name2 = document.getElementById('internalTile');
     intTileName.innerText = name2.options[name2.selectedIndex].text;
 
+    var name3 = document.getElementById('frame');
+    frameName.innerText = name3.options[name3.selectedIndex].text;
+
 
 
     var close = document.getElementById('close');
@@ -71,6 +81,12 @@ $(function(){
     intTilePopupClose.addEventListener('click',function () {
         var intTilePopup = document.getElementById('intTilePopup');
         intTilePopup.style.display='none';
+    })
+
+    var framePopupClose = document.getElementById('framePopupClose');
+    framePopupClose.addEventListener('click',function () {
+        var frameTilePopup = document.getElementById('framePopup');
+        frameTilePopup.style.display='none';
     })
 
     function updateName(div,element){
