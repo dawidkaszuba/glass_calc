@@ -7,6 +7,13 @@ $(function(){
     doAjaxMidTile();
     changeDimensions();
 
+    doAjaxIntTilesGroup();
+    doAjaxGroupTiles();
+    doAjaxMidTilesGroup();
+    updateName('intTileName','internalTile');
+    updateName('exTileName', 'externalTile');
+    updateName('midTileName', 'middleTile');
+
     var selectedExTile = document.getElementById('externalTile');
     selectedExTile.addEventListener("change", function(){
         doAjaxExtTile();
@@ -36,6 +43,60 @@ $(function(){
     width.addEventListener("change",changeDimensions);
     height.addEventListener("change",changeDimensions);
 
+    var exTileName = document.getElementById('exTileName');
+    var exTilePopup = document.getElementById('exTilePopup');
+    exTileName.addEventListener("click", function(){
+        exTilePopup.style.display='inline';
+    });
+
+    var intTileName = document.getElementById('intTileName');
+    var intTilePopup = document.getElementById('intTilePopup');
+    intTileName.addEventListener("click", function(){
+        intTilePopup.style.display='inline';
+    });
+
+    var midTileName = document.getElementById('midTileName');
+    var midTilePopup = document.getElementById('midTilePopup');
+    midTileName.addEventListener("click", function(){
+        midTilePopup.style.display='inline';
+    });
+
+    var name1 = document.getElementById('externalTile');
+    exTileName.innerText = name1.options[name1.selectedIndex].text;
+
+    var name2 = document.getElementById('internalTile');
+    intTileName.innerText = name2.options[name2.selectedIndex].text;
+
+    var name3 = document.getElementById('middleTile');
+    midTileName.innerText = name3.options[name3.selectedIndex].text;
+
+    var tilesGroup = document.getElementById('tilesGroup');
+    tilesGroup.addEventListener('change',doAjaxGroupTiles);
+
+    var intTilesGroup = document.getElementById('intTilesGroup');
+    intTilesGroup.addEventListener('change',doAjaxIntTilesGroup);
+
+    var midTilesGroup = document.getElementById('midTilesGroup');
+    midTilesGroup.addEventListener('change',doAjaxMidTilesGroup);
+
+    var close = document.getElementById('close');
+    close.addEventListener('click',function () {
+        var exTilePopup = document.getElementById('exTilePopup');
+        exTilePopup.style.display='none';
+    });
+
+    var intTilePopupClose = document.getElementById('intTilePopupClose');
+    intTilePopupClose.addEventListener('click',function () {
+        var intTilePopup = document.getElementById('intTilePopup');
+        intTilePopup.style.display='none';
+    });
+
+    var midTilePopupClose = document.getElementById('midTilePopupClose');
+    midTilePopupClose.addEventListener('click',function () {
+        var midTilePopup = document.getElementById('midTilePopup');
+        midTilePopup.style.display='none';
+    });
+
 
 
     function changeDimensions() {
@@ -57,6 +118,15 @@ $(function(){
 
     }
 
+    function updateName(div,element){
+
+        var divName = document.getElementById(div);
+        var name = document.getElementById(element);
+        name.addEventListener("change", function(){
+            divName.innerText = this.options[this.selectedIndex].text;
+        })
+    }
+
     function doAjaxExtTile(){
         var id = document.getElementById('externalTile').value;
         $.ajax({
@@ -70,11 +140,12 @@ $(function(){
             var svgExTile = document.getElementById('svgExTile');
             svgExTile.setAttribute("width",result["thickness"] * 4);
             exTile.setAttribute("width",result["thickness"] * 4);
+            var coating = document.getElementById("svgCoatingExt");
             if(result.coating.lowEmisly){
-                var coating = document.getElementById("svgCoatingExt");
+
                 coating.setAttribute("display","inline");
             }else {
-                var coating = document.getElementById("svgCoatingExt");
+
                 coating.setAttribute("display","none");
             }
 
@@ -193,6 +264,96 @@ $(function(){
             secondframe.setAttribute("width",result["thickness"] * 4);
             svgSecondFrame.setAttribute("width",result["thickness"] * 4);
             secondFrameBottom.setAttribute("width",result["thickness"] * 4);
+
+
+        }).fail(function(xhr,status,err){
+        }).always(function(xhr,status){
+
+        });
+    }
+
+    function doAjaxIntTilesGroup(){
+        var id = document.getElementById('intTilesGroup').value;
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:8080/tile/allByGroupId/"+id,
+            dataType: "json",
+        }).done(function(result) {
+
+            var internalTile = document.getElementById('internalTile');
+
+            for(var i = 0; i < internalTile.options.length; i++){
+                internalTile.options[i].style.display='none';
+            }
+
+            for(var j = 0; j < result.length; j++) {
+
+                var option = document.createElement("OPTION");
+                option.innerText = result[j]['name'];
+                option.value = result[j]['id'];
+                internalTile.appendChild(option);
+            }
+
+
+        }).fail(function(xhr,status,err){
+        }).always(function(xhr,status){
+
+        });
+    }
+
+    function doAjaxGroupTiles(group, tile){
+
+        //var id = document.getElementById(group).value;
+        var id = document.getElementById('tilesGroup').value;
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:8080/tile/allByGroupId/"+id,
+            dataType: "json",
+        }).done(function(result) {
+
+            var tiles = document.getElementById('externalTile');
+            // var tiles = document.getElementById(tile);
+
+            for(var i = 0; i < tiles.options.length; i++){
+                tiles.options[i].style.display='none';
+            }
+
+            for(var j = 0; j < result.length; j++) {
+
+                var option = document.createElement("OPTION");
+                option.innerText = result[j]['name'];
+                option.value = result[j]['id'];
+                tiles.appendChild(option);
+            }
+
+
+        }).fail(function(xhr,status,err){
+        }).always(function(xhr,status){
+
+        });
+    }
+
+    function doAjaxMidTilesGroup(){
+        var id = document.getElementById('midTilesGroup').value;
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:8080/tile/allByGroupId/"+id,
+            dataType: "json",
+        }).done(function(result) {
+
+            var middleTile = document.getElementById('middleTile');
+
+            for(var i = 0; i < middleTile.options.length; i++){
+                middleTile.options[i].style.display='none';
+            }
+
+            for(var j = 0; j < result.length; j++) {
+
+                var option = document.createElement("OPTION");
+                option.innerText = result[j]['name'];
+                option.value = result[j]['id'];
+                middleTile.appendChild(option);
+            }
 
 
         }).fail(function(xhr,status,err){

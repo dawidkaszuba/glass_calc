@@ -35,6 +35,9 @@ public class Glass3TilesController {
     @Autowired
     private StandardPrice3TilesGlassRepository standardPrice3TilesGlassRepository;
 
+    @Autowired
+    private TileGroupRepository tileGroupRepository;
+
     @GetMapping("/add")
     public String addGlass3TilesForm(Model model) {
         model.addAttribute("glass3", new Glass3Tiles());
@@ -119,6 +122,11 @@ public class Glass3TilesController {
         return this.gasRepository.findAll();
     }
 
+    @ModelAttribute("tilesGroups")
+    public List<TileGroup> findAllTileGroups(){
+        return this.tileGroupRepository.findAll();
+    }
+
 
     private double getPrice(Glass3Tiles glass3Tiles) {
 
@@ -153,8 +161,6 @@ public class Glass3TilesController {
                         + glass3Tiles.getExternalTile().getPrice() +
                         glass3Tiles.getInternalTile().getPrice() + glass3Tiles.getFirstFrame().getPrice()
                         + glass3Tiles.getSecondFrame().getPrice() + (2 * glass3Tiles.getGas().getPrice()))) * 0.4;
-
-
             }
         }
     }

@@ -19,7 +19,35 @@
         .error{
             color:red;
         }
+        #exTilePopup, #intTilePopup, #firstFramePopup, #midTilePopup{
+            width: 300px;
+            height: 180px;
+            display: none;
+            position: fixed;
+            left:35%;
+            background-color: white;
+            z-index:1;
+            border: 1px solid;
+            padding: 10px;
+            box-shadow: 5px 10px #888888;
+        }
 
+        #close,#intTilePopupClose, #firstFramePopupClose, #midTilePopupClose{
+            position: absolute;
+            top:0;
+            right:14px;
+            font-size: 42px;
+            transform: rotate(45deg);
+        }
+        .select{
+            width:200px;
+        }
+        .elementName{
+            font-weight: bold;
+            background-color: dodgerblue;
+            border-radius: 5px;
+            text-align: center;
+        }
 
     </style>
 </head>
@@ -31,20 +59,67 @@
             <div class="col-md-2">
                 <form:form method="post" modelAttribute="glass3" >
 
-                    <label>External tile</label>
-                    <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <div>External tile</div>
+                    <div id="exTileName" class="elementName">External tile</div>
+                    <div id="exTilePopup">
+
+                        <div class="select">
+                            <label>select group</label>
+                            <select class="form-control" id="tilesGroup" name="groups">
+                                <c:forEach items="${tilesGroups}" var="group">
+                                    <option value="${group.id}">${group.name}</option>
+                                </c:forEach>
+                            </select>
+
+                            <label>select tile</label>
+                            <form:select path="externalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                        </div>
+                        <div id="close">+</div>
+                    </div>
 
                     <label>first frame</label>
                     <form:select path="firstFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                    <label>Middle tile</label>
-                    <form:select path="middleTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <div>Middle tile</div>
+                    <div id="midTileName" class="elementName">Middle tile</div>
+                    <div id="midTilePopup">
+
+                        <div class="select">
+                            <label>select group</label>
+                            <select class="form-control" id="midTilesGroup" name="groups">
+                                <c:forEach items="${tilesGroups}" var="group">
+                                    <option value="${group.id}">${group.name}</option>
+                                </c:forEach>
+                            </select>
+
+                            <label>select tile</label>
+                            <form:select path="middleTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                        </div>
+                        <div id="midTilePopupClose">+</div>
+                    </div>
 
                     <label>Second frame</label>
                     <form:select path="secondFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
 
-                    <label>Internal tile</label>
-                    <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <div>Internal tile</div>
+                    <div id="intTileName" class="elementName">Internal tile</div>
+                    <div id="intTilePopup">
+
+                        <div class="select">
+                            <label>select group</label>
+                            <select class="form-control" id="intTilesGroup" name="groups">
+                                <c:forEach items="${tilesGroups}" var="group">
+                                    <option value="${group.id}">${group.name}</option>
+                                </c:forEach>
+                            </select>
+
+                            <label>select tile</label>
+                            <form:select path="internalTile" items="${tiles}" itemValue="id" itemLabel="name" class="form-control"/>
+                        </div>
+                        <div id="intTilePopupClose">+</div>
+
+
+                    </div>
 
                     <label>Gas</label>
                     <form:select path="gas" items="${gasses}" itemValue="id" itemLabel="name" class="form-control"/>
