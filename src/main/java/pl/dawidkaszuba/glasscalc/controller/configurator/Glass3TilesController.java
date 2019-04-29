@@ -38,6 +38,9 @@ public class Glass3TilesController {
     @Autowired
     private TileGroupRepository tileGroupRepository;
 
+    @Autowired
+    private FrameGroupRepository frameGroupRepository;
+
     @GetMapping("/add")
     public String addGlass3TilesForm(Model model) {
         model.addAttribute("glass3", new Glass3Tiles());
@@ -125,6 +128,11 @@ public class Glass3TilesController {
     @ModelAttribute("tilesGroups")
     public List<TileGroup> findAllTileGroups(){
         return this.tileGroupRepository.findAll();
+    }
+
+    @ModelAttribute("frameGroups")
+    public List<FrameGroup> findAllFrameGroups(){
+        return this.frameGroupRepository.findAll();
     }
 
 

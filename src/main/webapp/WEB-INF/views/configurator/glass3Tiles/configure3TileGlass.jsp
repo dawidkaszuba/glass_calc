@@ -19,7 +19,7 @@
         .error{
             color:red;
         }
-        #exTilePopup, #intTilePopup, #firstFramePopup, #midTilePopup{
+        #exTilePopup, #intTilePopup, #firstFramePopup, #secondFramePopup, #midTilePopup{
             width: 300px;
             height: 180px;
             display: none;
@@ -32,7 +32,7 @@
             box-shadow: 5px 10px #888888;
         }
 
-        #close,#intTilePopupClose, #firstFramePopupClose, #midTilePopupClose{
+        #close,#intTilePopupClose, #firstFramePopupClose,#secondFramePopupClose, #midTilePopupClose{
             position: absolute;
             top:0;
             right:14px;
@@ -77,8 +77,25 @@
                         <div id="close">+</div>
                     </div>
 
-                    <label>first frame</label>
-                    <form:select path="firstFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <div>First frame</div>
+                    <div id="firstFrameName" class="elementName">First frame</div>
+                    <div id="firstFramePopup">
+
+                        <div class="select">
+                            <label>select group</label>
+                            <select class="form-control" id="firstFramesGroup" name="groups">
+                                <c:forEach items="${frameGroups}" var="group">
+                                    <option value="${group.id}">${group.name}</option>
+                                </c:forEach>
+                            </select>
+
+                            <label>Frame</label>
+                            <form:select path="firstFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+
+                        </div>
+                        <div id="firstFramePopupClose">+</div>
+
+                    </div>
 
                     <div>Middle tile</div>
                     <div id="midTileName" class="elementName">Middle tile</div>
@@ -98,8 +115,25 @@
                         <div id="midTilePopupClose">+</div>
                     </div>
 
-                    <label>Second frame</label>
-                    <form:select path="secondFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+                    <div>Second frame</div>
+                    <div id="secondFrameName" class="elementName">Second Frame</div>
+                    <div id="secondFramePopup">
+
+                        <div class="select">
+                            <label>select group</label>
+                            <select class="form-control" id="secondFramesGroup" name="groups">
+                                <c:forEach items="${frameGroups}" var="group">
+                                    <option value="${group.id}">${group.name}</option>
+                                </c:forEach>
+                            </select>
+
+                            <label>Frame</label>
+                            <form:select path="secondFrame" items="${frames}" itemValue="id" itemLabel="name" class="form-control"/>
+
+                        </div>
+                        <div id="secondFramePopupClose">+</div>
+
+                    </div>
 
                     <div>Internal tile</div>
                     <div id="intTileName" class="elementName">Internal tile</div>

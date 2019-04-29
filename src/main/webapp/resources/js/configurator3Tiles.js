@@ -13,6 +13,10 @@ $(function(){
     updateName('intTileName','internalTile');
     updateName('exTileName', 'externalTile');
     updateName('midTileName', 'middleTile');
+    updateName('firstFrameName', 'firstFrame');
+    updateName('secondFrameName', 'secondFrame');
+    doAjaxGroupsFirstFrame();
+    doAjaxGroupsSecondFrame();
 
     var selectedExTile = document.getElementById('externalTile');
     selectedExTile.addEventListener("change", function(){
@@ -61,6 +65,18 @@ $(function(){
         midTilePopup.style.display='inline';
     });
 
+    var firstFrameName = document.getElementById('firstFrameName');
+    var firstFramePopup = document.getElementById('firstFramePopup');
+    firstFrameName.addEventListener("click", function(){
+        firstFramePopup.style.display='inline';
+    });
+
+    var secondFrameName = document.getElementById('secondFrameName');
+    var secondFramePopup = document.getElementById('secondFramePopup');
+    secondFrameName.addEventListener("click", function(){
+        secondFramePopup.style.display='inline';
+    });
+
     var name1 = document.getElementById('externalTile');
     exTileName.innerText = name1.options[name1.selectedIndex].text;
 
@@ -70,6 +86,12 @@ $(function(){
     var name3 = document.getElementById('middleTile');
     midTileName.innerText = name3.options[name3.selectedIndex].text;
 
+    var name4 = document.getElementById('firstFrame');
+    firstFrameName.innerText = name4.options[name4.selectedIndex].text;
+
+    var name5 = document.getElementById('firstFrame');
+    secondFrameName.innerText = name5.options[name5.selectedIndex].text;
+
     var tilesGroup = document.getElementById('tilesGroup');
     tilesGroup.addEventListener('change',doAjaxGroupTiles);
 
@@ -78,6 +100,12 @@ $(function(){
 
     var midTilesGroup = document.getElementById('midTilesGroup');
     midTilesGroup.addEventListener('change',doAjaxMidTilesGroup);
+
+    var firstFrameGroup = document.getElementById('firstFramesGroup');
+    firstFrameGroup.addEventListener('change',doAjaxGroupsFirstFrame);
+
+    var secondFrameGroup = document.getElementById('secondFramesGroup');
+    secondFrameGroup.addEventListener('change',doAjaxGroupsSecondFrame);
 
     var close = document.getElementById('close');
     close.addEventListener('click',function () {
@@ -97,6 +125,18 @@ $(function(){
         midTilePopup.style.display='none';
     });
 
+    var firstFramePopupClose = document.getElementById('firstFramePopupClose');
+    firstFramePopupClose.addEventListener('click',function () {
+        var firstFrameTilePopup = document.getElementById('firstFramePopup');
+        firstFrameTilePopup.style.display='none';
+    });
+
+    var secondFramePopupClose = document.getElementById('secondFramePopupClose');
+    secondFramePopupClose.addEventListener('click',function () {
+        var secondFrameTilePopup = document.getElementById('secondFramePopup');
+        secondFrameTilePopup.style.display='none';
+    });
+
 
 
     function changeDimensions() {
@@ -114,7 +154,6 @@ $(function(){
         glass.setAttribute('height',height.value / 6);
         textHeight.innerHTML = height.value + " [mm]";
         textWidth.innerHTML = width.value + " [mm]";
-
 
     }
 
@@ -353,6 +392,68 @@ $(function(){
                 option.innerText = result[j]['name'];
                 option.value = result[j]['id'];
                 middleTile.appendChild(option);
+            }
+
+
+        }).fail(function(xhr,status,err){
+        }).always(function(xhr,status){
+
+        });
+    }
+
+    function doAjaxGroupsFirstFrame(){
+
+
+        var id = document.getElementById('firstFramesGroup').value;
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:8080/frame/allByGroupId/"+id,
+            dataType: "json",
+        }).done(function(result) {
+
+            var firstFrames = document.getElementById('firstFrame');
+
+            for(var i = 0; i < firstFrames.options.length; i++){
+                firstFrames.options[i].style.display='none';
+            }
+
+            for(var j = 0; j < result.length; j++) {
+
+                var option = document.createElement("OPTION");
+                option.innerText = result[j]['name'];
+                option.value = result[j]['id'];
+                firstFrames.appendChild(option);
+            }
+
+
+        }).fail(function(xhr,status,err){
+        }).always(function(xhr,status){
+
+        });
+    }
+
+    function doAjaxGroupsSecondFrame(){
+
+
+        var id = document.getElementById('secondFramesGroup').value;
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:8080/frame/allByGroupId/"+id,
+            dataType: "json",
+        }).done(function(result) {
+
+            var secondFrames = document.getElementById('secondFrame');
+
+            for(var i = 0; i < secondFrames.options.length; i++){
+                secondFrames.options[i].style.display='none';
+            }
+
+            for(var j = 0; j < result.length; j++) {
+
+                var option = document.createElement("OPTION");
+                option.innerText = result[j]['name'];
+                option.value = result[j]['id'];
+                secondFrames.appendChild(option);
             }
 
 
