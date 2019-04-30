@@ -40,6 +40,7 @@ public class Glass3Tiles {
     private int width;
     private int height;
     private int deliveryTime;
+    private double weight;
 
     public Glass3Tiles() {
     }
@@ -618,5 +619,34 @@ public class Glass3Tiles {
 
     }
 
+    public void setWeight(){
 
+        double areaInM2 = (this.getWidth() * this.getHeight()) * 0.000001;
+
+        if(this.getExternalTile().getFoil() == null && this.getInternalTile().getFoil() == null
+                && this.getMiddleTile().getFoil() == null) {
+            this.weight = (this.getInternalTile().getThickness() + getExternalTile().getThickness()
+                    + getMiddleTile().getThickness()) * 2.5 * areaInM2;
+        }else
+            if(this.getExternalTile().getFoil() != null){
+                this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness()
+                        + getMiddleTile().getThickness() - this.getExternalTile().getFoil().getThickness())
+                        * 2.5 * areaInM2;
+            }
+            else
+                if(this.getMiddleTile().getFoil() != null){
+                    this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness()
+                            + getMiddleTile().getThickness() - this.getMiddleTile().getFoil().getThickness())
+                            * 2.5 * areaInM2;
+                }
+                else{
+                    this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness()
+                            + getMiddleTile().getThickness() - this.getInternalTile().getFoil().getThickness())
+                            * 2.5 * areaInM2;
+                }
+    }
+
+    public double getWeight() {
+        return weight;
+    }
 }

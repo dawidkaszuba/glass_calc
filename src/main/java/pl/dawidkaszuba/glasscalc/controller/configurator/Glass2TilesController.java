@@ -57,6 +57,7 @@ public class Glass2TilesController {
 
             glass2Tiles.setThickness();
             glass2Tiles.setName();
+            glass2Tiles.setWeight();
             glass2Tiles.getDeliveryTime();
             double price = getPrice(glass2Tiles);
             glass2Tiles.setPrice(price);
@@ -86,6 +87,7 @@ public class Glass2TilesController {
             glass2Tiles.setName();
             glass2Tiles.setThickness();
             glass2Tiles.getDeliveryTime();
+            glass2Tiles.setWeight();
             double price = getPrice(glass2Tiles);
             glass2Tiles.setPrice(price);
 

@@ -139,7 +139,7 @@
             </svg>
             <svg id="svgFrame" width="64" height="300" class="svg">
                 <rect id="glassFrame" width="64" height="300" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-                <rect id="frameBottom" y="260" width="160" height="40" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                <rect id="frameBottom" y="270" width="160" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0)"></rect>
             </svg>
             <svg id="svgCoatingInt" width="3" display="none" height="300" class="svg">
                 <rect id="coatingInt" width="3" height="300" style="fill:rgb(255,0,0)"></rect>

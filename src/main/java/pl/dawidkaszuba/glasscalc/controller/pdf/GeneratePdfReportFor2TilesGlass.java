@@ -25,7 +25,7 @@ public class GeneratePdfReportFor2TilesGlass {
                             + glass2Tiles.getWidth()+" mm</p>"+"<p><span style=\"font-weight: bold\">height: </span>"
                             + glass2Tiles.getWidth()+" mm</p></p>"+
                             "<p><span style=\"font-weight: bold\">Thickness: </span>" + glass2Tiles.getThickness()+" mm</p>"+
-                            "<p><span style=\"font-weight: bold\">Weight: </span>//todo kg</p>"+
+                            "<p><span style=\"font-weight: bold\">Weight: </span>"+glass2Tiles.getWeight()+"kg</p>"+
                             "<p><span style=\"font-weight: bold\">Delivery time: </span>" + glass2Tiles.getDeliveryTime()+"</p>"+
                             "<p style=\"text-decoration: underline; font-size: 30px\">Notes:</p>"+
                          "</div>";

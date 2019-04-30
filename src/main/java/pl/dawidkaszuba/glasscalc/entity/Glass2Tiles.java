@@ -31,6 +31,7 @@ public class Glass2Tiles {
     @OneToMany
     private List<Addition> additions;
     private int deliveryTime;
+    private double weight;
 
     public Glass2Tiles() {
 
@@ -187,8 +188,8 @@ public class Glass2Tiles {
     private double checkThicknessToCalculating(Tile tile){
 
         if(tile.getFoil() != null){
-            double thickness = tile.getFoil().getThickness() -
-                    tile.getFoil().getThickness();
+            double thickness = tile.getThickness() -
+                    tile.getFoil().getThickness() * tile.getQuantityOfFoils();
             return thickness * 0.63;
         }else{
             return tile.getThickness();
@@ -569,5 +570,24 @@ public class Glass2Tiles {
 
     }
 
+    public void setWeight(){
 
+        double areaInM2 = (this.getWidth() * this.getHeight()) * 0.000001;
+
+        if(this.getExternalTile().getFoil() == null && this.getInternalTile().getFoil() == null) {
+            this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness()) * 2.5 * areaInM2;
+        }else
+            if(this.getExternalTile().getFoil() != null){
+                this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness() -
+                        this.getExternalTile().getFoil().getThickness()) * 2.5 * areaInM2;
+
+        }else{
+                this.weight = (this.getInternalTile().getThickness() + getExternalTile().getThickness() -
+                        this.getInternalTile().getFoil().getThickness()) * 2.5 * areaInM2;
+            }
+    }
+
+    public double getWeight() {
+        return weight;
+    }
 }
