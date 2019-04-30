@@ -55,7 +55,7 @@
 <body style="background-color: lightblue">
 <div class="container">
     <jsp:include page="/WEB-INF/views/fragments/headerConfigurator.jsp"/>
-    <h1>two tiles glass</h1>
+    <h1>Glass - two tiles</h1>
     <div class="row"/>
 
         <div class="col-md-2">

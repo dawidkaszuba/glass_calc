@@ -54,7 +54,7 @@
 <body style="background-color: lightblue";>
 <div class="container">
     <jsp:include page="/WEB-INF/views/fragments/headerConfigurator.jsp"/>
-    <h1>three tiles glass</h1>
+    <h1>Glass - three tiles</h1>
         <div class="row"/>
             <div class="col-md-2">
                 <form:form method="post" modelAttribute="glass3" >

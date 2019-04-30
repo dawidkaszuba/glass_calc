@@ -27,7 +27,7 @@
         }
     </style>
 </head>
-<body>S
+<body>
 <div class="container">
     <h1>GlassCalc</h1>
 
