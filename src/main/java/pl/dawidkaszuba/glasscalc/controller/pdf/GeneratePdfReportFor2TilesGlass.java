@@ -8,7 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class GeneratePdfReport {
+public class GeneratePdfReportFor2TilesGlass {
 
     public static ByteArrayInputStream glass(Glass2Tiles glass2Tiles) {
 
