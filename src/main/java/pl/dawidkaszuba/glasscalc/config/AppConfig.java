@@ -80,11 +80,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         registry.addConverter(stringGlass2TileConverter());
         registry.addConverter(stringGasConverter());
         registry.addConverter(stringFrameGroupConverter());
+        registry.addConverter(stringRoleConverter());
 
     }
 
     @Bean
-    public StringTileGroupConverter stringTileGroupConverter(){
+    StringTileGroupConverter stringTileGroupConverter(){
         return new StringTileGroupConverter();
     }
 
@@ -121,5 +122,10 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     StringFrameGroupConverter stringFrameGroupConverter(){
         return new StringFrameGroupConverter();
+    }
+
+    @Bean
+    StringRoleConverter stringRoleConverter(){
+        return new StringRoleConverter();
     }
 }

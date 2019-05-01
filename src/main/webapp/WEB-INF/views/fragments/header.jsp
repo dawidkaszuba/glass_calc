@@ -104,11 +104,13 @@
             <li class="nav-item"><a class="nav-link text-dark active" href="/">Configurator</a></li>
             <li class="nav-item dropdown">
 
-                <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">user</a>
+                <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">admin</a>
 
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/logout">logout</a>
                     <a class="dropdown-item" href="#">settings</a>
+                    <a class="dropdown-item" href="/user/add">new user</a>
+                    <a class="dropdown-item" href="/user/list">users</a>
                 </div>
             </li>
         </ul>

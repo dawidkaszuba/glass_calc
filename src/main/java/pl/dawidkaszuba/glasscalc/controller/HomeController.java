@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-   // @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @GetMapping("/")
     public String home(){
         return "home/home";

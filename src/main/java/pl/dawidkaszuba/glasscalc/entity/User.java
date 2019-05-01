@@ -1,7 +1,11 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -10,12 +14,15 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Email
     private String email;
     private String password;
+    @NotBlank
     private String name;
     private String lastName;
     private int active;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @NotNull
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     public User() {

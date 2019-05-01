@@ -66,5 +66,7 @@ Insert into User(active,email,lastName,name,password) value(1,'admin@glasscalc.c
 Insert into User(active,email,lastName,name,password) value(1,'user@glasscalc.com','Kowalski','Jan','user');
 Insert into Role(role) value('ROLE_ADMIN');
 Insert into Role(role) value('ROLE_USER');
-Insert into User_Role(User_id, roles_id) value(1,1);
-Insert into User_Role(User_id, roles_id) value(2,2);
+INSERT INTO User_Role(user_id,roles_id) value(1,1);
+INSERT INTO User_Role(user_id,roles_id) value(2,2);
+INSERT INTO User_Role(user_id,roles_id) value(1,2);
+
