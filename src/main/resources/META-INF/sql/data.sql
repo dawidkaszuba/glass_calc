@@ -68,5 +68,5 @@ Insert into Role(role) value('ROLE_ADMIN');
 Insert into Role(role) value('ROLE_USER');
 INSERT INTO User_Role(user_id,roles_id) value(1,1);
 INSERT INTO User_Role(user_id,roles_id) value(2,2);
-INSERT INTO User_Role(user_id,roles_id) value(1,2);
+
 

@@ -28,22 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.customUserDetailsService = customUserDetailsService;
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService(){
-//        UserDetails user = User.withDefaultPasswordEncoder()
-//                .username("user")
-//                .password("user1")
-//                .roles("USER")
-//                .build();
-//
-//        UserDetails admin = User.withDefaultPasswordEncoder()
-//                .username("admin")
-//                .password("admin")
-//                .roles("ADMIN")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(user, admin);
-//    }
+    @Autowired
+    private CustomLoginSuccessHandler customLoginSuccessHandler;
+
 
     private final CustomUserDetailsService customUserDetailsService;
 
@@ -76,11 +63,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.httpBasic().and().authorizeRequests()
                 .antMatchers("/","/configurator2Tiles/**","/configurator3Tiles/**","/tile/**","/resources/**")
-                .access("hasAnyRole('USER','ADMIN')")
+                .hasAnyRole("ADMIN","USER")
                 .anyRequest()
-                .access("hasRole('ADMIN')")
+                .hasAnyRole("ADMIN")
+                .antMatchers("/login").permitAll()
                 .and()
-                .formLogin().permitAll()
+                .formLogin()
+                .successHandler(customLoginSuccessHandler)
+                .usernameParameter("email")
+                .passwordParameter("password")
                 .and()
                 .logout().permitAll()
                 .and()
