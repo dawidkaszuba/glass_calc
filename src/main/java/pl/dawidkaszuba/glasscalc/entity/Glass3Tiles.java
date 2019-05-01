@@ -624,27 +624,24 @@ public class Glass3Tiles {
 
         double areaInM2 = (this.getWidth() * this.getHeight()) * 0.000001;
 
-        if(this.getExternalTile().getFoil() == null && this.getInternalTile().getFoil() == null
-                && this.getMiddleTile().getFoil() == null) {
-            this.weight = (this.getInternalTile().getThickness() + getExternalTile().getThickness()
-                    + getMiddleTile().getThickness()) * 2.5 * areaInM2;
-        }else
-            if(this.getExternalTile().getFoil() != null){
-                this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness()
-                        + getMiddleTile().getThickness() - this.getExternalTile().getFoil().getThickness())
-                        * 2.5 * areaInM2;
-            }
-            else
-                if(this.getMiddleTile().getFoil() != null){
-                    this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness()
-                            + getMiddleTile().getThickness() - this.getMiddleTile().getFoil().getThickness())
+        double foilsThickness=0;
+
+
+        if(this.getExternalTile().getFoil() != null){
+           foilsThickness += (this.getExternalTile().getFoil().getThickness()) * this.getExternalTile().getQuantityOfFoils();
+        }
+        if(this.getInternalTile().getFoil() != null){
+            foilsThickness += (this.getInternalTile().getFoil().getThickness()) * this.getInternalTile().getQuantityOfFoils();
+        }
+        if(this.getMiddleTile().getFoil() != null){
+            foilsThickness += (this.getMiddleTile().getFoil().getThickness()) * this.getMiddleTile().getQuantityOfFoils();
+        }
+
+
+        this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness()
+                            + getMiddleTile().getThickness() - foilsThickness)
                             * 2.5 * areaInM2;
-                }
-                else{
-                    this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness()
-                            + getMiddleTile().getThickness() - this.getInternalTile().getFoil().getThickness())
-                            * 2.5 * areaInM2;
-                }
+
     }
 
     public double getWeight() {

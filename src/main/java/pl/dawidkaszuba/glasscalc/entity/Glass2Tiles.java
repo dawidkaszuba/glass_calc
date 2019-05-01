@@ -574,17 +574,20 @@ public class Glass2Tiles {
 
         double areaInM2 = (this.getWidth() * this.getHeight()) * 0.000001;
 
-        if(this.getExternalTile().getFoil() == null && this.getInternalTile().getFoil() == null) {
-            this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness()) * 2.5 * areaInM2;
-        }else
-            if(this.getExternalTile().getFoil() != null){
-                this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness() -
-                        this.getExternalTile().getFoil().getThickness()) * 2.5 * areaInM2;
+        double foilsThickness=0;
 
-        }else{
-                this.weight = (this.getInternalTile().getThickness() + getExternalTile().getThickness() -
-                        this.getInternalTile().getFoil().getThickness()) * 2.5 * areaInM2;
-            }
+
+        if(this.getExternalTile().getFoil() != null){
+            foilsThickness += (this.getExternalTile().getFoil().getThickness()) * this.getExternalTile().getQuantityOfFoils();
+        }
+        if(this.getInternalTile().getFoil() != null){
+            foilsThickness += (this.getInternalTile().getFoil().getThickness()) * this.getInternalTile().getQuantityOfFoils();
+        }
+
+
+        this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness() - foilsThickness)
+                * 2.5 * areaInM2;
+
     }
 
     public double getWeight() {
