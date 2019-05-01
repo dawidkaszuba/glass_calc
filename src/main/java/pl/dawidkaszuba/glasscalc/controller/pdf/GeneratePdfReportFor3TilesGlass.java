@@ -2,6 +2,7 @@ package pl.dawidkaszuba.glasscalc.controller.pdf;
 
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.itextpdf.text.Document;
+import pl.dawidkaszuba.glasscalc.entity.Foil;
 import pl.dawidkaszuba.glasscalc.entity.Glass3Tiles;
 
 import java.io.ByteArrayInputStream;
@@ -60,6 +61,13 @@ public class GeneratePdfReportFor3TilesGlass {
         String colorDependOfTempereIntTile;
         String colorDependOfTempereMidTile;
 
+        StringBuilder extFoil= new StringBuilder();
+        StringBuilder intFoil= new StringBuilder();
+        StringBuilder midFoil= new StringBuilder();
+        double extFoilPlaceToHtml= (glass3Tiles.getExternalTile().getThickness() *4)/2-2;
+        double intFoilPlaceToHtml= (glass3Tiles.getInternalTile().getThickness() *4)/2-2;
+        double midFoilPlaceToHtml= (glass3Tiles.getMiddleTile().getThickness() *4)/2-2;
+
 
 
         if(glass3Tiles.getExternalTile().getIsTempered()){
@@ -77,6 +85,47 @@ public class GeneratePdfReportFor3TilesGlass {
         }else{
             colorDependOfTempereMidTile = "fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)";
         }
+        if(glass3Tiles.getInternalTile().getFoil() != null){
+
+            for(int i = 0; i < glass3Tiles.getInternalTile().getQuantityOfFoils(); i++) {
+                double bbb = (3 * i);
+                String aaaa = String.valueOf(bbb + intFoilPlaceToHtml);
+
+
+                intFoil.append(" <rect width=\"3\" height=\"300\" x=\"")
+                        .append(aaaa)
+                        .append("\" ")
+                        .append("style=\"fill:rgb(0,255,0);stroke-width:1;stroke:rgb(0,0,0)\"></rect> ");
+            }
+        }
+        if(glass3Tiles.getExternalTile().getFoil() != null){
+
+            for(int i = 0; i < glass3Tiles.getExternalTile().getQuantityOfFoils(); i++) {
+                double bbb = (3 * i);
+                String aaaa = String.valueOf(bbb + extFoilPlaceToHtml);
+
+
+                extFoil.append(" <rect width=\"3\" height=\"300\" x=\"")
+                        .append(aaaa)
+                        .append("\" ")
+                        .append("style=\"fill:rgb(0,255,0);stroke-width:1;stroke:rgb(0,0,0)\"></rect> ");
+            }
+        }
+
+        if(glass3Tiles.getMiddleTile().getFoil() != null){
+
+            for(int i = 0; i < glass3Tiles.getMiddleTile().getQuantityOfFoils(); i++) {
+                double bbb = (3 * i);
+                String aaaa = String.valueOf(bbb + midFoilPlaceToHtml);
+
+
+                midFoil.append(" <rect width=\"3\" height=\"300\" x=\"")
+                        .append(aaaa)
+                        .append("\" ")
+                        .append("style=\"fill:rgb(0,255,0);stroke-width:1;stroke:rgb(0,0,0)\"></rect> ");
+            }
+        }
+
 
         try {
             HtmlConverter.convertToPdf(summary +
@@ -84,6 +133,7 @@ public class GeneratePdfReportFor3TilesGlass {
                                 "<svg width="+extThickness+ " height=\"300\" style=\"float:left\">" +
                                     "<rect width="+extThickness+" height=\"300\" " +
                                         "style="+colorDependOfTempereExtTile+"></rect>" +
+                                         extFoil+
                                 "</svg>"
                                 +firstCoating+
                                 "<svg width="+firstFrameThickness+" height=\"300\" style=\"float:left\">" +
@@ -95,6 +145,7 @@ public class GeneratePdfReportFor3TilesGlass {
                                 "<svg width="+midThickness+ " height=\"300\" style=\"float:left\">" +
                                     "<rect width="+midThickness+" height=\"300\" " +
                                         "style="+colorDependOfTempereMidTile+"></rect>" +
+                                        midFoil+
                                 "</svg>"
                                 +thirdCoating+
                                 "<svg width="+secondFrameThickness+" height=\"300\" style=\"float:left\">" +
@@ -107,6 +158,7 @@ public class GeneratePdfReportFor3TilesGlass {
                                 "<svg width="+intThickness+" height=\"300\" >" +
                                     "<rect width="+intThickness+" height=\"300\" " +
                                         "style="+colorDependOfTempereIntTile+"></rect>" +
+                                        intFoil +
                                 "</svg>" +
                             "</div>" +
                             "<div>" +

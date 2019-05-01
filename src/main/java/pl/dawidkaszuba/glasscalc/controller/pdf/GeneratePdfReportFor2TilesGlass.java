@@ -2,6 +2,7 @@ package pl.dawidkaszuba.glasscalc.controller.pdf;
 
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.itextpdf.text.Document;
+import pl.dawidkaszuba.glasscalc.entity.Foil;
 import pl.dawidkaszuba.glasscalc.entity.Glass2Tiles;
 
 import java.io.ByteArrayInputStream;
@@ -49,6 +50,10 @@ public class GeneratePdfReportFor2TilesGlass {
 
         String colorDependOfTempereExtTile;
         String colorDependOfTempereIntTile;
+        StringBuilder extFoil= new StringBuilder();
+        StringBuilder intFoil= new StringBuilder();
+        double extFoilPlaceToHtml= (glass2Tiles.getExternalTile().getThickness() *4)/2-2;
+        double intFoilPlaceToHtml= (glass2Tiles.getInternalTile().getThickness() *4)/2-2;
 
 
 
@@ -62,11 +67,39 @@ public class GeneratePdfReportFor2TilesGlass {
         }else{
             colorDependOfTempereIntTile = "fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)";
         }
+        if(glass2Tiles.getExternalTile().getFoil() != null){
+
+            for(int i = 0; i < glass2Tiles.getExternalTile().getQuantityOfFoils(); i++) {
+                double bbb = (3 * i);
+                String aaaa = String.valueOf(bbb + extFoilPlaceToHtml);
+
+
+                extFoil.append(" <rect width=\"3\" height=\"300\" x=\"")
+                        .append(aaaa)
+                        .append("\" ")
+                        .append("style=\"fill:rgb(0,255,0);stroke-width:1;stroke:rgb(0,0,0)\"></rect> ");
+            }
+        }
+
+        if(glass2Tiles.getInternalTile().getFoil() != null){
+
+            for(int i = 0; i < glass2Tiles.getInternalTile().getQuantityOfFoils(); i++) {
+                double bbb = (3 * i);
+                String aaaa = String.valueOf(bbb + intFoilPlaceToHtml);
+
+
+                intFoil.append(" <rect width=\"3\" height=\"300\" x=\"")
+                        .append(aaaa)
+                        .append("\" ")
+                        .append("style=\"fill:rgb(0,255,0);stroke-width:1;stroke:rgb(0,0,0)\"></rect> ");
+            }
+        }
 
         try {
             HtmlConverter.convertToPdf(summary + "<div><svg width="+extThickness+
                     " height=\"300\" style=\"float:left\">" +
                     "<rect width="+extThickness+" height=\"300\" style="+colorDependOfTempereExtTile+"></rect>" +
+                    extFoil+
                     "</svg>" +firstCoating+
                     "<svg width="+frameThickness+" height=\"300\" style=\"float:left\">" +
                     "<rect width="+frameThickness+" height=\"300\" style=\"fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)\"></rect>" +
@@ -74,6 +107,7 @@ public class GeneratePdfReportFor2TilesGlass {
                     "</svg>" +secondCoating+
                     "<svg width="+intThickness+" height=\"300\" >" +
                     "<rect width="+intThickness+" height=\"300\" style="+colorDependOfTempereIntTile+"></rect>" +
+                    intFoil+
                     "</svg></div>"
                     ,new com.itextpdf.kernel.pdf.PdfWriter(out));
         } catch (IOException e) {

@@ -226,11 +226,12 @@ public class Glass3Tiles {
         return minThicknessTile;
     }
 
+
     private double checkThicknessToCalculating(Tile tile){
 
         if(tile.getFoil() != null){
-            double thickness = tile.getFoil().getThickness() -
-                    tile.getFoil().getThickness();
+            double thickness = tile.getThickness() -
+                    tile.getFoil().getThickness() * tile.getQuantityOfFoils();
             return thickness * 0.63;
         }else{
             return tile.getThickness();
