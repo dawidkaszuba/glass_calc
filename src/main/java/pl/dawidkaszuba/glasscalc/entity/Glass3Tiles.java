@@ -99,7 +99,7 @@ public class Glass3Tiles {
 
     public void setName() {
         this.name = this.externalTile.getName() + " / " + this.firstFrame.getName() + " " + this.gas.getName()
-        + " / " + this.middleTile.getName() + " / " + this.secondFrame.getName() + " / " + this.gas.getName() + " / "
+        + " / " + this.middleTile.getName() + " / " + this.secondFrame.getName() + " " + this.gas.getName() + " / "
                 + this.internalTile.getName();
     }
 

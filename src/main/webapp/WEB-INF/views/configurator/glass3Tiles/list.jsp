@@ -52,7 +52,7 @@
                     <div><p><span>${glass.name}</span></p></div>
                 </div>
                 <div class="col-md-1">
-                    <div><p><span>${glass.price} zł/m2</span></p></div>
+                    <div><p><span>${glass.price} zł</span></p></div>
                 </div>
                 <div class="col-md-1">
                     <div><p><span>${glass.thickness} mm</span></p></div>

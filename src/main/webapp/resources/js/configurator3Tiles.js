@@ -194,6 +194,27 @@ $(function(){
                 exTile.setAttribute("style","fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)")
             }
 
+            $('#exTile').siblings().remove();
+
+            if(result.foil !==null){
+
+                for(var i = 0; i < result.quantityOfFoils; i++) {
+                    var foilThickness = i * 3;
+                    var foil = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                    foil.setAttribute("class", "extFoil");
+                    foil.setAttribute("width", "3");
+                    foil.setAttribute("height", "300");
+                    foil.setAttribute("style", "fill:rgb(127,255,0);stroke:rgb(0,0,0)");
+                    foil.setAttribute("x", (((result.thickness * 4) / 2) - 2)+foilThickness);
+                    svgExTile.appendChild(foil);
+                }
+            }else{
+                for(var l=0; l<$('.extFoil').size;l++) {
+                    this.remove();
+                }
+
+            }
+
         }).fail(function(xhr,status,err){
         }).always(function(xhr,status){
 
@@ -225,6 +246,27 @@ $(function(){
                 midTile.setAttribute("style","fill:rgb(0,0,102);stroke-width:3;stroke:rgb(0,0,0)")
             }else{
                 midTile.setAttribute("style","fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)")
+            }
+
+            $('#midTile').siblings().remove();
+
+            if(result.foil !==null){
+
+                for(var i = 0; i < result.quantityOfFoils; i++) {
+                    var foilThickness = i * 3;
+                    var foil = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                    foil.setAttribute("class", "midFoil");
+                    foil.setAttribute("width", "3");
+                    foil.setAttribute("height", "300");
+                    foil.setAttribute("style", "fill:rgb(127,255,0);stroke:rgb(0,0,0)");
+                    foil.setAttribute("x", (((result.thickness * 4) / 2) - 2)+foilThickness);
+                    svgMidTile.appendChild(foil);
+                }
+            }else{
+                for(var l=0; l<$('.midFoil').size;l++) {
+                    this.remove();
+                }
+
             }
 
         }).fail(function(xhr,status,err){
@@ -259,6 +301,26 @@ $(function(){
                 intTile.setAttribute("style","fill:rgb(0,0,102);stroke-width:3;stroke:rgb(0,0,0)")
             }else{
                 intTile.setAttribute("style","fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)")
+            }
+            $('#intTile').siblings().remove();
+
+            if(result.foil !==null){
+
+                for(var i = 0; i < result.quantityOfFoils; i++) {
+                    var foilThickness = i * 3;
+                    var foil = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                    foil.setAttribute("class", "intFoil");
+                    foil.setAttribute("width", "3");
+                    foil.setAttribute("height", "300");
+                    foil.setAttribute("style", "fill:rgb(127,255,0);stroke:rgb(0,0,0)");
+                    foil.setAttribute("x", (((result.thickness * 4) / 2) - 2)+foilThickness);
+                    svgintTile.appendChild(foil);
+                }
+            }else{
+                for(var l=0; l<$('.intFoil').size;l++) {
+                    this.remove();
+                }
+
             }
 
         }).fail(function(xhr,status,err){
