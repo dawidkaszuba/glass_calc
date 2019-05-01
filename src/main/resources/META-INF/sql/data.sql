@@ -61,3 +61,10 @@ INSERT  INTO StandardPrice3TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL - 
 INSERT INTO Addition(name, price, methodToCalculatePrice,deliveryTime) VALUES('HST 3mm',8,'BY_AREA',10);
 INSERT INTO Addition(name, price, methodToCalculatePrice,deliveryTime) VALUES('HST 4mm',12,'BY_AREA',10);
 INSERT INTO Addition(name, price, methodToCalculatePrice,deliveryTime) VALUES('Altimeter',26,'BY_PIECE',10);
+
+Insert into User(active,email,lastName,name,password) value(1,'admin@glasscalc.com','Kaszuba','Dawid','admin');
+Insert into User(active,email,lastName,name,password) value(1,'user@glasscalc.com','Kowalski','Jan','user');
+Insert into Role(role) value('ROLE_ADMIN');
+Insert into Role(role) value('ROLE_USER');
+Insert into User_Role(User_id, roles_id) value(1,1);
+Insert into User_Role(User_id, roles_id) value(2,2);
