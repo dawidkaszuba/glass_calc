@@ -41,10 +41,33 @@
 <body>
 <div class="container">
     <h1>GlassCalc</h1>
-
-        <div class="row">
-            <div class="col-md-6"><a href="/configurator2Tiles/add"><img border="0" alt="two tiles glass" src="<c:url value="/resources/images/2tiles.jpg"/>" width="200" height="200"></a></div>
-            <div class="col-md-6"><a href="/configurator3Tiles/add"><img border="0" alt="two tiles glass" src="<c:url value="/resources/images/3tiles.jpg"/>" width="200" height="200"></a></div>
+      <div class="row">
+            <div class="col-md-6">
+                <a href="/configurator2Tiles/add">
+                    <svg width="120" height="300" class="svg">
+                        <rect width="20" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect width="80" height="300" x="21" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect y="275" width="80" height="25" x="21" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect width="20" height="300" x="101" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect width="3" height="300" x="101" style="fill:rgb(255,0,0)"></rect>
+                    </svg>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="/configurator3Tiles/add">
+                    <svg width="220" height="300" class="svg">
+                        <rect width="20" height="300" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect width="4" height="300" x="16" style="fill:rgb(255,0,0)"></rect>
+                        <rect width="80" height="300" x="20" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect y="275" width="80" height="25" x="21" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect width="20" height="300" x="101" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect width="80" height="300" x="121" style="fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect y="275" width="80" height="25" x="121" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect width="20" height="300" x="200" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                        <rect width="3" height="300" x="200" style="fill:rgb(255,0,0)"></rect>
+                    </svg>
+                </a>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-6"><a href="/configurator2Tiles/list"><div class="menuButton"><span>My two-tiles glass</span></div></a></div>
