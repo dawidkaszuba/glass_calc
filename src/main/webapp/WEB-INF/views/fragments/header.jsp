@@ -111,6 +111,7 @@
                     <a class="dropdown-item" href="#">settings</a>
                     <a class="dropdown-item" href="/user/add">new user</a>
                     <a class="dropdown-item" href="/user/list">users</a>
+                    <a class="dropdown-item" href="/mail/compose">newsletter</a>
                 </div>
             </li>
         </ul>
