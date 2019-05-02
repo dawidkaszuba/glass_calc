@@ -24,9 +24,11 @@ public class GeneratePdfReportFor3TilesGlass {
                     "<p><span style=\"font-weight: bold\">Price: </span>" + glass3Tiles.getPrice()+" zł</p>"+
                     "<p><span style=\"font-weight: bold\">Dimension:</span> <p><span style=\"font-weight: bold\">width: </span> "
                     + glass3Tiles.getWidth()+" mm</p>"+"<p><span style=\"font-weight: bold\">height: </span>"
-                    + glass3Tiles.getWidth()+" mm</p></p>"+
+                    + glass3Tiles.getHeight()+" mm</p></p>"+
                     "<p><span style=\"font-weight: bold\">Thickness: </span>" + glass3Tiles.getThickness()+" mm</p>"+
-                    "<p><span style=\"font-weight: bold\">Weight: </span>"+glass3Tiles.getWeight()+"kg</p>"+
+                    "<p><span style=\"font-weight: bold\">Weight: </span>"+glass3Tiles.getWeight()+" kg</p>"+
+                    "<p><span style=\"font-weight: bold\">Area: </span>"+(glass3Tiles.getWidth()
+                    * glass3Tiles.getHeight())*0.000001+" m<sup>2</sup></p>"+
                     "<p><span style=\"font-weight: bold\">Delivery time: </span>" + glass3Tiles.getDeliveryTime()+"</p>"+
                 "</div>";
 

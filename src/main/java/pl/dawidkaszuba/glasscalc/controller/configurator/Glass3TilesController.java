@@ -16,24 +16,27 @@ import java.util.List;
 @RequestMapping("/configurator3Tiles")
 public class Glass3TilesController {
 
-    @Autowired
-    private FrameRepository frameRepository;
+    private final FrameRepository frameRepository;
+
+    private final TileRepository tileRepository;
+
+    private final GasRepository gasRepository;
+
+    private final TileGroupRepository tileGroupRepository;
+
+    private final FrameGroupRepository frameGroupRepository;
+
+    private final Glass3TilesService glass3TilesService;
 
     @Autowired
-    private TileRepository tileRepository;
-
-
-    @Autowired
-    private GasRepository gasRepository;
-
-    @Autowired
-    private TileGroupRepository tileGroupRepository;
-
-    @Autowired
-    private FrameGroupRepository frameGroupRepository;
-
-    @Autowired
-    private Glass3TilesService glass3TilesService;
+    public Glass3TilesController(FrameRepository frameRepository, TileRepository tileRepository, GasRepository gasRepository, TileGroupRepository tileGroupRepository, FrameGroupRepository frameGroupRepository, Glass3TilesService glass3TilesService) {
+        this.frameRepository = frameRepository;
+        this.tileRepository = tileRepository;
+        this.gasRepository = gasRepository;
+        this.tileGroupRepository = tileGroupRepository;
+        this.frameGroupRepository = frameGroupRepository;
+        this.glass3TilesService = glass3TilesService;
+    }
 
     @GetMapping("/add")
     public String addGlass3TilesForm(Model model) {
