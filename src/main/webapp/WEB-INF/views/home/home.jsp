@@ -25,6 +25,7 @@
         }
         body{
             background-color:#1fc8db;
+            background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
             text-align: center;
             margin:auto;
             color:#f3f3f3;

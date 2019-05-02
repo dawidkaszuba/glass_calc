@@ -7,6 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.dawidkaszuba.glasscalc.entity.*;
 import pl.dawidkaszuba.glasscalc.repository.*;
+import pl.dawidkaszuba.glasscalc.service.Glass2TilesService;
+import pl.dawidkaszuba.glasscalc.service.Glass2TilesServiceImpl;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -15,28 +17,28 @@ import java.util.List;
 @RequestMapping("/configurator2Tiles")
 public class Glass2TilesController {
 
-    @Autowired
-    private FrameRepository frameRepository;
+    private final FrameRepository frameRepository;
+
+    private final TileRepository tileRepository;
+
+    private final GasRepository gasRepository;
+
+
+    private final TileGroupRepository tileGroupRepository;
+
+    private final FrameGroupRepository frameGroupRepository;
+
+    private Glass2TilesService glass2TilesService;
 
     @Autowired
-    private TileRepository tileRepository;
-
-    @Autowired
-    private Glass2TilesRepository glass2TilesRepository;
-
-    @Autowired
-    BasePrice2TileRepository basePrice2TileRepository;
-
-    @Autowired
-    private GasRepository gasRepository;
-
-    @Autowired
-    private StandardPrice2TilesGlassRepository standardPrice2TilesGlassRepository;
-
-    @Autowired
-    private TileGroupRepository tileGroupRepository;
-
-    @Autowired FrameGroupRepository frameGroupRepository;
+    public Glass2TilesController(FrameRepository frameRepository, TileRepository tileRepository, Glass2TilesRepository glass2TilesRepository, GasRepository gasRepository, TileGroupRepository tileGroupRepository, FrameGroupRepository frameGroupRepository, Glass2TilesServiceImpl glass2TilesService) {
+        this.frameRepository = frameRepository;
+        this.tileRepository = tileRepository;
+        this.gasRepository = gasRepository;
+        this.tileGroupRepository = tileGroupRepository;
+        this.frameGroupRepository = frameGroupRepository;
+        this.glass2TilesService = glass2TilesService;
+    }
 
     @GetMapping("/add")
     public String addGlass2TilesForm(Model model){
@@ -54,14 +56,8 @@ public class Glass2TilesController {
 
         }else if(glass2Tiles.checkIsCorrect().size()==0){
 
+            glass2TilesService.save(glass2Tiles);
 
-            glass2Tiles.setThickness();
-            glass2Tiles.setName();
-            glass2Tiles.setWeight();
-            glass2Tiles.getDeliveryTime();
-            double price = getPrice(glass2Tiles);
-            glass2Tiles.setPrice(price);
-            this.glass2TilesRepository.save(glass2Tiles);
             return "redirect:/configurator2Tiles/list";
 
         }else{
@@ -74,7 +70,7 @@ public class Glass2TilesController {
 
     @GetMapping("/edit/{id}")
     public String editGlass2Tiles(@PathVariable Long id, Model model){
-        model.addAttribute("glass2",this.glass2TilesRepository.findOne(id));
+        model.addAttribute("glass2",this.glass2TilesService.findById(id));
         return "configurator/glass2Tiles/edit";
     }
 
@@ -84,18 +80,12 @@ public class Glass2TilesController {
             return "redirect:/configurator2Tiles/edit/" + glass2Tiles.getId();
         }else if(glass2Tiles.checkIsCorrect().size()==0){
 
-            glass2Tiles.setName();
-            glass2Tiles.setThickness();
-            glass2Tiles.getDeliveryTime();
-            glass2Tiles.setWeight();
-            double price = getPrice(glass2Tiles);
-            glass2Tiles.setPrice(price);
+            this.glass2TilesService.save(glass2Tiles);
 
-            this.glass2TilesRepository.save(glass2Tiles);
             return "redirect:/configurator2Tiles/list";
         }else{
             model.addAttribute("errors",glass2Tiles.checkIsCorrect());
-            model.addAttribute("glass2", this.glass2TilesRepository.findOne(glass2Tiles.getId()));
+            model.addAttribute("glass2", this.glass2TilesService.findById(glass2Tiles.getId()));
             return "configurator/glass2Tiles/edit";
         }
 
@@ -103,53 +93,16 @@ public class Glass2TilesController {
 
     @GetMapping("/list")
     public String findAllGlass2Tiles(Model model){
-        model.addAttribute("glasses2", this.glass2TilesRepository.findAll());
+        model.addAttribute("glasses2", this.glass2TilesService.findAll());
         return "configurator/glass2Tiles/list";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteGlass2Tiles(@PathVariable Long id){
-        this.glass2TilesRepository.delete(id);
+        this.glass2TilesService.delete(id);
         return "redirect:/configurator2Tiles/list";
     }
 
-
-    private double getPrice(Glass2Tiles glass2Tiles){
-
-        if((glass2Tiles.getExternalTile().getPrice() + glass2Tiles.getInternalTile().getPrice() +
-                glass2Tiles.getGas().getPrice()) == 0) {
-            if(! glass2Tiles.checkIfAreaLowerThen04()) {
-
-                return ((this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
-                        + glass2Tiles.getFrame().getPrice()) / 1000000
-                        * (glass2Tiles.getWidth() * glass2Tiles.getHeight()))
-                        * glass2Tiles.getHowIncreasePriceDependOnDimensions();
-            }else {
-
-                return (this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
-                        + glass2Tiles.getFrame().getPrice()) * 0.4;
-
-                }
-            }else{
-
-            if(! glass2Tiles.checkIfAreaLowerThen04()) {
-
-                return ((basePrice2TileRepository.findOne(1L).getValue() + glass2Tiles.getFrame().getPrice() +
-                        glass2Tiles.getExternalTile().getPrice()
-                        + glass2Tiles.getInternalTile().getPrice() + glass2Tiles.getGas().getPrice())
-                        / 1000000 * (glass2Tiles.getWidth() * glass2Tiles.getHeight()))
-                        * glass2Tiles.getHowIncreasePriceDependOnDimensions();
-            }else {
-
-                return (basePrice2TileRepository.findOne(1L).getValue() + glass2Tiles.getFrame().getPrice() +
-                        glass2Tiles.getExternalTile().getPrice()
-                        + glass2Tiles.getInternalTile().getPrice() + glass2Tiles.getGas().getPrice()) * 0.4;
-
-            }
-        }
-
-
-    }
 
     @ModelAttribute("frames")
     public List<Frame> findAllFrame(){
