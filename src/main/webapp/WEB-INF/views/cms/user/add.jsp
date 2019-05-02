@@ -25,10 +25,9 @@
             <form:input path="lastName" type="text" class="form-control"/>
             <label>email</label>
             <form:input path="email" type="text" min="0" step="0.01" class="form-control"/>
-            <label>email</label>
             <form:input path="active" type="hidden" value="1" class="form-control"/>
             <label>password</label>
-            <form:input path="password" type="text" class="form-control"/>
+            <form:input path="password" type="password" class="form-control"/>
             <label>roles</label>
             <form:select path="roles" items="${roles}" itemValue="id" itemLabel="role" class="form-control"/>
             <input type="submit" value="Save">

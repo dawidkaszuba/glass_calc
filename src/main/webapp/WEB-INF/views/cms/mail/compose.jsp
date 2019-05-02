@@ -11,6 +11,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+        #progressbar{
+            display: none;
+            position: fixed;
+            left:35%;
+            top:85%;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body class="bg-dark text-light">
 <div class="container">
@@ -28,13 +37,46 @@
                 </option>
             </select>
             <label>subject</label>
-            <input type="text" name="sub" class="form-control">
+            <input type="text" name="sub" value="GlassCalc newsletter" class="form-control">
             <label>message</label>
             <textarea name="message" cols="30" rows="10" class="form-control"></textarea>
-            <input type="submit" value="Send" class="form-control">
+            <input id ="submit" type="submit" value="Send">
         </form>
+        <div id="progressbar">
+
+            <svg width="500" height="20">
+                <rect width="500" height="20" style="fill:#343a40!important;"></rect>
+                <rect id="progres" width="0" height="20" style="fill:rgb(0,0,255); stroke-width:1; stroke:rgb(0,0,0)"></rect>
+            </svg>
+
+        </div>
 
     </div>
+
+    <script>
+        var i=1;
+        var progres = document.getElementById('progres');
+        var progressbar = document.getElementById('progressbar');
+
+        function myLoop () {
+            setTimeout(function () {
+                progres.setAttribute("width",i);;
+                i++;
+                if (i < 501) {
+                    myLoop();
+                }
+            }, 1)
+        }
+
+        var submit = document.getElementById('submit');
+        submit.addEventListener("click", function(){
+            progressbar.style.display='inline'
+            myLoop();
+
+
+        })
+
+    </script>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

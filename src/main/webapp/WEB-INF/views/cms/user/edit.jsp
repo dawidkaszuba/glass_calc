@@ -27,7 +27,7 @@
             <form:input path="email" type="hidden" value="${user.email}" class="form-control"/>
             <form:input path="active" type="hidden" value="1" class="form-control"/>
             <label>password</label>
-            <form:input path="password" type="text" class="form-control"/>
+            <form:input path="password" type="password" class="form-control"/>
             <label>roles</label>
             <form:select path="roles" items="${roles}" itemValue="id" itemLabel="role" class="form-control"/>
             <input type="submit" value="Save">

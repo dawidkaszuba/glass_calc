@@ -101,17 +101,16 @@
                     <a class="dropdown-item" href="/standardPrice3/show">std price for 3-tile</a>
                 </div>
             </li>
-            <li class="nav-item"><a class="nav-link text-dark active" href="/">Configurator</a></li>
             <li class="nav-item dropdown">
 
                 <a class="nav-link text-dark dropdown-toggle" href="#" data-toggle="dropdown" role="button">admin</a>
 
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/logout">logout</a>
-                    <a class="dropdown-item" href="#">settings</a>
+                    <a class="dropdown-item" href="/">go to configurator</a>
                     <a class="dropdown-item" href="/user/add">new user</a>
                     <a class="dropdown-item" href="/user/list">users</a>
                     <a class="dropdown-item" href="/mail/compose">newsletter</a>
+                    <a class="dropdown-item" href="/logout">logout -> [X]</a>
                 </div>
             </li>
         </ul>
