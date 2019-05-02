@@ -13,17 +13,27 @@
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <style>
         .menuButton{
-            background-color: yellowgreen;
+            background-color: dodgerblue;
             border: 1px solid black;
+            margin: auto;
             margin-top: 10px;
-            margin-bottom: 10px;
-            margin-right: 10px;
-            margin-left: 10px;
-            height: 50px;
+            height: 120px;
+            width: 180px;
             border-radius: 10px;
+            color: black;
+
         }
         body{
-            background-color: lightblue;
+            background-color:#1fc8db;
+            text-align: center;
+            margin:auto;
+            color:#f3f3f3;
+            font-size:30px;
+            font-weight:550;
+            padding-top:105px;;
+        }
+        h1{
+            font-size:100px;
         }
     </style>
 </head>
@@ -36,8 +46,8 @@
             <div class="col-md-6"><a href="/configurator3Tiles/add"><img border="0" alt="two tiles glass" src="<c:url value="/resources/images/3tiles.jpg"/>" width="200" height="200"></a></div>
         </div>
         <div class="row">
-            <div class="col-md-6"><a href="/configurator2Tiles/list"><div class="menuButton"><span>My 2-tiles glass</span></div></a></div>
-            <div class="col-md-6"><a href="/configurator3Tiles/list"><div class="menuButton"><span>My 3-tiles glass</span></div></a></div>
+            <div class="col-md-6"><a href="/configurator2Tiles/list"><div class="menuButton"><span>My two-tiles glass</span></div></a></div>
+            <div class="col-md-6"><a href="/configurator3Tiles/list"><div class="menuButton"><span>My three-tiles glass</span></div></a></div>
         </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
