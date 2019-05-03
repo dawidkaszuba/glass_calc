@@ -1,6 +1,7 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,7 +12,10 @@ public class FrameGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
     private String name;
+
     @JsonIgnore
     @OneToMany(mappedBy = "group")
     private List<Frame> frames;

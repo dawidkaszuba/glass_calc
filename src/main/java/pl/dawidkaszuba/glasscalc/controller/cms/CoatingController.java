@@ -18,8 +18,12 @@ import javax.validation.Valid;
 public class CoatingController {
 
 
+    private final CoatingRepository coatingRepository;
+
     @Autowired
-    private CoatingRepository coatingRepository;
+    public CoatingController(CoatingRepository coatingRepository) {
+        this.coatingRepository = coatingRepository;
+    }
 
     @GetMapping("/add")
     public String addCoatingForm(Model model){

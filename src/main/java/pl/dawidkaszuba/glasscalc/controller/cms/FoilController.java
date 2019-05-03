@@ -17,8 +17,12 @@ import javax.validation.Valid;
 @RequestMapping("/foil")
 public class FoilController {
 
+    private final FoilRepository foilRepository;
+
     @Autowired
-    private FoilRepository foilRepository;
+    public FoilController(FoilRepository foilRepository) {
+        this.foilRepository = foilRepository;
+    }
 
     @GetMapping("/add")
     public String addFoilForm(Model model){

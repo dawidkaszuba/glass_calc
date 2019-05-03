@@ -2,7 +2,6 @@ package pl.dawidkaszuba.glasscalc.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.data.jpa.repository.JpaRepository;
 import pl.dawidkaszuba.glasscalc.entity.Gas;
 import pl.dawidkaszuba.glasscalc.repository.GasRepository;
 

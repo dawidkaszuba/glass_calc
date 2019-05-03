@@ -1,17 +1,21 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class TileGroup {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
     private String name;
+
     @JsonIgnore
     @OneToMany(mappedBy = "group")
     private List<Tile> tiles;

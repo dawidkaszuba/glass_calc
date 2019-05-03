@@ -2,7 +2,6 @@ package pl.dawidkaszuba.glasscalc.controller.pdf;
 
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.itextpdf.text.Document;
-import pl.dawidkaszuba.glasscalc.entity.Foil;
 import pl.dawidkaszuba.glasscalc.entity.Glass3Tiles;
 
 import java.io.ByteArrayInputStream;

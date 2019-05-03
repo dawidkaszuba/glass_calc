@@ -1,9 +1,12 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Gas {
@@ -11,8 +14,13 @@ public class Gas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
     private String name;
+
     private double price;
+
+    @Min(1)
     private int deliveryTime;
 
     public Gas() {

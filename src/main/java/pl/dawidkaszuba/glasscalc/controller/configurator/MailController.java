@@ -7,8 +7,6 @@ import pl.dawidkaszuba.glasscalc.entity.User;
 import pl.dawidkaszuba.glasscalc.mail.Mail;
 import pl.dawidkaszuba.glasscalc.repository.UserRepository;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller

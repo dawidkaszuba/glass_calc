@@ -1,6 +1,10 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Addition {
@@ -9,9 +13,13 @@ public class Addition {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String name;
 
+    @NotNull
     private double price;
+
+    @Min(1)
     private int deliveryTime;
 
     @Enumerated(EnumType.STRING)

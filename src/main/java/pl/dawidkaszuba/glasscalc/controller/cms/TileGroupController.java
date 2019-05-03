@@ -17,8 +17,12 @@ import javax.validation.Valid;
 @RequestMapping("/tileGroup")
 public class TileGroupController {
 
+    private final TileGroupRepository tileGroupRepository;
+
     @Autowired
-    private TileGroupRepository tileGroupRepository;
+    public TileGroupController(TileGroupRepository tileGroupRepository) {
+        this.tileGroupRepository = tileGroupRepository;
+    }
 
     @GetMapping("/add")
     public String addTileGroupForm(Model model){

@@ -1,5 +1,7 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,7 +11,10 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
     private String role;
+
     @ManyToMany(mappedBy = "roles")
     private List<User> user;
 

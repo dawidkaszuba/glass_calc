@@ -3,6 +3,7 @@ package pl.dawidkaszuba.glasscalc.entity;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Tile {
@@ -10,18 +11,28 @@ public class Tile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank
     private String name;
+
     private double thickness;
+
     private boolean isTempered;
+
     @ManyToOne
     private Coating coating;
+
     @ManyToOne
     private TileGroup group;
+
     private double price;
+
     private int quantityOfFoils;
+
     @ManyToOne
     private Foil foil;
+
+    @Min(1)
     private int deliveryTime;
 
 

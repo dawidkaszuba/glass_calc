@@ -38,8 +38,11 @@ public class Glass3Tiles {
     private double thickness;
 
     private int width;
+
     private int height;
+
     private int deliveryTime;
+
     private double weight;
 
     public Glass3Tiles() {

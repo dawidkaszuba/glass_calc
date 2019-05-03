@@ -17,8 +17,12 @@ import javax.validation.Valid;
 @RequestMapping("/basePrice2Tile")
 public class BasePrice2TileController {
 
+    private final BasePrice2TileRepository basePrice2TileRepository;
+
     @Autowired
-    private BasePrice2TileRepository basePrice2TileRepository;
+    public BasePrice2TileController(BasePrice2TileRepository basePrice2TileRepository) {
+        this.basePrice2TileRepository = basePrice2TileRepository;
+    }
 
 
     @GetMapping("/show")

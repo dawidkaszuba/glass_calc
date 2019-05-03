@@ -7,8 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.dawidkaszuba.glasscalc.entity.Coating;
 import pl.dawidkaszuba.glasscalc.entity.Foil;
-import pl.dawidkaszuba.glasscalc.entity.TileGroup;
 import pl.dawidkaszuba.glasscalc.entity.Tile;
+import pl.dawidkaszuba.glasscalc.entity.TileGroup;
 import pl.dawidkaszuba.glasscalc.repository.CoatingRepository;
 import pl.dawidkaszuba.glasscalc.repository.FoilRepository;
 import pl.dawidkaszuba.glasscalc.repository.TileGroupRepository;
@@ -21,17 +21,21 @@ import java.util.List;
 @RequestMapping("/tile")
 public class TileController {
 
-    @Autowired
-    private TileGroupRepository tileGroupRepository;
+    private final TileGroupRepository tileGroupRepository;
+
+    private final TileRepository tileRepository;
+
+    private final CoatingRepository coatingRepository;
+
+    private final FoilRepository foilRepository;
 
     @Autowired
-    private TileRepository tileRepository;
-
-    @Autowired
-    private CoatingRepository coatingRepository;
-
-    @Autowired
-    private FoilRepository foilRepository;
+    public TileController(TileGroupRepository tileGroupRepository, TileRepository tileRepository, CoatingRepository coatingRepository, FoilRepository foilRepository) {
+        this.tileGroupRepository = tileGroupRepository;
+        this.tileRepository = tileRepository;
+        this.coatingRepository = coatingRepository;
+        this.foilRepository = foilRepository;
+    }
 
     @GetMapping("/add")
     public String addTailForm(Model model){

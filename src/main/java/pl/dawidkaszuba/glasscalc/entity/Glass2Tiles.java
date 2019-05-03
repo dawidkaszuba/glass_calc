@@ -13,24 +13,36 @@ public class Glass2Tiles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     private Tile externalTile;
+
     @ManyToOne
     private Frame frame;
+
     @ManyToOne
     private Tile internalTile;
+
     private double price;
+
     private String name;
+
     @ManyToOne
     private Gas gas;
+
     private double thickness;
+
     @NotNull
     private int width;
+
     @NotNull
     private int height;
+
     @OneToMany
     private List<Addition> additions;
+
     private int deliveryTime;
+
     private double weight;
 
     public Glass2Tiles() {

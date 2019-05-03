@@ -1,12 +1,10 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
-import org.springframework.beans.factory.annotation.Configurable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
 
 @Entity
 public class StandardPrice2TilesGlass {
@@ -14,8 +12,10 @@ public class StandardPrice2TilesGlass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
-    @NotNull
+
+    @Min(1)
     private double value;
 
     public StandardPrice2TilesGlass() {

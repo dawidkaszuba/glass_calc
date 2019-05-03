@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 @Entity
 public class StandardPrice3TilesGlass {
@@ -11,7 +12,10 @@ public class StandardPrice3TilesGlass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
+    @Min(1)
     private double value;
 
     public StandardPrice3TilesGlass() {

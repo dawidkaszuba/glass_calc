@@ -17,8 +17,12 @@ import javax.validation.Valid;
 @RequestMapping("/gas")
 public class GasController {
 
+    private final GasRepository gasRepository;
+
     @Autowired
-    private GasRepository gasRepository;
+    public GasController(GasRepository gasRepository) {
+        this.gasRepository = gasRepository;
+    }
 
     @GetMapping("add")
     public String addGasForm(Model model){

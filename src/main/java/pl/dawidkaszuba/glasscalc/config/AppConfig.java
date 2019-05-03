@@ -18,7 +18,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import pl.dawidkaszuba.glasscalc.converter.*;
-import pl.dawidkaszuba.glasscalc.service.CustomUserDetailsService;
 
 import javax.persistence.EntityManagerFactory;
 import java.util.Locale;

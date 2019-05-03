@@ -4,19 +4,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.dawidkaszuba.glasscalc.entity.FrameGroup;
 import pl.dawidkaszuba.glasscalc.repository.FrameGroupRepository;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/frameGroup")
 public class FrameGroupController {
 
+    private final FrameGroupRepository frameGroupRepository;
+
     @Autowired
-    private FrameGroupRepository frameGroupRepository;
+    public FrameGroupController(FrameGroupRepository frameGroupRepository) {
+        this.frameGroupRepository = frameGroupRepository;
+    }
 
     @GetMapping("/add")
     public String addFrameGroupForm(Model model){

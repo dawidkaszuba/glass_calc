@@ -1,22 +1,31 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 @Entity
 public class Coating {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
     private String name;
+
+    @Min(0)
     private double value;
+
     @JsonIgnore
     @OneToMany
     private List<Tile> tiles;
+
     private boolean lowEmisly;
+
     private int deliveryTime;
 
 

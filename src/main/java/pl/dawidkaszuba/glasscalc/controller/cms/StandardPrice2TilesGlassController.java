@@ -17,8 +17,12 @@ import javax.validation.Valid;
 @RequestMapping("/standardPrice2")
 public class StandardPrice2TilesGlassController {
 
+    private final StandardPrice2TilesGlassRepository standardPrice2TilesGlassRepository;
+
     @Autowired
-    private StandardPrice2TilesGlassRepository standardPrice2TilesGlassRepository;
+    public StandardPrice2TilesGlassController(StandardPrice2TilesGlassRepository standardPrice2TilesGlassRepository) {
+        this.standardPrice2TilesGlassRepository = standardPrice2TilesGlassRepository;
+    }
 
     @GetMapping("/show")
     public String showPrice(Model model){
