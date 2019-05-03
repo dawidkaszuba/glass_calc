@@ -8,12 +8,15 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 @Component
 public class Mail {
 
-    public void send(String from,String password,String to,String sub,String msg){
+    public void send(String from, String password, List<String> to, String sub, String msg){
+
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -32,7 +35,12 @@ public class Mail {
 
         try {
             MimeMessage message = new MimeMessage(session);
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
+
+            for (String recipient : to) {
+
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+
+            }
             message.setSubject(sub);
             message.setText(msg);
 

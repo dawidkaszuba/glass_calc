@@ -62,8 +62,9 @@ INSERT INTO Addition(name, price, methodToCalculatePrice,deliveryTime) VALUES('H
 INSERT INTO Addition(name, price, methodToCalculatePrice,deliveryTime) VALUES('HST 4mm',12,'BY_AREA',10);
 INSERT INTO Addition(name, price, methodToCalculatePrice,deliveryTime) VALUES('Altimeter',26,'BY_PIECE',10);
 
-Insert into User(active,email,lastName,name,password) value(1,'admin@glasscalc.com','Kaszuba','Dawid','admin');
+Insert into User(active,email,lastName,name,password) value(1,'glasscalc24@gmail.com','Kaszuba','Dawid','admin');
 Insert into User(active,email,lastName,name,password) value(1,'user@glasscalc.com','Kowalski','Jan','user');
+Insert into User(active,email,lastName,name,password) value(1,'d.kaszuba89@gmail.com','Kaszuba','Dawid','user');
 Insert into Role(role) value('ROLE_ADMIN');
 Insert into Role(role) value('ROLE_USER');
 INSERT INTO User_Role(user_id,roles_id) value(1,1);

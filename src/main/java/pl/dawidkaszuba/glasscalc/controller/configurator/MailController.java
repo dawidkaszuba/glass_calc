@@ -31,7 +31,7 @@ public class MailController {
     }
 
     @PostMapping("/send")
-    public String sendMail(@RequestParam String mailTo, @RequestParam String sub, @RequestParam String message) {
+    public String sendMail(@RequestParam List<String> mailTo, @RequestParam String sub, @RequestParam String message) {
         this.mail.send("glasscalc24@gmail.com","glassCalc123",mailTo, sub, message);
         return "success";
     }

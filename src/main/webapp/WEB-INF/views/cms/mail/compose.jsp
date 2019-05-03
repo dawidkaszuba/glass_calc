@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Send mail</title>
+    <title>Compose</title>
     <!-- Bootstrap CSS -->
     <meta charset="utf-8">
     <meta lang="pl">
@@ -24,34 +24,40 @@
 <body class="bg-dark text-light">
 <div class="container">
     <jsp:include page="/WEB-INF/views/fragments/header.jsp"/>
-    <h1>compose new mail</h1>
-    <div class="row">
+    <h1>compose</h1>
 
         <form method="post" action="/mail/send">
-            <label>recipient/s</label>
-            <select class="form-control" name="mailTo">
-                <option class="form-control">
-                    <c:forEach items="${recipients}" var="recipient">
-                        <option value="${recipient.email}">${recipient.name} ${recipient.lastName}: ${recipient.email}</option>
-                    </c:forEach>
-                </option>
-            </select>
-            <label>subject</label>
-            <input type="text" name="sub" value="GlassCalc newsletter" class="form-control">
-            <label>message</label>
-            <textarea name="message" cols="30" rows="10" class="form-control"></textarea>
-            <input id ="submit" type="submit" value="Send">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>recipient/s</label>
+                    <select class="form-control" name="mailTo" multiple>
+                        <c:forEach items="${recipients}" var="recipient">
+                            <option  class="form-control" value="${recipient.email}">
+                                    ${recipient.name} ${recipient.lastName}: ${recipient.email}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label>subject</label>
+                    <input type="text" name="sub" value="GlassCalc newsletter" class="form-control">
+                    <label>message</label>
+                    <textarea name="message" cols="30" rows="10" class="form-control"></textarea>
+                    <input id ="submit" type="submit" value="Send">
+                </div>
+            </div>
         </form>
-        <div id="progressbar">
+        <div class="row">
+            <div id="progressbar">
 
-            <svg width="500" height="20">
-                <rect width="500" height="20" style="fill:#343a40!important;"></rect>
-                <rect id="progres" width="0" height="20" style="fill:rgb(0,0,255); stroke-width:1; stroke:rgb(0,0,0)"></rect>
-            </svg>
+                <svg width="500" height="20">
+                    <rect width="500" height="20" style="fill:#343a40!important;"></rect>
+                    <rect id="progres" width="0" height="20" style="fill:rgb(0,0,255); stroke-width:1; stroke:rgb(0,0,0)"></rect>
+                </svg>
 
+            </div>
         </div>
 
-    </div>
+
 
     <script>
         var i=1;

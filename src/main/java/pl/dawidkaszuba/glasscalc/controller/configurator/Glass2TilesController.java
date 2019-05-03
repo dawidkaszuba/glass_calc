@@ -31,7 +31,7 @@ public class Glass2TilesController {
     private Glass2TilesService glass2TilesService;
 
     @Autowired
-    public Glass2TilesController(FrameRepository frameRepository, TileRepository tileRepository, Glass2TilesRepository glass2TilesRepository, GasRepository gasRepository, TileGroupRepository tileGroupRepository, FrameGroupRepository frameGroupRepository, Glass2TilesServiceImpl glass2TilesService) {
+    public Glass2TilesController(FrameRepository frameRepository, TileRepository tileRepository, GasRepository gasRepository, TileGroupRepository tileGroupRepository, FrameGroupRepository frameGroupRepository, Glass2TilesServiceImpl glass2TilesService) {
         this.frameRepository = frameRepository;
         this.tileRepository = tileRepository;
         this.gasRepository = gasRepository;
