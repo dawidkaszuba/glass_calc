@@ -43,6 +43,7 @@ INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('33.1 Th 1.1',0,49,1,6.38,2,1,7,5);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('33.1 Fl',0,45,1,6.38,1,1,7,5);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('44.2 Fl',0,92,2,8.76,1,1,7,10);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('44.6 Fl',0,249,6,10.28,1,1,7,15);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('4 Fl',0,0,0,4,1,null,1,5);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('8 Fl',0,42,0,8,1,null,1,5);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('12 Fl',0,128,0,12,1,null,1,10);
@@ -69,5 +70,6 @@ Insert into Role(role) value('ROLE_ADMIN');
 Insert into Role(role) value('ROLE_USER');
 INSERT INTO User_Role(user_id,roles_id) value(1,1);
 INSERT INTO User_Role(user_id,roles_id) value(2,2);
+INSERT INTO User_Role(user_id,roles_id) value(3,2);
 
 

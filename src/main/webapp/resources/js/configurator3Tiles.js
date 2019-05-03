@@ -199,13 +199,12 @@ $(function(){
             if(result.foil !==null){
 
                 for(var i = 0; i < result.quantityOfFoils; i++) {
-                    var foilThickness = i * 3;
                     var foil = document.createElementNS("http://www.w3.org/2000/svg", "rect");
                     foil.setAttribute("class", "extFoil");
                     foil.setAttribute("width", "3");
                     foil.setAttribute("height", "300");
                     foil.setAttribute("style", "fill:rgb(127,255,0);stroke:rgb(0,0,0)");
-                    foil.setAttribute("x", (((result.thickness * 4) / 2) - 2)+foilThickness);
+                    foil.setAttribute("x", (((result.thickness * 4) / 2) - (result.quantityOfFoils*1.5 - i*3)));
                     svgExTile.appendChild(foil);
                 }
             }else{
@@ -253,13 +252,12 @@ $(function(){
             if(result.foil !==null){
 
                 for(var i = 0; i < result.quantityOfFoils; i++) {
-                    var foilThickness = i * 3;
                     var foil = document.createElementNS("http://www.w3.org/2000/svg", "rect");
                     foil.setAttribute("class", "midFoil");
                     foil.setAttribute("width", "3");
                     foil.setAttribute("height", "300");
                     foil.setAttribute("style", "fill:rgb(127,255,0);stroke:rgb(0,0,0)");
-                    foil.setAttribute("x", (((result.thickness * 4) / 2) - 2)+foilThickness);
+                    foil.setAttribute("x", (((result.thickness * 4) / 2) - (result.quantityOfFoils*1.5 - i*3)));
                     svgMidTile.appendChild(foil);
                 }
             }else{
@@ -307,13 +305,12 @@ $(function(){
             if(result.foil !==null){
 
                 for(var i = 0; i < result.quantityOfFoils; i++) {
-                    var foilThickness = i * 3;
                     var foil = document.createElementNS("http://www.w3.org/2000/svg", "rect");
                     foil.setAttribute("class", "intFoil");
                     foil.setAttribute("width", "3");
                     foil.setAttribute("height", "300");
                     foil.setAttribute("style", "fill:rgb(127,255,0);stroke:rgb(0,0,0)");
-                    foil.setAttribute("x", (((result.thickness * 4) / 2) - 2)+foilThickness);
+                    foil.setAttribute("x", (((result.thickness * 4) / 2) - (result.quantityOfFoils*1.5 - i*3)));
                     svgintTile.appendChild(foil);
                 }
             }else{
