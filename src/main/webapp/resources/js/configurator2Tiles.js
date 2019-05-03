@@ -243,7 +243,7 @@ $(function(){
                     foil.setAttribute("width", "3");
                     foil.setAttribute("height", "300");
                     foil.setAttribute("style", "fill:rgb(127,255,0);stroke:rgb(0,0,0)");
-                    foil.setAttribute("x", (((result.thickness * 4) / 2) - (result.quantityOfFoils*1.5 - j*3)));
+                    foil.setAttribute("x", (((result.thickness * 4) / 2) - (result.quantityOfFoils*1.5 - i*3)));
                     svgExTile.appendChild(foil);
                 }
             }else{

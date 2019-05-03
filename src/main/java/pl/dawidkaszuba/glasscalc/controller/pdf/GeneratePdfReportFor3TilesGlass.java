@@ -90,12 +90,13 @@ public class GeneratePdfReportFor3TilesGlass {
         if(glass3Tiles.getInternalTile().getFoil() != null){
 
             for(int i = 0; i < glass3Tiles.getInternalTile().getQuantityOfFoils(); i++) {
-                double bbb = (3 * i);
-                String aaaa = String.valueOf(bbb + intFoilPlaceToHtml);
+
+                String x = String.valueOf((glass3Tiles.getInternalTile().getThickness() * 4 / 2) -
+                        (glass3Tiles.getInternalTile().getQuantityOfFoils() * 1.5 - i * 3));
 
 
                 intFoil.append(" <rect width=\"3\" height=\"300\" x=\"")
-                        .append(aaaa)
+                        .append(x)
                         .append("\" ")
                         .append("style=\"fill:rgb(0,255,0);stroke-width:1;stroke:rgb(0,0,0)\"></rect> ");
             }
@@ -103,12 +104,13 @@ public class GeneratePdfReportFor3TilesGlass {
         if(glass3Tiles.getExternalTile().getFoil() != null){
 
             for(int i = 0; i < glass3Tiles.getExternalTile().getQuantityOfFoils(); i++) {
-                double bbb = (3 * i);
-                String aaaa = String.valueOf(bbb + extFoilPlaceToHtml);
+
+                String x = String.valueOf((glass3Tiles.getExternalTile().getThickness() * 4 / 2) -
+                        (glass3Tiles.getExternalTile().getQuantityOfFoils() * 1.5 - i * 3));
 
 
                 extFoil.append(" <rect width=\"3\" height=\"300\" x=\"")
-                        .append(aaaa)
+                        .append(x)
                         .append("\" ")
                         .append("style=\"fill:rgb(0,255,0);stroke-width:1;stroke:rgb(0,0,0)\"></rect> ");
             }
@@ -117,12 +119,13 @@ public class GeneratePdfReportFor3TilesGlass {
         if(glass3Tiles.getMiddleTile().getFoil() != null){
 
             for(int i = 0; i < glass3Tiles.getMiddleTile().getQuantityOfFoils(); i++) {
-                double bbb = (3 * i);
-                String aaaa = String.valueOf(bbb + midFoilPlaceToHtml);
+
+                String x = String.valueOf((glass3Tiles.getMiddleTile().getThickness() * 4 / 2) -
+                        (glass3Tiles.getMiddleTile().getQuantityOfFoils() * 1.5 - i * 3));
 
 
                 midFoil.append(" <rect width=\"3\" height=\"300\" x=\"")
-                        .append(aaaa)
+                        .append(x)
                         .append("\" ")
                         .append("style=\"fill:rgb(0,255,0);stroke-width:1;stroke:rgb(0,0,0)\"></rect> ");
             }

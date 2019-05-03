@@ -18,33 +18,34 @@ public class GeneratePdfReportFor2TilesGlass {
         document.open();
 
         String summary = "<h1>Summary</h1>" +
-                         "<div style=\"margin-right:40px; float:left\">"+
-                            "<p style=\"font-weight: bold\">Specification:</p>" +
-                            "<p>"+glass2Tiles.getName()+"</p>"+
-                            "<p><span style=\"font-weight: bold\">Price: </span>" + glass2Tiles.getPrice()+" zł</p>"+
-                            "<p><span style=\"font-weight: bold\">Dimension:</span> <p><span style=\"font-weight: bold\">width: </span> "
-                            + glass2Tiles.getWidth()+" mm</p>"+"<p><span style=\"font-weight: bold\">height: </span>"
-                            + glass2Tiles.getHeight()+" mm</p></p>"+
-                            "<p><span style=\"font-weight: bold\">Thickness: </span>" + glass2Tiles.getThickness()+" mm</p>"+
-                            "<p><span style=\"font-weight: bold\">Weight: </span>"+glass2Tiles.getWeight()+" kg</p>"+
-                            "<p><span style=\"font-weight: bold\">Area: </span>"+(glass2Tiles.getWidth()
-                            * glass2Tiles.getHeight())*0.000001+" m<sup>2</sup></p>"+
-                            "<p><span style=\"font-weight: bold\">Delivery time: </span>" + glass2Tiles.getDeliveryTime()+"</p>"+
-                            "<p style=\"text-decoration: underline; font-size: 30px\">Notes:</p>"+
-                         "</div>";
+                "<div style=\"margin-right:40px; float:left\">" +
+                "<p style=\"font-weight: bold\">Specification:</p>" +
+                "<p>" + glass2Tiles.getName() + "</p>" +
+                "<p><span style=\"font-weight: bold\">Price: </span>" + glass2Tiles.getPrice() + " zł</p>" +
+                "<p><span style=\"font-weight: bold\">Dimension:</span> <p><span style=\"font-weight: bold\">width: </span> "
+                + glass2Tiles.getWidth() + " mm</p>" + "<p><span style=\"font-weight: bold\">height: </span>"
+                + glass2Tiles.getHeight() + " mm</p></p>" +
+                "<p><span style=\"font-weight: bold\">Thickness: </span>" + glass2Tiles.getThickness() + " mm</p>" +
+                "<p><span style=\"font-weight: bold\">Weight: </span>" + glass2Tiles.getWeight() + " kg</p>" +
+                "<p><span style=\"font-weight: bold\">Area: </span>" + (glass2Tiles.getWidth()
+                * glass2Tiles.getHeight()) * 0.000001 + " m<sup>2</sup></p>" +
+                "<p><span style=\"font-weight: bold\">Delivery time: </span>" + glass2Tiles.getDeliveryTime() + "</p>" +
+                "<p style=\"text-decoration: underline; font-size: 30px\">Notes:</p>" +
+                "</div>";
 
-        String extThickness = String.valueOf(glass2Tiles.getExternalTile().getThickness()*4);
-        String intThickness = String.valueOf(glass2Tiles.getInternalTile().getThickness()*4);
-        String frameThickness = String.valueOf(glass2Tiles.getFrame().getThickness()*4);
+        String extThickness = String.valueOf(glass2Tiles.getExternalTile().getThickness() * 4);
+        String intThickness = String.valueOf(glass2Tiles.getInternalTile().getThickness() * 4);
+        String frameThickness = String.valueOf(glass2Tiles.getFrame().getThickness() * 4);
 
         String firstCoating = "";
         String secondCoating = "";
 
-        if(glass2Tiles.getExternalTile().getCoating().getLowEmisly()){
+        if (glass2Tiles.getExternalTile().getCoating().getLowEmisly()) {
             firstCoating = "<svg width=\"3\" height=\"300\" style=\"float:left\">" +
                     "<rect  width=\"3\" height=\"300\" style=\"fill:rgb(255,0,0)\"></rect>" +
                     "</svg>";
-        }if(glass2Tiles.getInternalTile().getCoating().getLowEmisly()){
+        }
+        if (glass2Tiles.getInternalTile().getCoating().getLowEmisly()) {
             secondCoating = "<svg width=\"3\" height=\"300\" style=\"float:left\">" +
                     "<rect  width=\"3\" height=\"300\" style=\"fill:rgb(255,0,0)\"></rect>" +
                     "</svg>";
@@ -52,46 +53,46 @@ public class GeneratePdfReportFor2TilesGlass {
 
         String colorDependOfTempereExtTile;
         String colorDependOfTempereIntTile;
-        StringBuilder extFoil= new StringBuilder();
-        StringBuilder intFoil= new StringBuilder();
-        double extFoilPlaceToHtml= (glass2Tiles.getExternalTile().getThickness() *4)/2-2;
-        double intFoilPlaceToHtml= (glass2Tiles.getInternalTile().getThickness() *4)/2-2;
+        StringBuilder extFoil = new StringBuilder();
+        StringBuilder intFoil = new StringBuilder();
 
 
-
-        if(glass2Tiles.getExternalTile().getIsTempered()){
+        if (glass2Tiles.getExternalTile().getIsTempered()) {
             colorDependOfTempereExtTile = "fill:rgb(0,0,102);stroke-width:3;stroke:rgb(0,0,0)";
-        }else{
+        } else {
             colorDependOfTempereExtTile = "fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)";
         }
-        if(glass2Tiles.getInternalTile().getIsTempered()){
+        if (glass2Tiles.getInternalTile().getIsTempered()) {
             colorDependOfTempereIntTile = "fill:rgb(0,0,102);stroke-width:3;stroke:rgb(0,0,0)";
-        }else{
+        } else {
             colorDependOfTempereIntTile = "fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)";
         }
-        if(glass2Tiles.getExternalTile().getFoil() != null){
+        if (glass2Tiles.getExternalTile().getFoil() != null) {
 
-            for(int i = 0; i < glass2Tiles.getExternalTile().getQuantityOfFoils(); i++) {
-                double bbb = (3 * i);
-                String aaaa = String.valueOf(bbb + extFoilPlaceToHtml);
+        for (int j = 0; j < glass2Tiles.getExternalTile().getQuantityOfFoils(); j++) {
+
+            String x = String.valueOf((glass2Tiles.getExternalTile().getThickness() * 4 / 2) -
+                    (glass2Tiles.getExternalTile().getQuantityOfFoils() * 1.5 - j * 3));
 
 
-                extFoil.append(" <rect width=\"3\" height=\"300\" x=\"")
-                        .append(aaaa)
-                        .append("\" ")
-                        .append("style=\"fill:rgb(0,255,0);stroke-width:1;stroke:rgb(0,0,0)\"></rect> ");
-            }
+            extFoil.append(" <rect width=\"3\" height=\"300\" x=\"")
+                    .append(x)
+                    .append("\" ")
+                    .append("style=\"fill:rgb(0,255,0);stroke-width:1;stroke:rgb(0,0,0)\"></rect> ");
+
         }
+    }
 
         if(glass2Tiles.getInternalTile().getFoil() != null){
 
             for(int i = 0; i < glass2Tiles.getInternalTile().getQuantityOfFoils(); i++) {
-                double bbb = (3 * i);
-                String aaaa = String.valueOf(bbb + intFoilPlaceToHtml);
+
+                String x = String.valueOf((glass2Tiles.getInternalTile().getThickness() * 4 / 2) -
+                        (glass2Tiles.getInternalTile().getQuantityOfFoils() * 1.5 - i * 3));
 
 
                 intFoil.append(" <rect width=\"3\" height=\"300\" x=\"")
-                        .append(aaaa)
+                        .append(x)
                         .append("\" ")
                         .append("style=\"fill:rgb(0,255,0);stroke-width:1;stroke:rgb(0,0,0)\"></rect> ");
             }
