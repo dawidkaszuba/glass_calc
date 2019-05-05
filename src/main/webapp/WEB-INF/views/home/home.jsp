@@ -70,8 +70,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6"><a href="/configurator2Tiles/list"><div class="menuButton"><span>My two-tiles glass</span></div></a></div>
-            <div class="col-md-6"><a href="/configurator3Tiles/list"><div class="menuButton"><span>My three-tiles glass</span></div></a></div>
+            <div class="col-md-6"><a href="/configurator2Tiles/allByUserId"><div class="menuButton"><span>My two-tiles glass</span></div></a></div>
+            <div class="col-md-6"><a href="/configurator3Tiles/allByUserId"><div class="menuButton"><span>My three-tiles glass</span></div></a></div>
         </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

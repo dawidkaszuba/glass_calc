@@ -46,6 +46,9 @@ public class Glass3Tiles {
 
     private double weight;
 
+    @ManyToOne
+    private User user;
+
     public Glass3Tiles() {
     }
 
@@ -148,6 +151,13 @@ public class Glass3Tiles {
         this.height = height;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public List<ErrorGlass> checkIsCorrect() {
 

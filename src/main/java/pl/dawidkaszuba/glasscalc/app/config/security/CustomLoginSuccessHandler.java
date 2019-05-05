@@ -1,4 +1,4 @@
-package pl.dawidkaszuba.glasscalc.config;
+package pl.dawidkaszuba.glasscalc.app.config.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;

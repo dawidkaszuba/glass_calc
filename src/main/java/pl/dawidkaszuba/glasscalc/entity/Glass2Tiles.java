@@ -46,6 +46,9 @@ public class Glass2Tiles {
 
     private double weight;
 
+    @ManyToOne
+    private User user;
+
     public Glass2Tiles() {
 
     }
@@ -139,6 +142,14 @@ public class Glass2Tiles {
 
     public void setAdditions(List<Addition> additions) {
         this.additions = additions;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<ErrorGlass> checkIsCorrect() {

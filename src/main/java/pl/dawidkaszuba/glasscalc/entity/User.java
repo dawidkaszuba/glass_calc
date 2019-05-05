@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,6 +32,12 @@ public class User {
     @NotEmpty
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
+
+    @OneToMany(mappedBy = "user")
+    private List<Glass2Tiles> glass2TilesList;
+
+    @OneToMany(mappedBy = "user")
+    private List<Glass3Tiles> glass3TilesList;
 
     public User() {
     }
@@ -100,5 +107,21 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Glass2Tiles> getGlass2TilesList() {
+        return glass2TilesList;
+    }
+
+    public void setGlass2TilesList(List<Glass2Tiles> glass2TilesList) {
+        this.glass2TilesList = glass2TilesList;
+    }
+
+    public List<Glass3Tiles> getGlass3TilesList() {
+        return glass3TilesList;
+    }
+
+    public void setGlass3TilesList(List<Glass3Tiles> glass3TilesList) {
+        this.glass3TilesList = glass3TilesList;
     }
 }

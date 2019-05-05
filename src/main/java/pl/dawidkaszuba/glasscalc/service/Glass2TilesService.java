@@ -11,6 +11,7 @@ public interface Glass2TilesService {
     Glass2Tiles findById(Long id);
     double getPrice(Glass2Tiles glass2Tiles);
     void delete(Long id);
+    List<Glass2Tiles> findAllByUserId();
 
 
 

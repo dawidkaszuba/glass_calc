@@ -1,6 +1,7 @@
 package pl.dawidkaszuba.glasscalc.controller.configurator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -58,7 +59,7 @@ public class Glass2TilesController {
 
             glass2TilesService.save(glass2Tiles);
 
-            return "redirect:/configurator2Tiles/list";
+            return "redirect:/configurator2Tiles/allByUserId";
 
         }else{
 
@@ -82,7 +83,7 @@ public class Glass2TilesController {
 
             this.glass2TilesService.save(glass2Tiles);
 
-            return "redirect:/configurator2Tiles/list";
+            return "redirect:/configurator2Tiles/allByUserId";
         }else{
             model.addAttribute("errors",glass2Tiles.checkIsCorrect());
             model.addAttribute("glass2", this.glass2TilesService.findById(glass2Tiles.getId()));
@@ -94,6 +95,12 @@ public class Glass2TilesController {
     @GetMapping("/list")
     public String findAllGlass2Tiles(Model model){
         model.addAttribute("glasses2", this.glass2TilesService.findAll());
+        return "configurator/glass2Tiles/list";
+    }
+
+    @GetMapping("/allByUserId")
+    public String findAllByUserId(Model model){
+        model.addAttribute("glasses2", this.glass2TilesService.findAllByUserId());
         return "configurator/glass2Tiles/list";
     }
 

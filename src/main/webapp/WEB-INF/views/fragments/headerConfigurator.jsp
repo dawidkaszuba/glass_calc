@@ -17,7 +17,7 @@
 
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/configurator2Tiles/add">new two tiles glass</a>
-                    <a class="dropdown-item" href="/configurator2Tiles/list">my two tiles glass</a>
+                    <a class="dropdown-item" href="/configurator2Tiles/allByUserId">my two tiles glass</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -26,7 +26,7 @@
 
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/configurator3Tiles/add">new three tiles glass</a>
-                    <a class="dropdown-item" href="/configurator3Tiles/list">my three tiles glass</a>
+                    <a class="dropdown-item" href="/configurator3Tiles/allByUserId">my three tiles glass</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

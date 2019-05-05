@@ -1,4 +1,4 @@
-package pl.dawidkaszuba.glasscalc.config;
+package pl.dawidkaszuba.glasscalc.app.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import pl.dawidkaszuba.glasscalc.service.CustomUserDetailsService;
 
 @EnableWebSecurity
 @Configuration

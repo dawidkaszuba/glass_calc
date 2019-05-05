@@ -1,8 +1,11 @@
 package pl.dawidkaszuba.glasscalc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import pl.dawidkaszuba.glasscalc.entity.Glass2Tiles;
+import pl.dawidkaszuba.glasscalc.entity.User;
+import pl.dawidkaszuba.glasscalc.app.config.security.AuthenticationFacade;
 import pl.dawidkaszuba.glasscalc.repository.BasePrice2TileRepository;
 import pl.dawidkaszuba.glasscalc.repository.Glass2TilesRepository;
 import pl.dawidkaszuba.glasscalc.repository.StandardPrice2TilesGlassRepository;
@@ -18,13 +21,29 @@ public class Glass2TilesServiceImpl implements Glass2TilesService {
     private final StandardPrice2TilesGlassRepository standardPrice2TilesGlassRepository;
 
     private final BasePrice2TileRepository basePrice2TileRepository;
+    private final AuthenticationFacade authenticationFacade;
+
 
     @Autowired
-    public Glass2TilesServiceImpl(Glass2TilesRepository glass2TilesRepository, StandardPrice2TilesGlassRepository standardPrice2TilesGlassRepository, BasePrice2TileRepository basePrice2TileRepository) {
+    public Glass2TilesServiceImpl(Glass2TilesRepository glass2TilesRepository,
+                                  StandardPrice2TilesGlassRepository standardPrice2TilesGlassRepository,
+                                  BasePrice2TileRepository basePrice2TileRepository,
+                                  AuthenticationFacade authenticationFacade) {
         this.glass2TilesRepository = glass2TilesRepository;
         this.standardPrice2TilesGlassRepository = standardPrice2TilesGlassRepository;
         this.basePrice2TileRepository = basePrice2TileRepository;
+        this.authenticationFacade = authenticationFacade;
+
     }
+
+    @Override
+    public List<Glass2Tiles> findAllByUserId() {
+        Authentication authentication = authenticationFacade.getAuthentication();
+        User user = (User) authentication.getPrincipal();
+
+        return this.glass2TilesRepository.findAllByUserId(user.getId());
+    }
+
     @Override
     public void save(Glass2Tiles glass2Tiles){
 
@@ -32,6 +51,9 @@ public class Glass2TilesServiceImpl implements Glass2TilesService {
         glass2Tiles.setName();
         glass2Tiles.setWeight();
         glass2Tiles.getDeliveryTime();
+        Authentication authentication = authenticationFacade.getAuthentication();
+        User user = (User) authentication.getPrincipal();
+        glass2Tiles.setUser(user);
         String price = String.format(Locale.ROOT,"%.2f%n",getPrice(glass2Tiles));
         glass2Tiles.setPrice(Double.parseDouble(price));
         this.glass2TilesRepository.save(glass2Tiles);

@@ -10,4 +10,5 @@ public interface Glass3TilesService {
     List<Glass3Tiles> findAll();
     Glass3Tiles findById(Long id);
     double getPrice(Glass3Tiles glass3Tiles);
+    List<Glass3Tiles> findAllByUserId();
 }

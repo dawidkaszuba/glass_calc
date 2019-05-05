@@ -1,5 +1,6 @@
 package pl.dawidkaszuba.glasscalc.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -14,8 +15,8 @@ public class Role {
 
     @NotBlank
     private String role;
-
-    @ManyToMany(mappedBy = "roles")
+    @JsonIgnore
+    @ManyToMany(mappedBy = "roles",fetch = FetchType.EAGER)
     private List<User> user;
 
 
