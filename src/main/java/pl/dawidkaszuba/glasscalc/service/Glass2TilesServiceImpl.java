@@ -8,6 +8,7 @@ import pl.dawidkaszuba.glasscalc.repository.Glass2TilesRepository;
 import pl.dawidkaszuba.glasscalc.repository.StandardPrice2TilesGlassRepository;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class Glass2TilesServiceImpl implements Glass2TilesService {
@@ -31,7 +32,8 @@ public class Glass2TilesServiceImpl implements Glass2TilesService {
         glass2Tiles.setName();
         glass2Tiles.setWeight();
         glass2Tiles.getDeliveryTime();
-        glass2Tiles.setPrice(getPrice(glass2Tiles));
+        String price = String.format(Locale.ROOT,"%.2f%n",getPrice(glass2Tiles));
+        glass2Tiles.setPrice(Double.parseDouble(price));
         this.glass2TilesRepository.save(glass2Tiles);
 
     }

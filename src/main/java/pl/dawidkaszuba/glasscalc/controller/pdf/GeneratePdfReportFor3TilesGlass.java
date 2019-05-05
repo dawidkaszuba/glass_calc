@@ -7,6 +7,7 @@ import pl.dawidkaszuba.glasscalc.entity.Glass3Tiles;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Locale;
 
 public class GeneratePdfReportFor3TilesGlass {
 
@@ -15,6 +16,15 @@ public class GeneratePdfReportFor3TilesGlass {
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         document.open();
+
+        String area = String.format(Locale.ROOT,"%.2f%n",(glass3Tiles.getHeight() * glass3Tiles.getWidth()) * 0.000001);
+
+        String deliveryTimeUnit;
+        if(glass3Tiles.getDeliveryTime() > 1) {
+            deliveryTimeUnit = " days";
+        }else{
+            deliveryTimeUnit=" day";
+        }
 
         String summary = "<h1>Summary</h1>" +
                 "<div>"+
@@ -26,9 +36,8 @@ public class GeneratePdfReportFor3TilesGlass {
                     + glass3Tiles.getHeight()+" mm</p></p>"+
                     "<p><span style=\"font-weight: bold\">Thickness: </span>" + glass3Tiles.getThickness()+" mm</p>"+
                     "<p><span style=\"font-weight: bold\">Weight: </span>"+glass3Tiles.getWeight()+" kg</p>"+
-                    "<p><span style=\"font-weight: bold\">Area: </span>"+(glass3Tiles.getWidth()
-                    * glass3Tiles.getHeight())*0.000001+" m<sup>2</sup></p>"+
-                    "<p><span style=\"font-weight: bold\">Delivery time: </span>" + glass3Tiles.getDeliveryTime()+"</p>"+
+                    "<p><span style=\"font-weight: bold\">Area: </span>"+area+" m<sup>2</sup></p>"+
+                    "<p><span style=\"font-weight: bold\">Delivery time: </span>" + glass3Tiles.getDeliveryTime()+ deliveryTimeUnit + "</p>"+
                 "</div>";
 
         String extThickness = String.valueOf(glass3Tiles.getExternalTile().getThickness()*4);

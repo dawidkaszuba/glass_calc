@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 public class Glass2Tiles {
@@ -597,12 +598,16 @@ public class Glass2Tiles {
         }
 
 
-        this.weight =  (this.getInternalTile().getThickness() + getExternalTile().getThickness() - foilsThickness)
+        this.weight = (this.getInternalTile().getThickness() + getExternalTile().getThickness() - foilsThickness)
                 * 2.5 * areaInM2;
 
     }
 
     public double getWeight() {
-        return weight;
+
+         String tempWeight = String.format(Locale.ROOT,"%.2f%n",weight);
+
+
+        return Double.parseDouble(tempWeight);
     }
 }

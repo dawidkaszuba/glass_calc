@@ -5,6 +5,7 @@ INSERT INTO TileGroup(name) VALUES("tempered ornament");
 INSERT INTO TileGroup(name) VALUES("sunscreen");
 INSERT INTO TileGroup(name) VALUES("selective");
 INSERT INTO TileGroup(name) VALUES("laminated");
+INSERT INTO TileGroup(name) VALUES("anti-condensation");
 
 
 INSERT INTO FrameGroup(name) VALUES("Alu");
@@ -55,6 +56,17 @@ INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('10 Th 1.1 ',0,100,0,10,2,null,1,5);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('10 Fl ',0,88,0,10,1,null,1,8);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('4 Decormat Fl ',0,40,0,4,1,null,3,5);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('5 Th 1.1',0,25 ,0,5,1,null,1,5);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('8 Th 1.1',0,62,0,8,1,null,1,5);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('4 Th 1.0 ',0,4,0,4,3,null,1,5);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('5 Th 1.0 ',0,36,0,5,3,null,1,5);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('6 Th 1.0 ',0,38,0,6,3,null,1,5);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('8 Th 1.0 ',0,76,0,8,3,null,1,5);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('4 Th 1.1 AF ',0,109,0,4,6,null,8,25);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('6 Th 1.1 AF ',0,175,0,6,6,null,8,25);
+
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('33.1 Fl Mat ',0,87,1,6.38,1,3,7,5);
+INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('44.2 Th 1.1 ',0,102,2,8.76,2,1,7,5);
 
 INSERT  INTO StandardPrice2TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL',71);
 INSERT  INTO StandardPrice3TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL - 16 - 4Th 1.1',119);

@@ -9,6 +9,7 @@ import pl.dawidkaszuba.glasscalc.repository.Glass3TilesRepository;
 import pl.dawidkaszuba.glasscalc.repository.StandardPrice3TilesGlassRepository;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class Glass3TilesServiceImpl implements Glass3TilesService{
@@ -33,7 +34,8 @@ public class Glass3TilesServiceImpl implements Glass3TilesService{
         glass3Tiles.setName();
         glass3Tiles.setThickness();
         glass3Tiles.setWeight();
-        glass3Tiles.setPrice(getPrice(glass3Tiles));
+        String price = String.format(Locale.ROOT,"%.2f%n",getPrice(glass3Tiles));
+        glass3Tiles.setPrice(Double.parseDouble(price));
         glass3Tiles.getDeliveryTime();
         this.glass3TilesRepository.save(glass3Tiles);
     }

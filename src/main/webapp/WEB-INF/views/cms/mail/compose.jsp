@@ -71,7 +71,7 @@
                 if (i < 501) {
                     myLoop();
                 }
-            }, 1)
+            }, 5)
         }
 
         var submit = document.getElementById('submit');

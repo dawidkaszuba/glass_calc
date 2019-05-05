@@ -7,6 +7,7 @@ import pl.dawidkaszuba.glasscalc.entity.Glass2Tiles;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Locale;
 
 public class GeneratePdfReportFor2TilesGlass {
 
@@ -15,6 +16,14 @@ public class GeneratePdfReportFor2TilesGlass {
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         document.open();
+
+        String area = String.format(Locale.ROOT,"%.2f%n",(glass2Tiles.getHeight() * glass2Tiles.getWidth()) * 0.000001);
+        String deliveryTimeUnit;
+        if(glass2Tiles.getDeliveryTime() > 1) {
+            deliveryTimeUnit = " days";
+        }else{
+            deliveryTimeUnit=" day";
+        }
 
         String summary = "<h1>Summary</h1>" +
                 "<div style=\"margin-right:40px; float:left\">" +
@@ -26,9 +35,8 @@ public class GeneratePdfReportFor2TilesGlass {
                 + glass2Tiles.getHeight() + " mm</p></p>" +
                 "<p><span style=\"font-weight: bold\">Thickness: </span>" + glass2Tiles.getThickness() + " mm</p>" +
                 "<p><span style=\"font-weight: bold\">Weight: </span>" + glass2Tiles.getWeight() + " kg</p>" +
-                "<p><span style=\"font-weight: bold\">Area: </span>" + (glass2Tiles.getWidth()
-                * glass2Tiles.getHeight()) * 0.000001 + " m<sup>2</sup></p>" +
-                "<p><span style=\"font-weight: bold\">Delivery time: </span>" + glass2Tiles.getDeliveryTime() + "</p>" +
+                "<p><span style=\"font-weight: bold\">Area: </span>" + area + " m<sup>2</sup></p>" +
+                "<p><span style=\"font-weight: bold\">Delivery time: </span>" + glass2Tiles.getDeliveryTime() + deliveryTimeUnit +"</p>" +
                 "<p style=\"text-decoration: underline; font-size: 30px\">Notes:</p>" +
                 "</div>";
 

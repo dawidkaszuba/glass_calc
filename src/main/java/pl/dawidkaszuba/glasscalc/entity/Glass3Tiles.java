@@ -5,6 +5,7 @@ import pl.dawidkaszuba.glasscalc.errors.ErrorGlass;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 public class Glass3Tiles {
@@ -648,6 +649,10 @@ public class Glass3Tiles {
     }
 
     public double getWeight() {
-        return weight;
+
+        String tempWeight = String.format(Locale.ROOT,"%.2f%n",weight);
+
+
+        return Double.parseDouble(tempWeight);
     }
 }
