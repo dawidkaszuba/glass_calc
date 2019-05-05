@@ -44,7 +44,8 @@ public class Glass3TilesServiceImpl implements Glass3TilesService{
     public void save(Glass3Tiles glass3Tiles) {
 
         glass3Tiles.setName();
-        glass3Tiles.setThickness();
+        String thickness = String.format(Locale.ROOT,"%.2f%n", calculateThickness(glass3Tiles));
+        glass3Tiles.setThickness(Double.parseDouble(thickness));
         glass3Tiles.setWeight();
         User user = (User) authenticationFacade.getAuthentication().getPrincipal();
         glass3Tiles.setUser(user);
@@ -52,6 +53,12 @@ public class Glass3TilesServiceImpl implements Glass3TilesService{
         glass3Tiles.setPrice(Double.parseDouble(price));
         glass3Tiles.setDeliveryTime();
         this.glass3TilesRepository.save(glass3Tiles);
+    }
+
+    private double calculateThickness(Glass3Tiles glass3Tiles) {
+        return glass3Tiles.getInternalTile().getThickness() + glass3Tiles.getMiddleTile().getThickness() +
+                glass3Tiles.getExternalTile().getThickness() + glass3Tiles.getFirstFrame().getThickness()
+                + glass3Tiles.getSecondFrame().getThickness();
     }
 
     @Override

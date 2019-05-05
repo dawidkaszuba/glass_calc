@@ -47,7 +47,8 @@ public class Glass2TilesServiceImpl implements Glass2TilesService {
     @Override
     public void save(Glass2Tiles glass2Tiles){
 
-        glass2Tiles.setThickness();
+        String thickness = String.format(Locale.ROOT,"%.2f%n", calculateThickness(glass2Tiles));
+        glass2Tiles.setThickness(Double.parseDouble(thickness));
         glass2Tiles.setName();
         glass2Tiles.setWeight();
         glass2Tiles.setDeliveryTime();
@@ -107,6 +108,14 @@ public class Glass2TilesServiceImpl implements Glass2TilesService {
                         + glass2Tiles.getInternalTile().getPrice() + glass2Tiles.getGas().getPrice()) * 0.4;
             }
         }
+
+    }
+
+
+    private double calculateThickness(Glass2Tiles glass2Tiles){
+
+        return glass2Tiles.getInternalTile().getThickness() +
+                glass2Tiles.getExternalTile().getThickness() + glass2Tiles.getFrame().getThickness();
 
     }
 

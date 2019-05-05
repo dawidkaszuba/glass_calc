@@ -130,9 +130,8 @@ public class Glass3Tiles {
         return thickness;
     }
 
-    public void setThickness() {
-        this.thickness = this.getInternalTile().getThickness() + this.getMiddleTile().getThickness() +
-                this.getExternalTile().getThickness() + this.getFirstFrame().getThickness() + this.getSecondFrame().getThickness();
+    public void setThickness(double thickness) {
+        this.thickness = thickness;
     }
 
     public int getWidth() {

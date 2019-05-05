@@ -111,10 +111,9 @@ public class Glass2Tiles {
         this.gas = gas;
     }
 
-    public void setThickness() {
+    public void setThickness(double thickness) {
 
-        this.thickness = this.getInternalTile().getThickness() +
-                this.getExternalTile().getThickness() + this.frame.getThickness();
+        this.thickness = thickness;
     }
 
     public double getThickness() {
@@ -628,4 +627,6 @@ public class Glass2Tiles {
 
         return Double.parseDouble(tempWeight);
     }
+
+
 }
