@@ -48,9 +48,9 @@ public class Glass3TilesServiceImpl implements Glass3TilesService{
         glass3Tiles.setWeight();
         User user = (User) authenticationFacade.getAuthentication().getPrincipal();
         glass3Tiles.setUser(user);
-        String price = String.format(Locale.ROOT,"%.2f%n",getPrice(glass3Tiles));
+        String price = String.format(Locale.ROOT,"%.2f%n", calculatePrice(glass3Tiles));
         glass3Tiles.setPrice(Double.parseDouble(price));
-        glass3Tiles.getDeliveryTime();
+        glass3Tiles.setDeliveryTime();
         this.glass3TilesRepository.save(glass3Tiles);
     }
 
@@ -71,7 +71,7 @@ public class Glass3TilesServiceImpl implements Glass3TilesService{
     }
 
     @Override
-    public double getPrice(Glass3Tiles glass3Tiles) {
+    public double calculatePrice(Glass3Tiles glass3Tiles) {
         if((glass3Tiles.getExternalTile().getPrice()+ glass3Tiles.getMiddleTile().getPrice()
                 + glass3Tiles.getInternalTile().getPrice() + glass3Tiles.getGas().getPrice())==0){
             if(! glass3Tiles.checkIfAreaLowerThen04()) {

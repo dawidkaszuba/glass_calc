@@ -50,11 +50,11 @@ public class Glass2TilesServiceImpl implements Glass2TilesService {
         glass2Tiles.setThickness();
         glass2Tiles.setName();
         glass2Tiles.setWeight();
-        glass2Tiles.getDeliveryTime();
+        glass2Tiles.setDeliveryTime();
         Authentication authentication = authenticationFacade.getAuthentication();
         User user = (User) authentication.getPrincipal();
         glass2Tiles.setUser(user);
-        String price = String.format(Locale.ROOT,"%.2f%n",getPrice(glass2Tiles));
+        String price = String.format(Locale.ROOT,"%.2f%n", calculatePrice(glass2Tiles));
         glass2Tiles.setPrice(Double.parseDouble(price));
         this.glass2TilesRepository.save(glass2Tiles);
 
@@ -75,14 +75,14 @@ public class Glass2TilesServiceImpl implements Glass2TilesService {
     }
 
     @Override
-    public double getPrice(Glass2Tiles glass2Tiles){
+    public double calculatePrice(Glass2Tiles glass2Tiles){
 
         if((glass2Tiles.getExternalTile().getPrice() + glass2Tiles.getInternalTile().getPrice() +
                 glass2Tiles.getGas().getPrice()) == 0) {
             if(! glass2Tiles.checkIfAreaLowerThen04()) {
 
                 return ((this.standardPrice2TilesGlassRepository.findOne(1L).getValue()
-                        + glass2Tiles.getFrame().getPrice()) / 1000000
+                        + glass2Tiles.getFrame().getPrice()) * 0.000001
                         * (glass2Tiles.getWidth() * glass2Tiles.getHeight()))
                         * glass2Tiles.getHowIncreasePriceDependOnDimensions();
             }else {
@@ -98,7 +98,7 @@ public class Glass2TilesServiceImpl implements Glass2TilesService {
                 return ((basePrice2TileRepository.findOne(1L).getValue() + glass2Tiles.getFrame().getPrice() +
                         glass2Tiles.getExternalTile().getPrice()
                         + glass2Tiles.getInternalTile().getPrice() + glass2Tiles.getGas().getPrice())
-                        / 1000000 * (glass2Tiles.getWidth() * glass2Tiles.getHeight()))
+                        * 0.000001 * (glass2Tiles.getWidth() * glass2Tiles.getHeight()))
                         * glass2Tiles.getHowIncreasePriceDependOnDimensions();
             }else {
 

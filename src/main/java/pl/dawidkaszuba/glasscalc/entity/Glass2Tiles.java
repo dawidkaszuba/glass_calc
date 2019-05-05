@@ -112,6 +112,7 @@ public class Glass2Tiles {
     }
 
     public void setThickness() {
+
         this.thickness = this.getInternalTile().getThickness() +
                 this.getExternalTile().getThickness() + this.frame.getThickness();
     }
@@ -577,6 +578,13 @@ public class Glass2Tiles {
 
     public int getDeliveryTime(){
 
+
+        return deliveryTime;
+
+    }
+
+    public void setDeliveryTime() {
+
         List<Integer> deliveryTimes = new ArrayList<>();
 
         deliveryTimes.add(this.externalTile.getDeliveryTime());
@@ -590,7 +598,6 @@ public class Glass2Tiles {
             }
         }
         deliveryTime=max;
-        return deliveryTime;
 
     }
 

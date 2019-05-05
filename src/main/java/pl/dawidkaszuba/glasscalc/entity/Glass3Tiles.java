@@ -131,8 +131,8 @@ public class Glass3Tiles {
     }
 
     public void setThickness() {
-        this.thickness = this.getInternalTile().getThickness() + this.middleTile.getThickness() +
-                this.getExternalTile().getThickness() + this.firstFrame.getThickness() + this.secondFrame.getThickness();
+        this.thickness = this.getInternalTile().getThickness() + this.getMiddleTile().getThickness() +
+                this.getExternalTile().getThickness() + this.getFirstFrame().getThickness() + this.getSecondFrame().getThickness();
     }
 
     public int getWidth() {
@@ -615,21 +615,6 @@ public class Glass3Tiles {
 
     public int getDeliveryTime(){
 
-        List<Integer> deliveryTimes = new ArrayList<>();
-
-        deliveryTimes.add(this.externalTile.getDeliveryTime());
-        deliveryTimes.add(this.internalTile.getDeliveryTime());
-        deliveryTimes.add(this.middleTile.getDeliveryTime());
-        deliveryTimes.add(this.firstFrame.getDeliveryTime());
-        deliveryTimes.add(this.secondFrame.getDeliveryTime());
-        int max = Integer.MIN_VALUE;
-
-        for(int i = 0; i < deliveryTimes.size(); i++) {
-            if(deliveryTimes.get(i)>max){
-                max = deliveryTimes.get(i);
-            }
-        }
-        deliveryTime=max;
         return deliveryTime;
 
     }
@@ -664,5 +649,24 @@ public class Glass3Tiles {
 
 
         return Double.parseDouble(tempWeight);
+    }
+
+    public void setDeliveryTime() {
+        List<Integer> deliveryTimes = new ArrayList<>();
+
+        deliveryTimes.add(this.externalTile.getDeliveryTime());
+        deliveryTimes.add(this.internalTile.getDeliveryTime());
+        deliveryTimes.add(this.middleTile.getDeliveryTime());
+        deliveryTimes.add(this.firstFrame.getDeliveryTime());
+        deliveryTimes.add(this.secondFrame.getDeliveryTime());
+        int max = Integer.MIN_VALUE;
+
+        for(int i = 0; i < deliveryTimes.size(); i++) {
+            if(deliveryTimes.get(i)>max){
+                max = deliveryTimes.get(i);
+            }
+        }
+        deliveryTime=max;
+
     }
 }

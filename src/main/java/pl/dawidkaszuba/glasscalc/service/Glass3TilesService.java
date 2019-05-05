@@ -9,6 +9,6 @@ public interface Glass3TilesService {
     void delete(Long id);
     List<Glass3Tiles> findAll();
     Glass3Tiles findById(Long id);
-    double getPrice(Glass3Tiles glass3Tiles);
+    double calculatePrice(Glass3Tiles glass3Tiles);
     List<Glass3Tiles> findAllByUserId();
 }
