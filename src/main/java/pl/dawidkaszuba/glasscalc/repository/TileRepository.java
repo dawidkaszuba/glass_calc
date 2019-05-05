@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface TileRepository extends JpaRepository<Tile, Long> {
     List<Tile> findAllByGroupId(Long id);
+
+    List<Tile> findAllByNameContainingIgnoreCase(String name);
 }

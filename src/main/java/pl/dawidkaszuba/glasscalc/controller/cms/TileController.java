@@ -92,6 +92,12 @@ public class TileController {
         return "redirect:/tile/list";
     }
 
+    @GetMapping("/findByName")
+    public String findByName(@RequestParam String name,Model model){
+        model.addAttribute("tiles",this.tileRepository.findAllByNameContainingIgnoreCase(name));
+        return "cms/tile/list";
+    }
+
 
     @ModelAttribute("tileGroups")
     public List<TileGroup> findAllTileGroups(){

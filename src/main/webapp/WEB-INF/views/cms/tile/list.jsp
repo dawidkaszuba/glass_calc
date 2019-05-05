@@ -16,6 +16,15 @@
 <div class="container">
     <jsp:include page="/WEB-INF/views/fragments/header.jsp"/>
     <h1>Tiles</h1>
+
+        <div class="row">
+            <form class="form-control" action="/tile/findByName">
+                <label>find by name:</label>
+                <input name ="name" type="text" class="form-control">
+                <input type="submit" value="SEARCH">
+            </form>
+        </div>
+
     <div class="row">
         <div class="col-md-2">
             <span>Name</span>
