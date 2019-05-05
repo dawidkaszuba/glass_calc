@@ -5,12 +5,12 @@ $(function(){
     doAjaxIntTile();
     changeDimensions();
 
-    doAjaxGroupTiles('tilesGroup','externalTile');
-    doAjaxIntTilesGroup();
+    doAjaxGroup('tilesGroup','externalTile',"http://localhost:8080/tile/allByGroupId/");
+    doAjaxGroup('intTilesGroup','internalTile',"http://localhost:8080/tile/allByGroupId/");
+    doAjaxGroup('framesGroup','frame',"http://localhost:8080/frame/allByGroupId/");
     updateName('intTileName','internalTile');
     updateName('exTileName', 'externalTile');
     updateName('frameName', 'frame');
-    doAjaxGroupsFrame();
 
     var selectedExTile = document.getElementById('externalTile');
     selectedExTile.addEventListener("change", function(){
@@ -52,22 +52,29 @@ $(function(){
     });
 
     var tilesGroup = document.getElementById('tilesGroup');
-    tilesGroup.addEventListener('change',doAjaxGroupTiles);
+    tilesGroup.addEventListener('change',function () {
+        doAjaxGroup('tilesGroup','externalTile',"http://localhost:8080/tile/allByGroupId/");
+
+    });
 
     var intTilesGroup = document.getElementById('intTilesGroup');
-    intTilesGroup.addEventListener('change',doAjaxIntTilesGroup);
+    intTilesGroup.addEventListener('change',function () {
+        doAjaxGroup('intTilesGroup','internalTile',"http://localhost:8080/tile/allByGroupId/");
+    });
 
-     var frameGroup = document.getElementById('framesGroup');
-    frameGroup.addEventListener('change', doAjaxGroupsFrame);
+    var frameGroup = document.getElementById('framesGroup');
+    frameGroup.addEventListener('change', function () {
+        doAjaxGroup('framesGroup','frame',"http://localhost:8080/frame/allByGroupId/")
+    });
 
-    var name1 = document.getElementById('externalTile');
-    exTileName.innerText = name1.options[name1.selectedIndex].text;
+    var extTileButton = document.getElementById('externalTile');
+    exTileName.innerText = extTileButton.options[extTileButton.selectedIndex].text;
 
-    var name2 = document.getElementById('internalTile');
-    intTileName.innerText = name2.options[name2.selectedIndex].text;
+    var intTileButton = document.getElementById('internalTile');
+    intTileName.innerText = intTileButton.options[intTileButton.selectedIndex].text;
 
-    var name3 = document.getElementById('frame');
-    frameName.innerText = name3.options[name3.selectedIndex].text;
+    var frameButton = document.getElementById('frame');
+    frameName.innerText = frameButton.options[frameButton.selectedIndex].text;
 
 
 
@@ -75,19 +82,19 @@ $(function(){
     close.addEventListener('click',function () {
         var exTilePopup = document.getElementById('exTilePopup');
         exTilePopup.style.display='none';
-    })
+    });
 
     var intTilePopupClose = document.getElementById('intTilePopupClose');
     intTilePopupClose.addEventListener('click',function () {
         var intTilePopup = document.getElementById('intTilePopup');
         intTilePopup.style.display='none';
-    })
+    });
 
     var framePopupClose = document.getElementById('framePopupClose');
     framePopupClose.addEventListener('click',function () {
         var frameTilePopup = document.getElementById('framePopup');
         frameTilePopup.style.display='none';
-    })
+    });
 
     function updateName(div,element){
 
@@ -115,18 +122,16 @@ $(function(){
         textWidth.innerHTML = width.value + " [mm]";
     }
 
-    function doAjaxGroupTiles(group, tile){
+    function doAjaxGroup(group, element, url){
 
-        //var id = document.getElementById(group).value;
-        var id = document.getElementById('tilesGroup').value;
-        $.ajax({
+       var id = document.getElementById(group).value;
+          $.ajax({
             type:"GET",
-            url:"http://localhost:8080/tile/allByGroupId/"+id,
+            url:url+id,
             dataType: "json",
         }).done(function(result) {
 
-           var tiles = document.getElementById('externalTile');
-           // var tiles = document.getElementById(tile);
+            var tiles = document.getElementById(element);
 
             for(var i = 0; i < tiles.options.length; i++){
                 tiles.options[i].style.display='none';
@@ -138,66 +143,6 @@ $(function(){
                 option.innerText = result[j]['name'];
                 option.value = result[j]['id'];
                 tiles.appendChild(option);
-            }
-
-
-        }).fail(function(xhr,status,err){
-        }).always(function(xhr,status){
-
-        });
-    }
-
-    function doAjaxGroupsFrame(){
-
-
-        var id = document.getElementById('framesGroup').value;
-        $.ajax({
-            type:"GET",
-            url:"http://localhost:8080/frame/allByGroupId/"+id,
-            dataType: "json",
-        }).done(function(result) {
-
-            var frames = document.getElementById('frame');
-
-            for(var i = 0; i < frames.options.length; i++){
-                frames.options[i].style.display='none';
-            }
-
-            for(var j = 0; j < result.length; j++) {
-
-                var option = document.createElement("OPTION");
-                option.innerText = result[j]['name'];
-                option.value = result[j]['id'];
-                frames.appendChild(option);
-            }
-
-
-        }).fail(function(xhr,status,err){
-        }).always(function(xhr,status){
-
-        });
-    }
-
-    function doAjaxIntTilesGroup(){
-        var id = document.getElementById('intTilesGroup').value;
-        $.ajax({
-            type:"GET",
-            url:"http://localhost:8080/tile/allByGroupId/"+id,
-            dataType: "json",
-        }).done(function(result) {
-
-            var internalTile = document.getElementById('internalTile');
-
-            for(var i = 0; i < internalTile.options.length; i++){
-                internalTile.options[i].style.display='none';
-            }
-
-            for(var j = 0; j < result.length; j++) {
-
-                var option = document.createElement("OPTION");
-                option.innerText = result[j]['name'];
-                option.value = result[j]['id'];
-                internalTile.appendChild(option);
             }
 
 
