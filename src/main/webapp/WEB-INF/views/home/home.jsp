@@ -17,7 +17,7 @@
             border: 1px solid black;
             margin: auto;
             margin-top: 10px;
-            height: 120px;
+            height: 150px;
             width: 180px;
             border-radius: 10px;
             color: black;
@@ -70,8 +70,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6"><a href="/configurator2Tiles/allByUserId"><div class="menuButton"><span>My two-tiles glass</span></div></a></div>
-            <div class="col-md-6"><a href="/configurator3Tiles/allByUserId"><div class="menuButton"><span>My three-tiles glass</span></div></a></div>
+            <div class="col-md-6"><a href="/configurator2Tiles/allByUserId"><div class="menuButton"><span>My single-chamber glass</span></div></a></div>
+            <div class="col-md-6"><a href="/configurator3Tiles/allByUserId"><div class="menuButton"><span>My two-chamber glass</span></div></a></div>
         </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
