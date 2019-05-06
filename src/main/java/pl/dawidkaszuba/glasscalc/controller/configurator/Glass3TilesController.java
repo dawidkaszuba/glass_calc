@@ -88,12 +88,6 @@ public class Glass3TilesController {
 
     }
 
-    @GetMapping("/list")
-    public String findAllGlass2Tiles(Model model) {
-        model.addAttribute("glasses3", this.glass3TilesService.findAll());
-        return "configurator/glass3Tiles/list";
-    }
-
     @GetMapping("/allByUserId")
     public String findAllByUserId(Model model){
         model.addAttribute("glasses3", this.glass3TilesService.findAllByUserId());
@@ -103,7 +97,7 @@ public class Glass3TilesController {
     @GetMapping("/delete/{id}")
     public String deleteGlass3Tiles(@PathVariable Long id) {
         this.glass3TilesService.delete(id);
-        return "redirect:/configurator3Tiles/list";
+        return "redirect:/configurator3Tiles/allByUserId";
     }
 
     @ModelAttribute("frames")

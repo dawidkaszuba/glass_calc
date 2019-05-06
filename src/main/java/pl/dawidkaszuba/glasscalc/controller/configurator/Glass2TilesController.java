@@ -92,11 +92,6 @@ public class Glass2TilesController {
 
     }
 
-    @GetMapping("/list")
-    public String findAllGlass2Tiles(Model model){
-        model.addAttribute("glasses2", this.glass2TilesService.findAll());
-        return "configurator/glass2Tiles/list";
-    }
 
     @GetMapping("/allByUserId")
     public String findAllByUserId(Model model){
@@ -107,7 +102,7 @@ public class Glass2TilesController {
     @GetMapping("/delete/{id}")
     public String deleteGlass2Tiles(@PathVariable Long id){
         this.glass2TilesService.delete(id);
-        return "redirect:/configurator2Tiles/list";
+        return "redirect:/configurator2Tiles/allByUserId";
     }
 
 
