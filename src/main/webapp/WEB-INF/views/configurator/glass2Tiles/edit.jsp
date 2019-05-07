@@ -14,42 +14,9 @@
     <script
             src="https://code.jquery.com/jquery-3.4.0.js"
             integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
-            crossorigin="anonymous"></script>
-    <style>
-        .error{
-            color:red;
-        }
-        #exTilePopup, #intTilePopup, #framePopup{
-            width: 300px;
-            height: 180px;
-            display: none;
-            position: fixed;
-            left:35%;
-            background-color: white;
-            z-index:1;
-            border: 1px solid;
-            padding: 10px;
-            box-shadow: 5px 10px #888888;
-        }
-
-        #close,#intTilePopupClose, #framePopupClose{
-            position: absolute;
-            top:0;
-            right:14px;
-            font-size: 42px;
-            transform: rotate(45deg);
-        }
-        .select{
-            width:200px;
-        }
-        .elementName{
-            font-weight: bold;
-            background-color: dodgerblue;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-    </style>
+            crossorigin="anonymous">
+    </script>
+    <link href="<c:url value="/resources/css/styleConfigurator.css"/>" rel="stylesheet" />
 
 </head>
 <body style="background-color: lightblue">
