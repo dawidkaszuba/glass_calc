@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
@@ -16,20 +18,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
-        this.customUserDetailsService = customUserDetailsService;
-    }
 
     @Autowired
-    private CustomLoginSuccessHandler customLoginSuccessHandler;
+    public SecurityConfig(CustomUserDetailsService customUserDetailsService, CustomLoginSuccessHandler customLoginSuccessHandler) {
+        this.customUserDetailsService = customUserDetailsService;
+        this.customLoginSuccessHandler = customLoginSuccessHandler;
+    }
+
+    private final CustomLoginSuccessHandler customLoginSuccessHandler;
 
 
     private final CustomUserDetailsService customUserDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
 
         auth.userDetailsService(customUserDetailsService)
                 .passwordEncoder(getPasswordEncoder());
@@ -39,16 +41,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private PasswordEncoder getPasswordEncoder() {
         return new PasswordEncoder() {
             @Override
-            public String encode(CharSequence charSequence) {
-                return charSequence.toString();
+            public String encode(CharSequence rawPassword) {
+                return rawPassword.toString();
             }
 
             @Override
-            public boolean matches(CharSequence charSequence, String s) {
-                return encode(charSequence).equals(s);
+            public boolean matches(CharSequence rawPassword, String encodedPassword) {
+                return BCrypt.checkpw(rawPassword.toString(), encodedPassword);
             }
         };
     }
+
+
 
 
     @Override
@@ -70,5 +74,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().permitAll()
                 .and()
                 .csrf().disable();
+
     }
 }

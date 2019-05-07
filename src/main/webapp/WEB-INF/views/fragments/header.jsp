@@ -109,7 +109,7 @@
                     <a class="dropdown-item" href="/">go to configurator</a>
                     <a class="dropdown-item" href="/user/add">new user</a>
                     <a class="dropdown-item" href="/user/list">users</a>
-                    <a class="dropdown-item" href="/mail/compose">newsletter</a>
+                    <a class="dropdown-item" href="/mail/compose">send mail</a>
                     <a class="dropdown-item" href="/logout">logout -> [X]</a>
                 </div>
             </li>

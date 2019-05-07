@@ -1,0 +1,48 @@
+.error{
+    color:red;
+}
+#exTilePopup, #intTilePopup,
+#framePopup,#firstFramePopup,
+#secondFramePopup, #midTilePopup{
+    width: 300px;
+    height: 180px;
+    display: none;
+    position: fixed;
+    left:35%;
+    background-color: white;
+    z-index:1;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px #888888;
+}
+
+#close,#intTilePopupClose, #framePopupClose,
+#firstFramePopupClose,
+#secondFramePopupClose,
+#midTilePopupClose{
+    position: absolute;
+    top:0;
+    right:14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+}
+.select{
+    width:200px;
+}
+.elementName{
+    font-weight: bold;
+    background-color: dodgerblue;
+    border-radius: 5px;
+    text-align: center;
+}
+body{
+    background-color: lightblue;
+}
+
+#progressbar{
+    display: none;
+    position: fixed;
+    left:35%;
+    top:85%;
+    z-index: 1;
+}

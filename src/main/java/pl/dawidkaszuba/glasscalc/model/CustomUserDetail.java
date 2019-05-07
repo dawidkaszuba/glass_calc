@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 
 public class CustomUserDetail extends User implements  UserDetails {
 
+
+
     public CustomUserDetail(final User user) {
         super(user);
     }

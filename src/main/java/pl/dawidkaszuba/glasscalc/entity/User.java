@@ -6,11 +6,13 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 public class User {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,6 +52,17 @@ public class User {
         this.lastName=user.getLastName();
         this.id = user.getId();
         this.password = user.getPassword();
+
+    }
+
+
+    public User(String email, String password, String name, String lastname, int active, Set<Role> roles) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.lastName = lastname;
+        this.active=active;
+        this.roles = roles;
 
     }
 
