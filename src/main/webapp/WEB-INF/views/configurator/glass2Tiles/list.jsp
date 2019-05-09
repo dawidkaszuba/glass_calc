@@ -22,7 +22,7 @@
 <body style="background-color: lightblue";>
     <div class="container">
         <jsp:include page="/WEB-INF/views/fragments/headerConfigurator.jsp"/>
-        <h1>My 2-tiles glasses</h1>
+        <h1>My single-chamber glasses</h1>
         <div class="row">
             <div class="col-md-3">
                 <span class="boldSpan">specification</span>

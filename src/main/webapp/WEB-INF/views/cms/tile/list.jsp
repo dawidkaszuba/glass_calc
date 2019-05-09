@@ -29,10 +29,10 @@
         <div class="col-md-2">
             <span>Name</span>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-2">
             <span>thickness</span>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
             <span>group</span>
         </div>
         <div class="col-md-2">
@@ -52,10 +52,10 @@
             <div class="col-md-2">
                 <div><p><span>${tile.name}</span></p></div>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <div><p><span>${tile.thickness} mm</span></p></div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <div><p><span>${tile.group.name}</span></p></div>
             </div>
             <div class="col-md-2">
