@@ -34,7 +34,7 @@ INSERT INTO Gas(name, price,deliveryTime) VALUES("Ar 90", 0,5);
 INSERT INTO Gas(name, price,deliveryTime) VALUES("Kr 90", 100,10);
 INSERT INTO Gas(name, price,deliveryTime) VALUES("Air", 0,5);
 
-INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('16 Alu', 0,0.8,16,5,1);
+INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('16 Alu', 0,0.08,16,5,1);
 INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('10 Alu', 0,0.08,10,5,1);
 INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('12 Alu', 0,0.08,12,5,1);
 INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('14 Alu', 0,0.08,14,5,1);

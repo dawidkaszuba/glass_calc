@@ -66,6 +66,12 @@ public class FrameController {
         }
     }
 
+    @GetMapping("/findByName")
+    public String findByName(@RequestParam String name,Model model){
+        model.addAttribute("frames",this.frameRepository.findAllByNameContainingIgnoreCase(name));
+        return "cms/frame/list";
+    }
+
     @GetMapping("/allByGroupId/{id}")
     @ResponseBody
     public List<Frame> findAllByTileGroupId(@PathVariable Long id){
