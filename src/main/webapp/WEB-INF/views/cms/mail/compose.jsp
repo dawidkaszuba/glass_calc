@@ -24,26 +24,23 @@
     <jsp:include page="/WEB-INF/views/fragments/header.jsp"/>
     <h1>compose</h1>
 
-        <form method="post" action="/mail/send">
+        <form:form method="post" action="/mail/send" modelAttribute="mail">
             <div class="row">
                 <div class="col-md-6">
                     <label>recipient/s</label>
-                    <select class="form-control" name="mailTo" multiple>
-                        <c:forEach items="${recipients}" var="recipient">
-                            <option  class="form-control" value="${recipient.email}">
-                                    ${recipient.name} ${recipient.lastName}: ${recipient.email}</option>
-                        </c:forEach>
-                    </select>
+                    <form:select class="form-control" items="${recipients}"
+                                 itemLabel="mailNameAndLastName" path="mailTo" itemValue="email" multiple="true"/>
                 </div>
                 <div class="col-md-6">
                     <label>subject</label>
-                    <input type="text" name="sub" value="GlassCalc newsletter" class="form-control">
+                    <form:input type="text" path="subject" class="form-control" value="GlassCalc notification"/>
                     <label>message</label>
-                    <textarea name="message" cols="30" rows="10" class="form-control"></textarea>
-                    <input id ="submit" type="submit" value="Send">
+                    <form:textarea path="message" cols="30" rows="10" class="form-control"/>
+                    <input type="submit" id="submit" value="Send">
                 </div>
             </div>
-        </form>
+            <div><form:errors path="*"/></div>
+        </form:form>
         <div class="row">
             <div id="progressbar">
 

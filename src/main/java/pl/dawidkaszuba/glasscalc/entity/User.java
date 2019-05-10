@@ -137,4 +137,8 @@ public class User {
     public void setGlass3TilesList(List<Glass3Tiles> glass3TilesList) {
         this.glass3TilesList = glass3TilesList;
     }
+
+    public String getMailNameAndLastName(){
+        return  name + " " + lastName + " " + email;
+    }
 }

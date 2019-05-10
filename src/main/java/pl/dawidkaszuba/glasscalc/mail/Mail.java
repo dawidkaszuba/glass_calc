@@ -1,5 +1,7 @@
 package pl.dawidkaszuba.glasscalc.mail;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 import javax.mail.Message;
@@ -13,6 +15,36 @@ import java.util.Properties;
 
 @Component
 public class Mail {
+
+    @NotEmpty(message = "no recipients")
+    private List<String> mailTo;
+    private String subject;
+    @NotBlank(message = "lack of content")
+    private String message;
+
+    public List<String> getMailTo() {
+        return mailTo;
+    }
+
+    public void setMailTo(List<String> mailTo) {
+        this.mailTo = mailTo;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public void send(String from, String password, List<String> to, String sub, String msg){
 

@@ -109,8 +109,8 @@ INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('16 Pre
 INSERT INTO Frame(name,price,psi,thickness,deliveryTime,group_id) VALUES('18 PremiumEdge 7035', 12,0.038,18,10,10);
 
 
-INSERT INTO BasePrice2Tile(name,value) VALUES("4Th 1.1 - 16 - 4fl", 71);
-INSERT INTO BasePrice3Tile(name,value) VALUES("4Th 1.1 - 16 - 4fl - 16 - 4Th 1.1", 117.5);
+INSERT INTO BasePrice2Tile(name,value) VALUES("4Th 1.1 - 16 - 4 FL", 71);
+INSERT INTO BasePrice3Tile(name,value) VALUES("4Th 1.1 - 16 - 4 FL - 16 - 4Th 1.1", 117.5);
 
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('4 Fl',0,0,0,4,1,null,1,5);
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('4 Th 1.1',0,0,0,4,2,null,1,5);
@@ -182,8 +182,8 @@ INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil
 INSERT INTO Tile(name,isTempered,price,quantityOfFoils,thickness,coating_id,foil_id,group_id,deliveryTime) VALUES('6 Th 1.1 AF ',0,175,0,6,6,null,8,25);
 
 
-INSERT  INTO StandardPrice2TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL',71);
-INSERT  INTO StandardPrice3TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 FL - 16 - 4Th 1.1',119);
+INSERT  INTO StandardPrice2TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 Fl',71);
+INSERT  INTO StandardPrice3TilesGlass(name,value) VALUES('4Th 1.1 - 16 - 4 Fl - 16 - 4Th 1.1',119);
 
 INSERT INTO Addition(name, price, methodToCalculatePrice,deliveryTime) VALUES('HST 3mm',8,'BY_AREA',10);
 INSERT INTO Addition(name, price, methodToCalculatePrice,deliveryTime) VALUES('HST 4mm',12,'BY_AREA',10);
